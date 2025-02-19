@@ -42,7 +42,7 @@ export const useCreateSubProcessService = () => {
           files,
         }),
       },
-      {setToken:true, ...customConfig}
+      { setToken: true, ...customConfig }
     );
   };
 };
@@ -82,16 +82,21 @@ export const useEditSubProcessService = (id: number) => {
         method: "POST",
         body: formdata,
       },
-      {setToken:true, ...customConfig}
+      { setToken: true, ...customConfig }
     );
   };
 };
 export const useGetSubProcessesService = () => {
-  const fetchData = useFetchApi<SubProcessDtoPagination, SubProcessDtoPagination>(
+  const fetchData = useFetchApi<
+    SubProcessDtoPagination,
     SubProcessDtoPagination
-  );
+  >(SubProcessDtoPagination);
   return (params, customConfig: FetchCustomConfig = {}) =>
-    fetchData("/admin/sub-processes", { params }, {setToken:true, ...customConfig});
+    fetchData(
+      "/admin/sub-processes",
+      { params },
+      { setToken: true, toastError: true, ...customConfig }
+    );
 };
 // export const useGetBaseProcessesService = () => {
 //   const fetchData = useFetchApi<ProcessBaseDto[], ProcessBaseDto>(
@@ -102,9 +107,19 @@ export const useGetSubProcessesService = () => {
 // };
 export const useGetSubProcessByIdService = () => {
   const fetchData = useFetchApi<SubProcessDto, SubProcessDto>(SubProcessDto);
-  return (id: string, customConfig, FetchCustomConfig) => fetchData(`/admin/sub-processes/${id}`, {},{toastError:true,setToken:true, ...customConfig});
+  return (id: string, customConfig: FetchCustomConfig = {}) =>
+    fetchData(
+      `/admin/sub-processes/${id}`,
+      {},
+      { toastError: true, setToken: true, ...customConfig }
+    );
 };
 export const useGetSubProcessBySlugService = () => {
   const fetchData = useFetchApi<SubProcessDto, SubProcessDto>(SubProcessDto);
-  return (slug: string, customConfig: FetchCustomConfig) => fetchData(`/admin/sub-processes-details/${slug}`, {}, {setToken:true, ...customConfig});
+  return (slug: string, customConfig: FetchCustomConfig = {}) =>
+    fetchData(
+      `/admin/sub-processes-details/${slug}`,
+      {},
+      { setToken: true, toastError: true, ...customConfig }
+    );
 };

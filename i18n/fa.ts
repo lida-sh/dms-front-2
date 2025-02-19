@@ -19,7 +19,7 @@ export default {
     username: "نام کاربری",
     itemSearch: "جستجو در",
     wordSearch: "عبارت مورد جستجو",
-    date: "تاریخ ابلاغ"
+    notification_date: "تاریخ ابلاغ"
     
     
     

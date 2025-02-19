@@ -67,6 +67,11 @@ export class ProcedureClientDto {
   @Expose()
   created_at: string;
   @Expose()
+  @Transform(({ value }) => {
+    return String(value);
+  })
+  notification_date:string;
+  @Expose()
   @Type(() => ArchitectureClientBaseDto)
   architecture: ArchitectureClientBaseDto;
   @Expose()
@@ -101,6 +106,11 @@ export class ProcedureDto extends ProcedureBaseDto {
   @Expose()
   @Type(() => ProcessBaseDto)
   process: ProcessBaseDto;
+  @Expose()
+  @Transform(({ value }) => {
+    return String(value);
+  })
+  notification_date:string;
 }
 export class ProcedureDtoPagination {
   @Expose()

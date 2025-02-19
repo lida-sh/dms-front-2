@@ -10,14 +10,19 @@
                         v-model="data!.procedure!.architecture_id"></app-select-input>
                     <app-select-input name="process_id" :options="processes!" :label="$t('process_id')"
                         class="col-span-3" v-model="data!.procedure!.process_id"></app-select-input>
-                    <app-text-input name="title" :label="$t('title')" class="col-span-1 sm:col-span-6"
+                    <app-text-input name="title" :label="$t('title')" class="col-span-1 sm:col-span-4"
                         v-model="data!.procedure!.title"></app-text-input>
-                    <app-select-input name="docType" :options-list="doctypes" :label="$t('docType')"
-                        class="col-span-2" v-model="data!.procedure!.docType"></app-select-input>
                     <app-code-input name="code" :label="$t('code')" class="col-span-2"
                         v-model="data!.procedure!.code"></app-code-input>
+                    <app-select-input name="docType" :options-list="doctypes" :label="$t('docType')" class="col-span-2"
+                        v-model="data!.procedure!.docType"></app-select-input>
                     <app-select-input name="status" :options-list="options" :label="$t('status')"
                         v-model="data!.procedure!.status" class="col-span-2"></app-select-input>
+                    <client-only>
+                        <div class="col-span-2">
+                            <app-date-picker name="notification_date" v-model="data!.procedure!.notification_date" label="تاریخ ابلاغ" placeholder="تاریخ را انتخاب کنید." />
+                        </div>
+                    </client-only>
                     <div class="flex col-span-6">
                         <app-file-input name="files" :label="$t('files')" class="w-full"></app-file-input>
                     </div>
@@ -35,7 +40,9 @@
                     <app-text-input name="description" area :label="$t('description')"
                         v-model="data!.procedure!.description" class="sm:col-span-6"></app-text-input>
                     <app-button type="submit" :loading="loading"
-                        class="btn btn-block sm:col-span-6 bg-indigo-800 hover:bg-indigo-500 text-white mt-2">{{ $t('submit') }}</app-button>
+                        class="btn btn-block sm:col-span-6 bg-indigo-800 hover:bg-indigo-500 text-white mt-2">{{
+                            $t('submit')
+                        }}</app-button>
                 </div>
             </Form>
 
@@ -48,7 +55,7 @@ definePageMeta({
     layout: "admin"
 })
 import { Form, type FormActions } from "vee-validate"
-import {  useGetBaseArchitecturesService } from "~/composables/architectures/useArchitecture.service";
+import { useGetBaseArchitecturesService } from "~/composables/architectures/useArchitecture.service";
 
 const { $t } = useNuxtApp()
 // const loading = ref<boolean>(false);
@@ -117,6 +124,7 @@ const getProcedureById = useGetProcedureByIdService();
 
 const { data, pending, error } = await useAsyncData('edit-procedure' + route.params.id, async () => {
     const [architectures, procedure] = await Promise.all([getArchitectures(), getProcedureById(route.params.id as string)]);
+    console.log("procedure",procedure)
     return { architectures, procedure }
 }, { server: false })
 useErrorHandler(error)
@@ -124,7 +132,7 @@ watch(data, async (value) => {
     if ((data.value)?.procedure) {
         ProcedureFiles.value = (data.value)?.procedure?.files
         if (data.value && (data.value)?.architectures) {
-            const processesData  = await getProcesses(data!.value!.procedure.architecture_id as number, { toastError: true })
+            const processesData = await getProcesses(data!.value!.procedure.architecture_id as number, { toastError: true })
             if (processesData !== undefined) {
                 processes.value = processesData
             }

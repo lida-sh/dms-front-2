@@ -60,18 +60,18 @@ export const useEditArchitectureService = (id:number) => {
 };
 export const useGetArchitecturesService = ()=>{
   const fetchData = useFetchApi<ArchitectureDto[],ArchitectureDto>(ArchitectureDto);
-  return (customConfig: FetchCustomConfig = {})=>fetchData("/admin/architectures", {}, {setToken:true, ...customConfig})
+  return (customConfig: FetchCustomConfig = {})=>fetchData("/admin/architectures", {}, {setToken:true, toastError: true, ...customConfig})
 
 }
 export const useGetBaseArchitecturesService = ()=>{
   const fetchData = useFetchApi<ArchitectureBaseDto[], ArchitectureBaseDto>(ArchitectureBaseDto);
-  return (customConfig: FetchCustomConfig = {})=>fetchData("/admin/architectures", {}, {setToken:true, ...customConfig})
+  return (customConfig: FetchCustomConfig = {})=>fetchData("/admin/architectures", {}, {setToken:true, toastError: true, ...customConfig})
 }
 export const useGetArchitectureByIdService = ()=>{
   const fetchData = useFetchApi<ArchitectureDto, ArchitectureDto>(ArchitectureDto);
-  return (id:string, customConfig: FetchCustomConfig = {})=>fetchData(`/admin/architectures/${id}`, {}, {setToken:true, ...customConfig})
+  return (id:string, customConfig: FetchCustomConfig = {})=>fetchData(`/admin/architectures/${id}`, {}, {setToken:true, toastError: true, ...customConfig})
 }
 export const useArchitectureStructureService=()=>{
    const fetchData = useFetchApi<ArchitectureTreeStructDto, ArchitectureTreeStructDto>(ArchitectureTreeStructDto);
-   return (slug:string, customConfig: FetchCustomConfig = {})=>fetchData(`/architectures/${slug}`, {}, {...customConfig})
+   return (slug:string, customConfig: FetchCustomConfig = {})=>fetchData(`/architectures/${slug}`, {}, {toastError: true, ...customConfig})
 }

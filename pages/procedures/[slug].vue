@@ -9,7 +9,7 @@
                 <h6 class="text-base font-medium"> کد روش اجرایی : <span class="en text-base font-medium">{{ data?.code }}</span></h6>
                 <a class="btn btn-success" href="/procedures">بازگشت به لیست سندها</a>
             </div>
-        
+            <h6 class="text-base font-medium"> تاریخ ارجاع: <span class="text-base font-medium">{{ data?.referral_date }}</span></h6>
             <h6 class="text-base font-medium">زیر مجموعه:
                 <span v-if="data?.architecture.type == 'assistance'" class="text-blue-700">معاونت </span>
                 <span v-else-if="data?.architecture.type == 'administration'" class="text-blue-700">اداره کل

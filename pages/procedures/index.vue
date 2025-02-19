@@ -133,7 +133,7 @@ const sortItems = [
 const processes = ref<ProcessBaseDto[]>([])
 const getProcedures = useGetProceduresService()
 const { data, pending, error, refresh } = await useAsyncData('procedures', () => getProcedures(query.value), {})
-useErrorHandler(error)
+// useErrorHandler(error)
 const getArchitectures = useGetBaseArchitecturesService()
 const { data: architectures } = await useLazyAsyncData('architectures', () => getArchitectures(), {
 

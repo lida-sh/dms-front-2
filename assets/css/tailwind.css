@@ -47,8 +47,29 @@ select > option {
   }
 .pdp-group {
     height: 48px;
+    align-content: center;
+    align-items: center;
+    
 }
-.pdp-label {
-  font-size: small;
+.pdp .pdp-label {
+  font-size: small !important;
+  margin-bottom:0;
+}
+.pdp-icon {
+    min-height: 48px;
+}
+.pdp .pdp-group .pdp-icon{
+    /* padding: 0.75rem 0.75rem;  */
+    align-items: center;
+    align-content: center;
+} 
+.vpd-input-group{
+    height: 48px;
+    overflow: hidden;
+    border: 1px
+}
+.vpd-icon-btn{
+    border-radius: 0 0.5rem  0.5rem 0;
+    
 }
 

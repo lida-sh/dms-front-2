@@ -61,7 +61,7 @@ export const useEditProcessService = (id:number) => {
 };
 export const useGetProcessesService = ()=>{
   const fetchData = useFetchApi<ProcessDtoPagination,ProcessDtoPagination>(ProcessDtoPagination);
-  return (params,customConfig: FetchCustomConfig = {})=>fetchData("/admin/processes", {params}, {setToken:true, ...customConfig})
+  return (params,customConfig: FetchCustomConfig = {})=>fetchData("/admin/processes", {params}, {setToken:true, toastError:true, ...customConfig})
 }
 export const useGetBaseProcessesService = ()=>{
   const fetchData = useFetchApi<ProcessBaseDto[], ProcessBaseDto>(ProcessBaseDto);

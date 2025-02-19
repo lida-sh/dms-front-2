@@ -56,11 +56,12 @@
               <th class="text-right">معماری والد</th>
               <th class="text-right">فرایند والد</th>
               <th class="text-center">وضعیت</th>
+              <th class="text-right">تاریخ ابلاغ</th>
               <th class="text-center">عملیات</th>
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(item, index) in data?.procedures" class="hover divide-y">
+            <tr v-for="(item, index) in data?.procedures" class="hover divide-y w-full">
               <td class="text-center">{{ ((data!.meta.current_page - 1) * data!.meta.per_page) + index + 1 }}</td>
               <td class="text-right">{{ item.displayTitle }}</td>
               <td class="text-right">{{ item.slug }}</td>
@@ -71,7 +72,9 @@
                 <span v-if="item.status == 1" class="text-green-500">فعال</span>
                 <span v-if="item.status == 0" class="text-red-500">غیر فعال</span>
               </td>
+              <td class="text-right">{{ item.notification_date }}</td>
               <td class="text-right flex items-center justify-center gap-2 ">
+
                 <NuxtLink :to="`procedures/${item.slug}`"
                   class="btn btn-outline border-sky-700 hover:border-none border-2 btn-sm text-sky-600 text-xs hover:bg-gradient-to-b hover:from-sky-900 hover:to-sky-400 hover:text-white">
                   نمایش
@@ -82,8 +85,8 @@
                 </NuxtLink>
                 <button
                   class="btn btn-outline border-red-700 hover:border-none border-2 btn-sm text-red-600 text-xs hover:bg-gradient-to-b hover:from-red-900 hover:to-red-400 hover:text-white">حذف</button>
-                <button
-                  class="btn btn-outline border-emerald-700 hover:border-none border-2 btn-sm text-emerald-600 text-xs hover:bg-gradient-to-b hover:from-emerald-900 hover:to-emerald-400 hover:text-white">ارتقا</button>
+                <!-- <button
+                  class="btn btn-outline border-emerald-700 hover:border-none border-2 btn-sm text-emerald-600 text-xs hover:bg-gradient-to-b hover:from-emerald-900 hover:to-emerald-400 hover:text-white">ارتقا</button> -->
               </td>
             </tr>
             
@@ -151,8 +154,8 @@ const sortItems = [
 ]
 const processes = ref<ProcessBaseDto[]>([])
 const getProcedures = useGetProceduresService()
-const { data, pending, error, refresh } = await useAsyncData('procedures', () => getProcedures(query.value), {  })
-useErrorHandler(error)
+const { data, pending, error, refresh } = await useAsyncData('procedures', () => getProcedures(query.value), { server: false })
+// useErrorHandler(error)
 const getArchitectures = useGetBaseArchitecturesService()
 const { data: architectures } = await useLazyAsyncData('architectures', () => getArchitectures(), {
   server: false

@@ -1,6 +1,11 @@
 <template>
-    <div class="bg-gray-300 h-40 w-full">
-      <p class="text-sm font-bold">کليه حقوق محصولات و محتوای اين سایت متعلق به WebProg.io می باشد و هر گونه کپی برداری از محتوا و محصولات سایت غیر مجاز و بدون رضایت ماست </p>
+    <div class="bg-gradient-to-b from-gray-900 to-gray-700 h-56 w-full px-10 lg:px-64 py-5 lg:py-10 gap-5 flex flex-col text-white ">
+      <div class="items-center justify-center">
+        <p class="text-xs lg:text-base font-bold">کلیه حقوق مادی و معنوی این سامانه متعلق به اداره کل سرآمدی و معماری سازمانی معاونت راهبرد و توسعه کسب و کار مخابرات ایران می باشد و هرگونه کپی برداری از آن غیر مجاز می باشد. </p>
+      </div>
+      <div class="flex justify-start">
+        <p class="text-xs font-bold justify-start">طراحی و اجرا: لیدا شفیعی</p>
+      </div>
     </div>
 </template>
 

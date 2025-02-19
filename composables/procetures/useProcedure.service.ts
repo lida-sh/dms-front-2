@@ -1,4 +1,5 @@
 import type { InferType } from "yup";
+import { format } from 'date-fns-jalali';
 import { useFetchApi } from "../api/useFetchApi";
 import {
   useProceturesValidation,
@@ -23,6 +24,7 @@ export const useCreateProcetureService = () => {
       architecture_id,
       process_id,
       status,
+      notification_date,
       docType,
       files,
       description,
@@ -39,6 +41,7 @@ export const useCreateProcetureService = () => {
           title,
           code,
           status,
+          notification_date,
           docType,
           description,
           files,
@@ -58,6 +61,7 @@ export const useEditProcetureService = (id: number) => {
       code,
       status,
       docType,
+      notification_date,
       architecture_id,
       process_id,
       files,
@@ -71,6 +75,7 @@ export const useEditProcetureService = (id: number) => {
       code,
       status,
       docType,
+      notification_date,
       architecture_id,
       process_id,
       description,
@@ -95,7 +100,7 @@ export const useGetProceduresService = () => {
     ProcedureDtoPagination
   );
   return (params, customConfig: FetchCustomConfig = {}) =>
-    fetchData("/admin/procedures", { params }, {setToken:true, ...customConfig});
+    fetchData("/admin/procedures", { params }, {setToken:true, toastError:true, ...customConfig});
 };
 // export const useGetBaseProcessesService = () => {
 //   const fetchData = useFetchApi<ProcessBaseDto[], ProcessBaseDto>(
@@ -106,9 +111,12 @@ export const useGetProceduresService = () => {
 // };
 export const useGetProcedureByIdService = () => {
   const fetchData = useFetchApi<ProcedureDto, ProcedureDto>(ProcedureDto);
-  return (id: string, customConfig: FetchCustomConfig) => fetchData(`/admin/procedures/${id}`,{},{toastError:true, setToken:true, ...customConfig});
+  return (id: string, customConfig: FetchCustomConfig={}) => fetchData(`/admin/procedures/${id}`,{},{toastError:true, setToken:true, ...customConfig}).then((res)=>{
+    console.log("res test",  res?.notification_date)
+    return res
+  });
 };
 export const useGetProcedureBySlugService = () => {
   const fetchData = useFetchApi<ProcedureDto, ProcedureDto>(ProcedureDto);
-  return (slug: string, customConfig: FetchCustomConfig) => fetchData(`/admin/procedures-details/${slug}`, {}, {setToken:true, ...customConfig});
+  return (slug: string, customConfig: FetchCustomConfig={}) => fetchData(`/admin/procedures-details/${slug}`, {}, {setToken:true, ...customConfig});
 };

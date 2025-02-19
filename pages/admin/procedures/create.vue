@@ -9,21 +9,18 @@
                         class="col-span-3" @selectedItem="changeSelectItem"></app-select-input>
                     <app-select-input name="process_id" :options="processes!" :label="$t('process_id')"
                         class="col-span-3"></app-select-input>
-
                     <app-text-input name="title" :label="$t('title')" class="col-span-1 sm:col-span-4"></app-text-input>
-
-
                     <app-select-input name="docType" :options-list="doctypes" :label="$t('docType')"
                         class="col-span-2"></app-select-input>
                     <app-code-input name="code" :label="$t('code')" class="col-span-2"></app-code-input>
                     <app-select-input name="status" :options-list="options" :label="$t('status')"
                         class="col-span-2"></app-select-input>
-                    <div class="col-span-1 sm:col-span-2 px-1 ">
+                    <div class="col-span-1 sm:col-span-2 ">
                         <!-- <label for="" class="pb-1.5 ">
                             <span class="text-sm leading-none">تاریخ ابلاغ</span>
                         </label> -->
                         <client-only>
-                            <date-picker name="date" label="تاریخ ابلاغ" :column="1" mode="single"  :style="stylesOfDatePicker" div-class="pdp-group custom"/>
+                            <app-date-picker name="notification_date" label="تاریخ ابلاغ" placeholder="تاریخ را انتخاب کنید." />
                         </client-only>
                     </div>
                     <div class="flex col-span-6">
@@ -52,10 +49,11 @@ import DatePicker from "@alireza-ab/vue3-persian-datepicker";
 import { ToastEnum, ButtonVariantEnum } from "~/types";
 const selectedDate = ref(null);
 const stylesOfDatePicker = {
-    // "height": "48px",
+    "height": "48px",
     "border-radius": "0.5rem 0 0 0.5rem"
     
 }
+
 const { $t } = useNuxtApp()
 const loading = ref<boolean>(false);
 
