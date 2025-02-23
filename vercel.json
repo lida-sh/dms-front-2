@@ -1,5 +1,7 @@
 {
-    "routes": [
-      { "src": "/(.*)", "dest": ".output/server/index.mjs" }
-    ]
+    "build": {
+      "env": {
+        "NODE_VERSION": "18"
+      }
+    }
   }
