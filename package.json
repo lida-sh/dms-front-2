@@ -24,7 +24,7 @@
     "nuxt": "^3.13.0",
     "object-to-formdata": "^4.5.1",
     "ohmyfetch": "^0.4.21",
-    "reflect-metadata": "^0.1.13",
+    "reflect-metadata": "^0.1.14",
     "six-dropzone": "^0.3.4",
     "vee-validate": "^4.13.2",
     "vue": "latest",
@@ -43,7 +43,7 @@
     "daisyui": "^4.12.10",
     "postcss": "^8.4.41",
     "tailwindcss": "^3.4.10",
-    "typescript": "^5.6.2",
+    "typescript": "^5.7.3",
     "vue-tsc": "^2.1.6"
   }
 }
