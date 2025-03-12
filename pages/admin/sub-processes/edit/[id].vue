@@ -4,22 +4,28 @@
             <h3 class="mb-3 text-lg text-gray-600 font-bold">ویرایش زیر فرایند {{ data?.subProcess?.title }}</h3>
             <hr class="mb-5 sm:mb-10">
             <Form :validation-schema="schema" @submit="submit">
-                <div class="flex flex-col sm:grid sm:grid-cols-2 sm:gap-6">
+                <div class="flex flex-col lg:grid lg:grid-cols-6 lg:gap-6">
                     <app-select-input name="architecture_id" :options="data?.architectures!"
-                        :label="$t('architecture_id')" class="col-span-1" @selectedItem="changeSelectItem"
+                        :label="$t('architecture_id')" class="col-span-3" @selectedItem="changeSelectItem"
                         v-model="data!.subProcess!.architecture_id"></app-select-input>
                     <app-select-input name="process_id" :options="processes!" :label="$t('process_id')"
-                        class="col-span-1" v-model="data!.subProcess!.process_id"></app-select-input>
-                    <app-text-input name="title" :label="$t('title')" class="col-span-1 sm:col-span-2"
+                        class="col-span-3" v-model="data!.subProcess!.process_id"></app-select-input>
+                    <app-text-input name="title" :label="$t('title')" class="col-span-6"
                         v-model="data!.subProcess!.title"></app-text-input>
-                    <app-code-input name="code" :label="$t('code')" class="col-span-1"
+                    <app-code-input name="code" :label="$t('code')" class="col-span-2"
                         v-model="data!.subProcess!.code"></app-code-input>
                     <app-select-input name="status" :options-list="options" :label="$t('status')"
-                        v-model="data!.subProcess!.status" class="col-span-1"></app-select-input>
-                    <div class="flex col-span-2">
+                        v-model="data!.subProcess!.status" class="col-span-2"></app-select-input>
+                        <!-- <div class="col-span-1 sm:col-span-2 "> -->
+                        <client-only>
+                            <app-date-picker name="notification_date" label="تاریخ ابلاغ" class="col-span-2"
+                                placeholder="تاریخ را انتخاب کنید." />
+                        </client-only>
+                    <!-- </div> -->
+                    <div class="flex col-span-6">
                         <app-file-input name="files" :label="$t('files')" class="w-full"></app-file-input>
                     </div>
-                    <div class="flex flex-col sm:flex-row flex-wrap items-center gap-4 col-span-2">
+                    <div class="flex flex-col sm:flex-row flex-wrap items-center gap-4 col-span-6">
                         <template v-for="(item, index) in filesProcess" :key="index">
                             <div class="relative flex items-center justify-center px-2 py-3 w-40 shadow-lg rounded-lg">
                                 <type-file-display :file-name="item.fileName"></type-file-display>
@@ -31,9 +37,9 @@
                         </template>
                     </div>
                     <app-text-input name="description" area :label="$t('description')"
-                        v-model="data!.subProcess!.description" class="sm:col-span-2"></app-text-input>
+                        v-model="data!.subProcess!.description" class="sm:col-span-6"></app-text-input>
                     <app-button type="submit" :loading="loading"
-                        class="btn btn-block sm:col-span-2 bg-indigo-800 hover:bg-indigo-500 text-white mt-2">{{
+                        class="btn btn-block col-span-6 bg-indigo-800 hover:bg-indigo-500 text-white mt-2">{{
                             $t('submit')
                         }}</app-button>
                 </div>
@@ -67,6 +73,7 @@ import { useEditSubProcessValidation } from "~/composables/sub-processes/useSubP
 import { useCreateSubProcessService, useGetSubProcessByIdService } from "~/composables/sub-processes/useSubProcess.service";
 import type { FileDto } from "#imports";
 import { useEditSubProcess } from "~/composables/sub-processes/useEditSubProcess";
+import moment from "moment";
 const options = [
     {
         title: "فعال",

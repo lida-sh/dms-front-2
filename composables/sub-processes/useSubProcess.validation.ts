@@ -27,6 +27,7 @@ export const useSubProcessValidation = () => {
     title: string().required().label($t("title")),
     code: string().required().label($t("code")),
     status: string().required().label($t("status")),
+    notification_date: string().required().label($t("notification_date")),
     description: string().nullable().label($t("description")),
     files: array()
       .required("حداقل یک فایل الزامی است.")
@@ -60,6 +61,7 @@ export const useEditSubProcessValidation = () => {
     title: string().required().label($t("title")),
     code: string().required().label($t("code")),
     status: string().required().label($t("status")),
+    notification_date: string().required().label($t("notification_date")),
     description: string().nullable().label($t("description")),
     files: array()
       .nullable()

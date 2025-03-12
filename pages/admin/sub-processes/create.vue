@@ -4,22 +4,28 @@
             <h3 class="mb-3 text-lg text-gray-600 font-bold">ایجاد زیر فرایند جدید</h3>
             <hr class="mb-5 sm:mb-10">
             <Form :validation-schema="schema" @submit="submit">
-                <div class="flex flex-col lg:grid lg:grid-cols-2 lg:gap-6">
+                <div class="flex flex-col lg:grid lg:grid-cols-6 lg:gap-4">
                     <app-select-input name="architecture_id" :options="architectures!" :label="$t('architecture_id')"
-                        class="col-span-1" @selectedItem="changeSelectItem"></app-select-input>
+                        class="col-span-3" @selectedItem="changeSelectItem"></app-select-input>
                     <app-select-input name="process_id" :options="processes!" :label="$t('process_id')"
-                        class="col-span-1"></app-select-input>
-                    <app-text-input name="title" :label="$t('title')" class="col-span-1 sm:col-span-2"></app-text-input>
-                    <app-code-input name="code" :label="$t('code')" class="col-span-1"></app-code-input>
+                        class="col-span-3"></app-select-input>
+                    <app-text-input name="title" :label="$t('title')" class="col-span-1 sm:col-span-6"></app-text-input>
+                    <app-code-input name="code" :label="$t('code')" class="col-span-2"></app-code-input>
                     <app-select-input name="status" :options-list="options" :label="$t('status')"
-                        class="col-span-1"></app-select-input>
-                    <div class="flex col-span-2">
+                        class="col-span-2"></app-select-input>
+                    <div class="col-span-1 sm:col-span-2 ">
+                        <client-only>
+                            <app-date-picker name="notification_date" label="تاریخ ابلاغ"
+                                placeholder="تاریخ را انتخاب کنید." />
+                        </client-only>
+                    </div>
+                    <div class="flex col-span-6">
                         <app-file-input name="files" :label="$t('files')" class="w-full"></app-file-input>
                     </div>
                     <app-text-input name="description" area :label="$t('description')"
-                        class="sm:col-span-2"></app-text-input>
+                        class="sm:col-span-6"></app-text-input>
                     <app-button type="submit" :loading="loading"
-                        class="btn btn-block sm:col-span-2 bg-indigo-800 hover:bg-indigo-600 text-white hover:text-base mt-2">{{
+                        class="btn btn-block sm:col-span-6 bg-indigo-800 hover:bg-indigo-600 text-white hover:text-base mt-2">{{
                             $t('submit')
                         }}</app-button>
                 </div>
@@ -51,6 +57,7 @@ import { useGetBaseProcessesService } from "~/composables/processes/useProcess.s
 import type { ProcessBaseDto } from "~/composables/processes/process.dto";
 import { useSubProcessValidation } from "~/composables/sub-processes/useSubProcess.validation";
 import { useCreateSubProcessService } from "~/composables/sub-processes/useSubProcess.service";
+import moment from "moment";
 const options = [
     {
         title: "فعال",
@@ -76,10 +83,10 @@ useErrorHandler(error)
 
 console.log("architectures are", architectures)
 const changeSelectItem = async (selectedItemId) => {
-    const data  = await getProcesses(selectedItemId, { toastError: true })
-  if (data !== undefined) {
-    processes.value = data
-  }
+    const data = await getProcesses(selectedItemId, { toastError: true })
+    if (data !== undefined) {
+        processes.value = data
+    }
 
     // architectureIdSelected.value = selectedItemId
 
@@ -92,8 +99,8 @@ const changeSelectItem = async (selectedItemId) => {
 
 const submit = (values, { setErrors, resetForm }: FormActions<any>) => {
     loading.value = true
-    console.log("submit", values)
-    createSubProcess(values, { setErrors }).then((res) => {
+    
+    createSubProcess({...values, notification_date: moment(values.notification_date._d).format('YYYY-MM-DD')}, { setErrors }).then((res) => {
         if (res !== undefined) {
             showToast({ message: "زیرفرایند جدید ایجاد شد.", type: ToastEnum.success })
             resetForm()

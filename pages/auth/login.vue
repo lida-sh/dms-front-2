@@ -1,16 +1,16 @@
 <template>
-    <div>
-        <div :class="{'flex min-h-full flex-col justify-center px-6 py-12 lg:px-8 ':!isDialog, 'px-64 py-5': isDialog}" >
+    <!-- <div class="flex h-screen justify-center items-start py-10 scroll-none"> -->
+        <div :class="{'flex flex-col items-center h-auto border border-gray-300 rounded-2xl w-[50rem] px-2 pt-2 pb-20 lg:px-4':!isDialog, 'px-64 py-5': isDialog}" >
             <div class="sm:mx-auto sm:w-full sm:max-w-sm">
                 <!-- <img class="mx-auto h-10 w-auto"
                     src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company"> -->
-                    <img class="mx-auto h-40 w-auto"
+                    <img class="mx-auto w-auto"
                     src="/assets/images/file-icons/tci.png" alt="شرکت مخابرات ایران">
                 <h2 class="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">ورود به حساب کاربری
                 </h2>
             </div>
 
-            <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+            <div class="mt-2 sm:mx-auto sm:w-full sm:max-w-md">
                 <Form :validation-schema="schema" class="space-y-3" @submit="submit">
                     <div>
                         <app-text-input name="username" :label="$t('username')" thin class="focus:ring-2 focus:ring-inset focus:ring-indigo-600"></app-text-input>
@@ -42,13 +42,17 @@
             </div>
         </div>
 
-    </div>
+    <!-- </div> -->
 </template>
 
 <script setup lang="ts">
 import {Form} from "vee-validate"
 import { useLogin } from "~/composables/auth/login/useLogin";
 import { useLoginValidation } from "~/composables/auth/login/useLogin.validation";
+
+definePageMeta({
+    layout: "authtemp"
+})
 const {submit, loading, error} = useLogin()
 const {schema} = useLoginValidation()
 interface Props {

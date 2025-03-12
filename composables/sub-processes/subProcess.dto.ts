@@ -40,6 +40,11 @@ export class SubProcessDto extends SubProcessBaseDto {
   @Expose()
   @Type(() => ProcessBaseDto)
   process: ProcessBaseDto;
+  @Expose()
+  @Transform(({ value }) => {
+    return String(value);
+  })
+  notification_date:string;
 }
 export class SubProcessClientDto {
   @Expose()
@@ -60,6 +65,11 @@ export class SubProcessClientDto {
   process: ProcessBaseClientDto;
   @Expose()
   rowNumber?: number;
+  @Expose()
+  @Transform(({ value }) => {
+    return String(value);
+  })
+  notification_date:string;
 }
 export class SubProcessDetailsClientDto extends SubProcessClientDto {
   @Expose()

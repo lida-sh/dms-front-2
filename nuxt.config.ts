@@ -30,7 +30,7 @@ export default defineNuxtConfig({
     "@pinia/nuxt"
   ],
   build: {
-    transpile: ["gsap"],
+    transpile: ["gsap", "swc"],
   },
   nitro: {
     devProxy: PROXY_CONFIG,

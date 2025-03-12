@@ -16,9 +16,6 @@
                     <app-select-input name="status" :options-list="options" :label="$t('status')"
                         class="col-span-2"></app-select-input>
                     <div class="col-span-1 sm:col-span-2 ">
-                        <!-- <label for="" class="pb-1.5 ">
-                            <span class="text-sm leading-none">تاریخ ابلاغ</span>
-                        </label> -->
                         <client-only>
                             <app-date-picker name="notification_date" label="تاریخ ابلاغ" placeholder="تاریخ را انتخاب کنید." />
                         </client-only>
@@ -66,6 +63,7 @@ import { useGetBaseProcessesService } from "~/composables/processes/useProcess.s
 import type { ProcessBaseDto } from "~/composables/processes/process.dto";
 import { useProceturesValidation } from "~/composables/procetures/useProcetures.validation";
 import { useCreateProcetureService } from "~/composables/procetures/useProcedure.service";
+import moment from "moment";
 const options = [
     {
         title: "فعال",
@@ -121,8 +119,8 @@ const changeSelectItem = async (selectedItemId) => {
 
 const submit = (values, { setErrors, resetForm }: FormActions<any>) => {
     loading.value = true
-    console.log("submit", values)
-    createProceture(values, { setErrors }).then((res) => {
+    
+    createProceture({...values, notification_date: moment(values.notification_date._d).format('YYYY-MM-DD')}, { setErrors }).then((res) => {
         if (res !== undefined) {
             showToast({ message: "سند جدید ایجاد شد.", type: ToastEnum.success })
             resetForm()

@@ -74,6 +74,7 @@ import type { FileDto } from "#imports";
 import { useGetProcedureByIdService } from "~/composables/procetures/useProcedure.service";
 import { useEditProceture } from "~/composables/procetures/useEditPrecedure";
 import { useEditProcetureValidation } from "~/composables/procetures/useProcetures.validation";
+
 const options = [
     {
         title: "فعال",

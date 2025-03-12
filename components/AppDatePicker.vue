@@ -1,19 +1,14 @@
 <template>
   <div class="">
     <div class="" :class="{ 'has-error': !!errorMessage, success: meta.valid }">
-      <!-- <DatePicker  :label="label" :column="1" mode="single" :style="stylesOfDatePicker" div-class="pdp-group custom" 
-        :value="inputValue" v-model:model-value="modelValue"  :placeholder="placeholder" @update:modelValue="handleChange"
-        @blur="handleBlur" :name="name" @select="handleChange" label-class="custom-label text-[13px]"
-        placeholder-class="custom-placeholder"/> -->
-        <label
-        v-if="label !== ''"
-        class="flex justify-between items-center px-1 pb-1.5"
-        :for="name"
-      >
+      <label v-if="label !== ''" class="flex justify-between items-center px-1 pb-1.5" :for="name">
         <span class="label-text">{{ label }}</span>
         <slot name="leftLabel"></slot>
       </label>
-        <date-picker v-model="inputValue" inputClass="rounded-lg"></date-picker>
+      <date-picker display-format="jYYYY/jMM/jDD" format="jYYYY/jMM/jDD" type="date" v-model="inputValue" :name="name" inputClass="rounded-lg"
+        @change="changeDate" @blur="handleBlur"></date-picker>
+      <!-- <date-picker :name="name" v-model="inputValue" @change="changeDate"
+        @blur="handleBlur"></date-picker> -->
       <label class="flex items-center min-h-[1.4rem] px-1">
         <span class="label-text-alt leading-3 text-error text-2xs">{{ errorMessage || successMessage }}</span>
       </label>
@@ -24,13 +19,11 @@
 <script lang="ts">
 import { useField } from "vee-validate";
 import { defineComponent } from "vue";
-// import DatePicker from "@alireza-ab/vue3-persian-datepicker";
-// import DatePicker from 'vue3-persian-datetime-picker'
-// import { format, parse } from 'date-fns-jalali';
+import moment from "moment-jalaali";
 
 // const displayDate = ref("")
 export default defineComponent({
-  
+
   props: {
     name: {
       type: String,
@@ -46,7 +39,7 @@ export default defineComponent({
     },
     modelValue: {
       type: String,
-      default: "",
+      default: null,
     },
     successMessage: {
       type: String,
@@ -54,7 +47,7 @@ export default defineComponent({
     },
   },
   setup(props, { emit }) {
-  
+
     const {
       value: inputValue,
       errorMessage,
@@ -66,20 +59,32 @@ export default defineComponent({
       initialValue: props.modelValue,
       validateOnValueUpdate: false,
     });
-    // inputValue.value = format(new Date(inputValue.value), 'yyyy-MM-dd');
-    
-    watchEffect(() => {
-      // if(inputValue.value){
-      //   inputValue.value = format(new Date(inputValue.value), 'yyyy-MM-dd');
-      // }
-      emit("update:modelValue", unref(inputValue))
-    })
-  
+
+    // const changeDate =(data)=>{
+    //   setValue(data);
+    //   emit("update:modelValue", data);
+
+
+    // }
+    const changeDate = (date) => {
+      const formattedDate = moment(date).format('jYYYY/jMM/jDD'); // یا هر فرمت دیگری که نیاز دارید
+      setValue(formattedDate);
+      // handleChange(formattedDate)
+      console.log("formattedDate",formattedDate)
+      // emit("update:modelValue", formattedDate);
+    };
+    // watchEffect(() => {
+    //   emit("update:modelValue", unref(inputValue))
+    // })
+    watch(inputValue, (newValue) => {
+      // const formattedDate = moment(newValue).format('YYYY-MM-DD');
+      // emit("update:modelValue", newValue);
+    });
+
     watch(() => props.modelValue, (value) => {
       setValue(value)
-      
     })
-    return { errorMessage, inputValue, handleChange, handleBlur, meta, };
+    return { errorMessage, inputValue, handleChange, handleBlur, meta, changeDate };
   },
 });
 </script>

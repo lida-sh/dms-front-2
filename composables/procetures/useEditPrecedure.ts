@@ -3,13 +3,13 @@ import { useEditProcessService } from "~/composables/processes/useProcess.servic
 import { ToastEnum } from "~/types";
 import { type FormActions } from "vee-validate";
 import { useEditProcetureService } from "./useProcedure.service";
-
+import moment from "moment";
 export const useEditProceture = (id:number,fileIdsForDelete:number[]) => {
   const loading = ref<boolean>(false);
   const editProceture = useEditProcetureService(id);
   const { showToast } = useToast();
   const submit = (values, { setErrors, resetForm }: FormActions<any>) => {
-    // console.log("values are",values);
+    console.log("values are",moment(values.notification_date._d).format('YYYY-MM-DD'));
     loading.value = true;
     editProceture({...values, fileIdsForDelete}, { setErrors })
       .then((res) => {
