@@ -20,10 +20,11 @@
               </span><span class="text-blue-700"> {{
                   data?.architecture.title }}</span>
           </h6>
+          <h6 class="text-base font-medium"> تاریخ ابلاغ: {{ data?.notification_date }}</h6>
           <p class="text-sm font-normal mb-4"><span class="text-base font-medium">توضیحات:</span> {{ data?.description
               }}
           </p>
-          <div class="flex flex-col sm:flex-row items-center gap-8 mb-6">
+          <div class="flex flex-col lg:grid lg:grid-cols-6 items-center gap-8 mb-6">
               <template v-for="file in data?.files" :key="index">
                   <div
                       class="relative flex flex-col items-center gap-4 justify-center px-2 py-3 w-40 shadow-lg rounded-lg">
@@ -41,11 +42,11 @@
                   </div>
               </template>
           </div>
-          <div class="flex flex-col gap-4">
+          <div class="flex flex-col gap-4 items-center justify-center">
               <template v-for="file in data?.files">
-                  <div class="w-full aspect-w-40 aspect-h-21"
+                  <div class="w-full aspect-w-40 aspect-h-21  items-center justify-center"
                       v-if="file.fileName && (file.fileName.split('.').pop().toLowerCase() == 'png') || (file.fileName.split('.').pop().toLowerCase() == 'jpg') || (file.fileName.split('.').pop().toLowerCase() == 'jpeg')">
-                      <img :src="file.filePath" :alt="file.fileName" class="w-full h-full">
+                      <img :src="file.filePath" :alt="file.fileName" >
                   </div>
               </template>
           </div>

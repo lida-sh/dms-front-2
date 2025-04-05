@@ -17,6 +17,7 @@ export const useProcessValidation = () => {
     code: string().required().label($t("code")),
     status: string().required().label($t("status")),
     description: string().nullable().label($t("description")),
+    notification_date: string().required().label($t("notification_date")),
     files: array().required("حداقل یک فایل الزامی است.").test('fileSize', "اندازه هر یک از فایل ها نباید بیشتر از یک مگا بایت باشد.", (files) => {
       return files && files.every(file => file.size <= MAX_FILE_SIZE); // max 5MB
     }).test(
@@ -72,6 +73,7 @@ export const useEditProcessValidation = () => {
     code: string().required().label($t("code")),
     status: string().required().label($t("status")),
     description: string().nullable().label($t("description")),
+    notification_date: string().required().label($t("notification_date")),
     files: array()
       .nullable()
       .test(

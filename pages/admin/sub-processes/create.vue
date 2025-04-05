@@ -57,7 +57,7 @@ import { useGetBaseProcessesService } from "~/composables/processes/useProcess.s
 import type { ProcessBaseDto } from "~/composables/processes/process.dto";
 import { useSubProcessValidation } from "~/composables/sub-processes/useSubProcess.validation";
 import { useCreateSubProcessService } from "~/composables/sub-processes/useSubProcess.service";
-import moment from "moment";
+import dayjs from 'dayjs';
 const options = [
     {
         title: "فعال",
@@ -100,7 +100,7 @@ const changeSelectItem = async (selectedItemId) => {
 const submit = (values, { setErrors, resetForm }: FormActions<any>) => {
     loading.value = true
     
-    createSubProcess({...values, notification_date: moment(values.notification_date._d).format('YYYY-MM-DD')}, { setErrors }).then((res) => {
+    createSubProcess({...values, notification_date: dayjs(values.notification_date).format('YYYY-MM-DD')}, { setErrors }).then((res) => {
         if (res !== undefined) {
             showToast({ message: "زیرفرایند جدید ایجاد شد.", type: ToastEnum.success })
             resetForm()

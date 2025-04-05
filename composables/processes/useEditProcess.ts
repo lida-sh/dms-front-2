@@ -2,7 +2,7 @@ import { useEditProcessService } from "~/composables/processes/useProcess.servic
 
 import { ToastEnum } from "~/types";
 import { type FormActions } from "vee-validate";
-
+import dayjs from 'dayjs';
 export const useEditProcess = (id:number,fileIdsForDelete:number[]) => {
   
   const loading = ref<boolean>(false);
@@ -13,7 +13,7 @@ export const useEditProcess = (id:number,fileIdsForDelete:number[]) => {
     console.log("values are",values);
     loading.value = true;
     console.log("loading", loading.value);
-    editProcess({...values, fileIdsForDelete}, { setErrors })
+    editProcess({...values, notification_date:dayjs(values.notification_date).format('YYYY-MM-DD'), fileIdsForDelete}, { setErrors })
       .then((res) => {
         if (res !== undefined) {
           showToast({

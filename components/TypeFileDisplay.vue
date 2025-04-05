@@ -4,7 +4,7 @@
         <img v-if="extension == 'pdf'" src="/assets/images/file-icons/pdf2.png" alt="pdf" class="w-10">
         <img v-if="extension == 'png' || extension == 'jpg' || extension == 'jpeg' || extension == 'tiff' || extension == 'gif'"
             src="/assets/images/file-icons/image.png" alt="image" class="w-10">
-        <img v-if="extension == 'bpm'" src="/assets/images/file-icons/bizagi.png" alt="bizagi" class="w-10 h-10">
+        <img v-if="extension == 'bpm'" src="/assets/images/file-icons/bizagi.png" alt="bizagi" class="w-14 h-10">
         <img v-if="extension == 'pptx'" src="/assets/images/file-icons/power.jpg" alt="power point" class="w-14 h-10">
         <p class="text-xs text-center">{{ shortenText(fileName, 20) }}</p>
     </div>

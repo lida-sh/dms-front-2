@@ -10,7 +10,7 @@ export const useCreateProcessService = () => {
   const { schema } = useProcessValidation();
 
   return (
-    { title, code, architecture_id, status, files, description }: InferType<typeof schema>,
+    { title, code, architecture_id, status, files, description, notification_date }: InferType<typeof schema>,
     customConfig: FetchCustomConfig = {}
   ) => {
     return fetchData(
@@ -22,6 +22,7 @@ export const useCreateProcessService = () => {
           title,
           code,
           status,
+          notification_date,
           description,
           files
         }),
@@ -35,7 +36,7 @@ export const useEditProcessService = (id:number) => {
   const { schema } = useEditProcessValidation();
   
   return (
-    { title, code, architecture_id, files, description, fileIdsForDelete }: InferType<typeof schema>,
+    { title, code, architecture_id, notification_date, files, description, fileIdsForDelete }: InferType<typeof schema>,
     customConfig: FetchCustomConfig = {}
   ) => {
     const formdata = serialize({
@@ -43,6 +44,7 @@ export const useEditProcessService = (id:number) => {
       code,
       architecture_id,
       description,
+      notification_date,
       files
     });
     fileIdsForDelete.forEach(element => {

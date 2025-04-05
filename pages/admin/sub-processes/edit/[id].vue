@@ -18,7 +18,7 @@
                         v-model="data!.subProcess!.status" class="col-span-2"></app-select-input>
                         <!-- <div class="col-span-1 sm:col-span-2 "> -->
                         <client-only>
-                            <app-date-picker name="notification_date" label="تاریخ ابلاغ" class="col-span-2"
+                            <app-date-picker name="notification_date" label="تاریخ ابلاغ" class="col-span-2" v-model="data!.subProcess!.notification_date"
                                 placeholder="تاریخ را انتخاب کنید." />
                         </client-only>
                     <!-- </div> -->

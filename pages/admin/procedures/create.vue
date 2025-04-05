@@ -63,7 +63,7 @@ import { useGetBaseProcessesService } from "~/composables/processes/useProcess.s
 import type { ProcessBaseDto } from "~/composables/processes/process.dto";
 import { useProceturesValidation } from "~/composables/procetures/useProcetures.validation";
 import { useCreateProcetureService } from "~/composables/procetures/useProcedure.service";
-import moment from "moment";
+import dayjs from 'dayjs';
 const options = [
     {
         title: "فعال",
@@ -120,7 +120,7 @@ const changeSelectItem = async (selectedItemId) => {
 const submit = (values, { setErrors, resetForm }: FormActions<any>) => {
     loading.value = true
     
-    createProceture({...values, notification_date: moment(values.notification_date._d).format('YYYY-MM-DD')}, { setErrors }).then((res) => {
+    createProceture({...values, notification_date: dayjs(values.notification_date).format('YYYY-MM-DD')}, { setErrors }).then((res) => {
         if (res !== undefined) {
             showToast({ message: "سند جدید ایجاد شد.", type: ToastEnum.success })
             resetForm()

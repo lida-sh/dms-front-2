@@ -16,7 +16,7 @@
     <div class="card-body items-center text-center mb-4">
       <h2 class="card-title mb-5">{{ item.title }}</h2>
       <p class="text-sm font-normal">{{ item.description }}</p>
-      <nuxt-link
+      <nuxt-link :to="item.to"
         class="btn w-full h-10 bg-indigo-600  text-white flex items-center justify-center cursor-pointer hover:bg-indigo-500">{{
           item.action }}</nuxt-link>
       <!-- <div class="card-actions">

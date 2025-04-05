@@ -3,7 +3,7 @@ import { useEditProcessService } from "~/composables/processes/useProcess.servic
 import { ToastEnum } from "~/types";
 import { type FormActions } from "vee-validate";
 import { useEditSubProcessService } from "./useSubProcess.service";
-import moment from "moment";
+import dayjs from 'dayjs';
 export const useEditSubProcess = (id:number,fileIdsForDelete:number[]) => {
   const loading = ref<boolean>(false);
   const editSubProcess = useEditSubProcessService(id);
@@ -11,7 +11,7 @@ export const useEditSubProcess = (id:number,fileIdsForDelete:number[]) => {
   const submit = (values, { setErrors, resetForm }: FormActions<any>) => {
     // console.log("values are",values);
     loading.value = true;
-    editSubProcess({...values, notification_date: moment(values.notification_date._d).format('YYYY-MM-DD'), fileIdsForDelete}, { setErrors })
+    editSubProcess({...values, notification_date: dayjs(values.notification_date).format('YYYY-MM-DD'), fileIdsForDelete}, { setErrors })
       .then((res) => {
         if (res !== undefined) {
           showToast({

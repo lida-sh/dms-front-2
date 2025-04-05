@@ -45,20 +45,20 @@
                 <div
                     class="bg-white rounded-box border border-gray-200 translate-y-0 lg:-translate-y-1/2 shadow-lg w-full h-full p-6 flex items-center justify-center gap-6">
                     <img src="/public/images/servicees/pencil-folder.png" alt="" class="w-28 h-28">
-                    <h2 class="text-sm lg:text-xl text-indigo-700 font-bold leading-loose">
+                    <h2 class="text-sm lg:text-lg text-indigo-700 font-bold leading-loose">
                         دسترسی سریع به بیش از 730 سند فرایندی
                     </h2>
                 </div>
                 <div
                     class="bg-white rounded-box border border-gray-200 translate-y-0 lg:-translate-y-1/2 shadow-lg w-full h-full p-6 flex items-center justify-center gap-6">
                     <img src="/public/images/servicees/magnifier-glass.png" alt="" class="w-28 h-28">
-                    <h2 class="text-sm lg:text-xl text-indigo-700 font-bold">
+                    <h2 class="text-sm lg:text-lg text-indigo-700 font-bold">
                         جستجوی سریع و آسان فایل ها و مستندات فرایندی</h2>
                 </div>
                 <div
                     class="bg-white rounded-box border border-gray-200 translate-y-0 lg:-translate-y-1/2 shadow-lg w-full h-full p-6 flex items-center justify-center gap-6">
                     <img src="/public/images/servicees/upload-cloud-folder.png" alt="" class="w-28 h-28">
-                    <h2 class="text-sm lg:text-xl text-indigo-700 font-bold">
+                    <h2 class="text-sm lg:text-lg text-indigo-700 font-bold">
                         بروز رسانی و انتشار فایل ها و مستندات و گزارشات</h2>
                 </div>
             </div>
@@ -72,6 +72,14 @@
                     </app-slider>
                 </div>
             </div>
+            <div class="w-full mt-40 bg-gray-800 p-40 flex flex-col gap-8 justify-center">
+                <div class="flex px-[10%]">
+                    <h2 class="text-white font-bold text-4xl">معرفی کوتاه انواع مستندات فرایندی</h2>
+                </div>
+                <div class="w-full w-80rem flex items-center justify-center">
+                    <define-doc-card></define-doc-card>
+                </div>
+            </div>
         </section>
     </div>
     <div v-else
@@ -79,7 +87,8 @@
         <section class="px-4 w-full h-full flex flex-col items-start gap-4 max-w-[100rem]">
             <h1 class=" font-sm xl:text-base font-bold mb-4 mr-4">نتایج جستجو:</h1>
             <process-result-search v-if="data?.processes || data?.data?.processes"
-                v-for="(itemDoc, index) in data?.data?.processes || data?.processes" :key="index" :item="itemDoc"></process-result-search>
+                v-for="(itemDoc, index) in data?.data?.processes || data?.processes" :key="index"
+                :item="itemDoc"></process-result-search>
             <sub-process-result-search v-if="data?.subProcesses || data?.data?.subProcesses"
                 v-for="(itemDoc, index) in data?.data?.subProcesses || data?.subProcesses" :key="index"
                 :item="itemDoc"></sub-process-result-search>
@@ -105,6 +114,7 @@ const resultSearch = ref(false)
 const items = [
     {
         title: "روش های اجرایی",
+        to: "/procedures",
         description: "بیش از 524 روش اجرایی در حوزه های مختلف مخابرات تدوین شده است.",
         image: "/images/slider/undraw_version_control_re_mg66.svg",
         action: "لیست روش های اجرایی",
@@ -112,6 +122,7 @@ const items = [
     },
     {
         title: "فرایندها",
+        to: "/processes",
         description: "بیش از 120 فرایند در حوزه های مختلف بازنگری شده است.",
         image: "/images/slider/undraw_thought_process_re_om58.svg",
         action: "لیست  فرایندها",
@@ -119,6 +130,7 @@ const items = [
     },
     {
         title: "زیر فرایندها",
+        to: "/sub-processes",
         description: "بیش از 120 زیر فرایند در حوزه های مختلف بازنگری شده است.",
         image: "/images/slider/undraw_detailed_analysis_re_tk6j.svg",
         action: "لیست  زیر فرایندها",
@@ -126,6 +138,7 @@ const items = [
     },
     {
         title: "دستورالعمل ها",
+        to: "/procedures",
         description: "بیش از 50 دستوذالعمل در حوزه های مختلف بازنگری شده است.",
         image: "/images/slider/undraw_folder_files_re_2cbm.svg",
         action: "لیست  دستورالعمل ها",
@@ -133,12 +146,45 @@ const items = [
     },
     {
         title: "آئین نامه ها",
+        to: "/procedures",
         description: "بیش از 20 آئین نامه در حوزه های مختلف بازنگری شده است.",
         image: "/images/slider/undraw_folder_re_apfp(1).svg",
         action: "لیست  آئین نامه ها",
         icon: "/images/slider/small-picture/instruction1.svg"
     },
 
+]
+const docDefItems = [
+    {
+        title: "فرایند",
+        description: "مجموعه ای از  زیرفرایندهای مرتبط به¬هم یا متعامل که جهت ارائه نتیجه موردنظر از دروندادها استفاده می کند.",
+        eng_title: "Process"
+    },
+    {
+        title: "زیر فرایند",
+        description: "مجموعه ای از  فعالیت های مرتبط به¬هم یا متعامل که جهت ارائه نتیجه موردنظر از دروندادها استفاده می کند.",
+        eng_title: "Sub Process"
+    },
+    {
+        title: "روش اجرایی",
+        description: "مستندی که طریقه مشخص برای انجام یک فعالیت یا فرآیند را بیان می کند.",
+        eng_title: "Procedure"
+    },
+    {
+        title: "آیین نامه ",
+        description: "مقرراتی است که توسط مقامات صلاحیت دار وضع و در معرض اجرا قرار می گیرند. در واقع مجموعه  قوانینی است که در جهت رسیدن به اهداف سازمان برای اجرای فعالیت¬ها تدوین می گردد. این سند یا داخلی است که توسط مقام ارشد سازمان (مدیرعامل و اعضای هیئت مدیره) تصویب می شود و یا خارجی است که از سازمان های بالا دستی ابلاغ می گردد. ",
+        eng_title: "Regulation"
+    },
+    {
+        title: "قرارداد",
+        description: "توافق تعهدآور",
+        eng_title: "Contract"
+    },
+    {
+        title: "فرم",
+        description: "جدول تنظیم شده از موارد خاص مورد نیاز جهت درخواست یا اقدامات",
+        eng_title: "Form"
+    },
 ]
 const loading = ref(false)
 const data = ref<any>()
@@ -222,7 +268,7 @@ const submitSearch = (values, { resetForm }) => {
         loading.value = false
     })
 }
-const backToHome = ()=>{
+const backToHome = () => {
     resultSearch.value = false
 }
 </script>

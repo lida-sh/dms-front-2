@@ -3,19 +3,22 @@
         <div class="bg-white shadow-lg rounded-2xl p-4 sm:p-[5rem]">
             <h3 class="mb-3 text-lg text-gray-600 font-bold">ایجاد فرایند جدید</h3>
             <hr class="mb-10">
-            <Form :validation-schema="schema" @submit="submit"
-                class="flex flex-col lg:grid lg:grid-cols-2 lg:gap-6">
+            <Form :validation-schema="schema" @submit="submit" class="flex flex-col lg:grid lg:grid-cols-3 lg:gap-6">
                 <app-select-input name="architecture_id" :options="architectures!" :label="$t('architecture_id')"
                     class="" @selectedItem="changeSelectItem"></app-select-input>
-                <app-text-input name="title" :label="$t('title')" class=""></app-text-input>
+                <app-text-input name="title" class="lg:col-span-2" :label="$t('title')"></app-text-input>
                 <app-code-input name="code" :label="$t('code')" class=""></app-code-input>
                 <app-select-input name="status" :options-list="options" :label="$t('status')"></app-select-input>
-                <div class="flex col-span-2">
+                <client-only>
+                    <app-date-picker name="notification_date" label="تاریخ ابلاغ" placeholder="تاریخ را انتخاب کنید." />
+                </client-only>
+                <div class="flex col-span-3">
                     <app-file-input name="files" :label="$t('files')" class="w-full"></app-file-input>
                 </div>
-                <app-text-input name="description" area :label="$t('description')" class="col-span-2"></app-text-input>
+                <app-text-input name="description" area :label="$t('description')" class="col-span-3"></app-text-input>
                 <app-button type="submit" :loading="loading"
-                    class="btn btn-block col-span-2 bg-indigo-800 hover:bg-indigo-600 text-white hover:text-base mt-2">{{ $t('submit')
+                    class="btn btn-block col-span-3 bg-indigo-800 hover:bg-indigo-600 text-white hover:text-base mt-2">{{
+                        $t('submit')
                     }}</app-button>
             </Form>
 
@@ -31,11 +34,11 @@ import { Form, type FormActions } from "vee-validate"
 import { useCreateArchitectureService, useGetBaseArchitecturesService } from "~/composables/architectures/useArchitecture.service";
 import { useProcessValidation } from "~/composables/processes/useProcess.validation";
 import { ToastEnum, ButtonVariantEnum } from "~/types";
-
+import dayjs from 'dayjs';
 
 const { $t } = useNuxtApp()
 const loading = ref<boolean>(false);
-// const createArchitecture = useCreateArchitectureService()
+
 const { schema } = useProcessValidation()
 const { showToast } = useToast();
 
@@ -64,7 +67,7 @@ const changeSelectItem = (selectedItemId) => {
 // const prefix_code = computed(() => (architectureSelected.value ? ("PS-" + architectureSelected.value!.code + "-") : ''))
 // const prefix_code = "PS - "
 const getArchitectures = useGetBaseArchitecturesService()
-const { data: architectures, error, execute } = await useLazyAsyncData('architectures', () => getArchitectures(), {
+const { data: architectures, error, execute } = await useLazyAsyncData('architectures', () => getArchitectures(), {server:false
 })
 
 // useErrorHandler(error)
@@ -79,7 +82,7 @@ console.log("architectures are", architectures)
 const submit = (values, { setErrors, resetForm }: FormActions<any>) => {
     loading.value = true
     console.log("submit", values)
-    createProcess(values, { setErrors }).then((res) => {
+    createProcess({ ...values, notification_date: dayjs(values.notification_date).format('YYYY-MM-DD') }, { setErrors }).then((res) => {
         if (res !== undefined) {
             showToast({ message: "فرایند جدید ایجاد شد.", type: ToastEnum.success })
             resetForm()

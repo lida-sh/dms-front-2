@@ -29,6 +29,11 @@ export class ProcessDto extends ProcessBaseDto {
   @Expose()
   @Type(()=>ArchitectureBaseDto)
   architecture: ArchitectureBaseDto
+  @Expose()
+  @Transform(({ value }) => {
+    return String(value);
+  })
+  notification_date:string;
 }
 export class ProcessBaseClientDto {
   @Expose()
@@ -48,6 +53,11 @@ export class ProcessClientDto extends ProcessBaseClientDto {
   architecture: ArchitectureClientBaseDto
   @Expose()
   rowNumber?: number
+  @Expose()
+  @Transform(({ value }) => {
+    return String(value);
+  })
+  notification_date:string;
 }
 export class ProcessDetailsClientDto extends ProcessClientDto {
   @Expose()

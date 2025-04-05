@@ -22,7 +22,8 @@
                     class="flex items-center justify-start xl:justify-center xl:col-span-2 text-sm xl:text-xs 2xl:text-base font-bold text-gray-500">
                     فرایند والد</div>
                 <div
-                    class="flex items-center justify-start xl:justify-center xl:col-span-1 text-sm xl:text-xs 2xl:text-base font-bold text-gray-500">تاریخ ارجاع
+                    class="flex items-center justify-start xl:justify-center xl:col-span-1 text-sm xl:text-xs 2xl:text-base font-bold text-gray-500">
+                    تاریخ ابلاغ
                 </div>
             </div>
             <div class="grid grid-cols-1 gap-4 xl:grid xl:grid-cols-12 xl:w-full">
@@ -47,7 +48,7 @@
                     {{ item.process?.title }}</div>
                 <div
                     class="flex items-center justify-start xl:justify-center xl:col-span-1 xl:whitespace-nowrap text-sm xl:text-xs 2xl:text-sm font-medium text-gray-800 dark:text-neutral-200">
-                    {{ item.referral_date }}</div>
+                    {{ item.notification_date }}</div>
 
                 <div
                     class="flex items-center justify-start xl:justify-center xl:col-span-1 xl:whitespace-nowrap  text-sm xl:text-xs 2xl:text-sm font-medium">

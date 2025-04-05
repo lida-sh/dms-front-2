@@ -59,19 +59,12 @@ export default defineComponent({
       initialValue: props.modelValue,
       validateOnValueUpdate: false,
     });
-
-    // const changeDate =(data)=>{
-    //   setValue(data);
-    //   emit("update:modelValue", data);
-
-
-    // }
     const changeDate = (date) => {
-      const formattedDate = moment(date).format('jYYYY/jMM/jDD'); // یا هر فرمت دیگری که نیاز دارید
-      setValue(formattedDate);
-      // handleChange(formattedDate)
-      console.log("formattedDate",formattedDate)
-      // emit("update:modelValue", formattedDate);
+      // const formattedDate = moment(date).format('jYYYY/jMM/jDD'); // یا هر فرمت دیگری که نیاز دارید
+      setValue(date._d);
+      // handleChange(date)
+      console.log("formattedDate",date)
+      // emit("update:modelValue", date);
     };
     // watchEffect(() => {
     //   emit("update:modelValue", unref(inputValue))

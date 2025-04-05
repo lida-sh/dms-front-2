@@ -54,6 +54,7 @@
               <th class="text-right">کد</th>
               <th class="text-right">معماری والد</th>
               <th class="text-center">وضعیت</th>
+              <th class="text-right">تاریخ ابلاغ</th>
               <th class="text-center">عملیات</th>
             </tr>
           </thead>
@@ -69,6 +70,7 @@
                 <span v-if="item.status == 1" class="text-green-500">فعال</span>
                 <span v-if="item.status == 0" class="text-red-500">غیر فعال</span>
               </td>
+              <td class="text-right">{{ item.notification_date }}</td>
               <td class="text-right flex items-center justify-center gap-2 ">
                 <NuxtLink :to="`processes/${item.slug}`" class="btn btn-outline border-sky-700 hover:border-none border-2 btn-sm text-sky-600 text-xs hover:bg-gradient-to-b hover:from-sky-900 hover:to-sky-400 hover:text-white">نمایش
                 </NuxtLink>
