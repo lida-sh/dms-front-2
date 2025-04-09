@@ -1,6 +1,6 @@
 <template>
   <aside>
-    <ul class="flex flex-col gap-4 text-sm font-bold text-white bg-black py-[1.5rem] rounded-2xl">
+    <ul class="flex flex-col gap-4 text-sm font-bold text-white bg-[black] py-[1.5rem] rounded-2xl">
       <li class="" v-for="(item, index) in menuList" :key="index">
         <div class="flex gap-2 cursor-pointer rounded-lg h-12 dashboard-item pl-[1.375rem]"
           :class="{ 'selected-dashboard-item': item.selected && !item.hasSubmenu }">
@@ -26,6 +26,7 @@
             <li v-for="submenuItem in item.submenu" :key="submenuItem.title">
               <NuxtLink :to="submenuItem.to" :class="{ 'selected-dashboard-item': route.path === submenuItem.to }"
                 class="dashboard-item font-normal cursor-pointer gap-14 h-12 items-center flex">
+                <!-- <component :is="submenuItem.icon"></component> -->
                 {{ submenuItem.title }}
               </NuxtLink>
             </li>
@@ -43,10 +44,14 @@ import IconsAdminArrowDown from "~/components/icons/ArrowDown.vue";
 import IconsAdminDocuments from "~/components/icons/admin/Documents.vue"
 import IconsAdminProcess from "~/components/icons/admin/Process.vue"
 import IconsAdminArchitecture from "~/components/icons/admin/Architecture.vue"
+import IconsAdminUsers from "~/components/icons/admin/Users.vue"
+import IconsPermission from "~/components/icons/admin/Permission.vue"
+import IconsAdminRole from "~/components/icons/admin/Role.vue"
 
 interface SubMenuItem {
   title: string,
-  to: string
+  to: string,
+  icon: any
 }
 interface MenuItem {
   id: number,
@@ -73,7 +78,7 @@ const menuList = ref<MenuItem[]>([
   {
     id: 2,
     title: "معماری سازمانی",
-    path: 'wallet',
+    path: 'architectures',
     selected: false,
     hasSubmenu: true,
     isSubmenuOpen: false,
@@ -81,11 +86,13 @@ const menuList = ref<MenuItem[]>([
     submenu: [
       {
         title: "ایجاد معماری",
-        to: "/admin/architectures/create"
+        to: "/admin/architectures/create",
+        icon: ""
       },
       {
         title: "لیست معماری ها",
-        to: "/admin/architectures"
+        to: "/admin/architectures",
+        icon: ""
       },
       
     ],
@@ -93,7 +100,7 @@ const menuList = ref<MenuItem[]>([
   {
     id: 3,
     title: "فرایندها",
-    path: 'wallet',
+    path: 'processes',
     selected: false,
     hasSubmenu: true,
     isSubmenuOpen: false,
@@ -101,11 +108,13 @@ const menuList = ref<MenuItem[]>([
     submenu: [
       {
         title: "ایجاد فرایند",
-        to: "/admin/processes/create"
+        to: "/admin/processes/create",
+        icon: ""
       },
       {
         title: "لیست فرایند ها",
-        to: "/admin/processes"
+        to: "/admin/processes",
+        icon: ""
       },
       
     ],
@@ -113,7 +122,7 @@ const menuList = ref<MenuItem[]>([
   {
     id: 3,
     title: "زیرفرایندها",
-    path: 'wallet',
+    path: 'sub-processes',
     selected: false,
     hasSubmenu: true,
     isSubmenuOpen: false,
@@ -121,11 +130,13 @@ const menuList = ref<MenuItem[]>([
     submenu: [
       {
         title: "ایجاد زیرفرایند",
-        to: "/admin/sub-processes/create"
+        to: "/admin/sub-processes/create",
+        icon: ""
       },
       {
         title: "لیست زیرفرایند ها",
-        to: "/admin/sub-processes"
+        to: "/admin/sub-processes",
+        icon: ""
       },
       
     ],
@@ -133,7 +144,7 @@ const menuList = ref<MenuItem[]>([
   {
     id: 3,
     title: "روشهای اجرایی و ...",
-    path: 'wallet',
+    path: 'procedures',
     selected: false,
     hasSubmenu: true,
     isSubmenuOpen: false,
@@ -141,13 +152,84 @@ const menuList = ref<MenuItem[]>([
     submenu: [
       {
         title: "ایجاد روش اجرایی",
-        to: "/admin/procedures/create"
+        to: "/admin/procedures/create",
+        icon: ""
       },
       {
         title: "لیست روش های اجرایی",
-        to: "/admin/procedures"
+        to: "/admin/procedures",
+        icon: ""
       },
       
+    ],
+  },
+  {
+    id: 4,
+    title: "کاربران",
+    path: 'users',
+    selected: false,
+    hasSubmenu: true,
+    isSubmenuOpen: false,
+    icon: IconsAdminUsers,
+    submenu: [
+      {
+        title: "لیست کاربران",
+        to: "/admin/users",
+        icon: ""
+      },
+      {
+        title: "گروه های کاربری",
+        to: "/admin/roles",
+        icon: IconsAdminRole
+      },
+      {
+        title: "مجوزها",
+        to: "/admin/permissions",
+        icon: IconsPermission
+      },
+      
+    ],
+  },
+  {
+    id: 5,
+    title: "گروه های کاربری",
+    path: 'roles',
+    selected: false,
+    hasSubmenu: true,
+    isSubmenuOpen: false,
+    icon: IconsAdminRole,
+    submenu: [
+      {
+        title: "ایجاد نقش",
+        to: "/admin/roles/create",
+        icon: ""
+      },
+      {
+        title: "لیست نقش ها",
+        to: "/admin/roles",
+        icon: ""
+      }
+    ],
+  },
+  {
+    id: 6,
+    title: "مجوزها",
+    path: 'permissions',
+    selected: false,
+    hasSubmenu: true,
+    isSubmenuOpen: false,
+    icon: IconsPermission,
+    submenu: [
+      {
+        title: "ایجاد مجوز",
+        to: "/admin/permissions/create",
+        icon: ""
+      },
+      {
+        title: "لیست مجوز ها",
+        to: "/admin/permissions",
+        icon: ""
+      }
     ],
   },
   

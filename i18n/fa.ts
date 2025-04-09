@@ -19,7 +19,9 @@ export default {
     username: "نام کاربری",
     itemSearch: "جستجو در",
     wordSearch: "عبارت مورد جستجو",
-    notification_date: "تاریخ ابلاغ"
+    notification_date: "تاریخ ابلاغ",
+    permission_name: "نام مجوز",
+    permission_display_name: "نام نمایشی مجوز",
     
     
     

@@ -174,8 +174,6 @@ const handleFilter = (link) => {
   router.push({ query: query.value })
   refresh()
 }
-
-
 </script>
 
 <style scoped></style>

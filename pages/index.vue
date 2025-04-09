@@ -1,6 +1,6 @@
 <template>
     <div v-if="!resultSearch" class="w-full h-full flex flex-col items-center justify-center">
-        <div class="bg-[#0077b6] w-full flex items-center justify-center">
+        <div class="bg-[#4749e3] w-full flex items-center justify-center">
             <div
                 class="lg:grid lg:grid-cols-12 h-[56rem] w-full flex flex-col max-w-[100rem] px-4 py-8 lg:px-0 gap-4 lg:gap-8">
 
@@ -72,14 +72,15 @@
                     </app-slider>
                 </div>
             </div>
-            <div class="w-full mt-40 bg-gray-800 p-40 flex flex-col gap-8 justify-center">
-                <div class="flex px-[10%]">
-                    <h2 class="text-white font-bold text-4xl">معرفی کوتاه انواع مستندات فرایندی</h2>
+            <div class="w-full mt-40 bg-gray-800 relative h-[35.8rem] pt-20  flex justify-center">
+                <div class="flex px-[20%] w-full">
+                    <h2 class="text-white font-bold text-xl lg:text-4xl">معرفی کوتاه انواع مستندات فرایندی</h2>
                 </div>
-                <div class="w-full w-80rem flex items-center justify-center">
+                <div class="w-full absolute top-[30%] px-8 flex items-center justify-center">
                     <define-doc-card></define-doc-card>
                 </div>
             </div>
+            <div class="h-[25rem]"></div>
         </section>
     </div>
     <div v-else
