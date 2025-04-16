@@ -22,6 +22,8 @@ export default {
     notification_date: "تاریخ ابلاغ",
     permission_name: "نام مجوز",
     permission_display_name: "نام نمایشی مجوز",
+    role_name: "نام نقش",
+    role_display_name: "نام نمایشی نقش"
     
     
     

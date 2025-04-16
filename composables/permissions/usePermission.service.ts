@@ -7,5 +7,9 @@ export const useCreatePermissionService = ()=>{
 
     const fetchData = useFetchApi()
     const {schema} = usePermissionValidation()
-    return ({display_name, name}:InferType<typeof schema>, customConfig:FetchCustomConfig={})=>fetchData("/admin/permissions/create",{method: "post", body: {display_name, name}},{setToken:true, ...customConfig})
+    return ({permission_display_name, permission_name}:InferType<typeof schema>, customConfig:FetchCustomConfig={})=>fetchData("/admin/permissions",{method: "post", body: {permission_display_name, permission_name}},{setToken:true, ...customConfig})
+}
+export const useGetPermissionsService = ()=>{
+    const fetchData = useFetchApi();
+    return (customConfig:FetchCustomConfig={})=>fetchData("admin/permissions", {}, {setToken: true, ...customConfig})
 }

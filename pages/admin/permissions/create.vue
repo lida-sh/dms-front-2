@@ -26,6 +26,7 @@
 definePageMeta({
     layout: "admin"
 })
+import { Form } from "vee-validate"
 import type { FormActions } from 'vee-validate';
 import { useCreatePermissionService } from '~/composables/permissions/usePermission.service';
 import { usePermissionValidation } from '~/composables/permissions/usePernission.validation';
@@ -34,10 +35,10 @@ const loading = ref(false)
 const { schema } = usePermissionValidation();
 const { showToast } = useToast();
 const createPermission = useCreatePermissionService()
-const submit = (values , { setErrors, resetForm }: FormActions<any>) => {
+const submit = (values, { setErrors, resetForm }: FormActions<any>) => {
     loading.value = true;
-    createPermission({ ...values }, { setErrors }).then((res)=>{
-        if(res !== undefined){
+    createPermission({ ...values }, { setErrors }).then((res) => {
+        if (res !== undefined) {
             showToast({ message: "مجوز جدید ایجاد شد.", type: ToastEnum.success })
             resetForm()
             navigateTo("/admin/permissions")
