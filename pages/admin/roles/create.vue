@@ -10,11 +10,40 @@
                             class=" sm:col-span-1"></app-text-input>
                         <app-text-input name="role_name" :label="$t('role_name')"
                             class="sm:col-span-1"></app-text-input>
+                        <ClientOnly>
+                            <div class="flex flex-col w-full sm:col-span-2 my-4">
+                                <app-collaps-permission>
+                                    <template #title>
+                                        <h6 class="text-[11px] lg:text-[14px] font-medium">
+                                            مجوزها
+                                        </h6>
+                                    </template>
+                                    <div v-if="permissions"
+                                        class="text-base leading-7 font-light py-8 grid grid-cols-2 lg:grid-cols-4">
+                                        <template class="" v-for="(item, index) in permissions" :key="index">
+                                            <div class="justify-start">
+                                                <input type="checkbox" :value="item.name" name="permissions" as="input"
+                                                    :id="item.name" class="ml-2 focus:ring-0 focus:ring-offset-0 "/>
+                                                <!-- <input :id="item.name" type="checkbox"
+                                                    class="ml-2 focus:ring-0 focus:ring-offset-0 " :name="item.name"
+                                                    :value="item.name"> -->
+                                                <label :for="item.name" class="">{{ item.display_name }}</label>
+                                            </div>
+                                        </template>
+                                        <label class="flex items-center min-h-[1.4rem] px-1">
+                                            <span class="label-text-alt leading-3 text-error text-2xs">{{ errorMessage
+                                                }}</span>
+                                        </label>
+                                    </div>
+                                </app-collaps-permission>
+                            </div>
+                        </ClientOnly>
                         <app-button type="submit" :loading="loading"
                             class="btn btn-block h-8 sm:col-span-2 bg-indigo-800 hover:bg-indigo-500 text-white hover:text-base mt-2">{{
                                 $t('submit')
                             }}</app-button>
                     </div>
+
                 </Form>
 
             </div>
@@ -23,40 +52,56 @@
 </template>
 
 <script setup lang="ts">
+import { Form, Field, useField } from "vee-validate"
+import type { FormActions } from 'vee-validate';
 import { useCreateRoleService } from '~/composables/roles/useRole.service';
 import { useRoleValidation } from '~/composables/roles/useRole.validation';
 import { ToastEnum } from '~/types';
-import {useGetPermissionsService} from "~/composables/permissions/usePermission.service"
+import { useGetPermissionsService } from "~/composables/permissions/usePermission.service"
 definePageMeta({
-  layout: "admin"
+    layout: "admin"
 })
+const {
+    value: inputValue,
+    errorMessage,
+    handleChange,
+    handleBlur,
+    meta,
+    setValue,
+} = useField("permissions", undefined, {
+    // initialValue: props.modelValue,
+    validateOnValueUpdate: false,
+});
 const loading = ref(false);
-const permissions = reactive<{name: string, display_name: string}[]>([])
+// const permissions = ref<{ name: string, display_name: string }[]>([])
 const { showToast } = useToast();
-const {schema} = useRoleValidation();
+const { schema } = useRoleValidation();
 const createRole = useCreateRoleService()
 const getPermissions = useGetPermissionsService()
-onMounted(()=>{
-    getPermissions().then((res)=>{
-        if(res !== undefined){
-            permissions = res
-        }
-        
-    })
-})
-const submit = (values, {setErrors, resetForm})=>{
-   createRole({...values}, {setErrors}).then((res)=>{
-    if(res !== undefined){
-        showToast({ message: "مجوز جدید ایجاد شد.", type: ToastEnum.success })
-            resetForm()
-            navigateTo("/admin/roles")
-    }
-   }).finally(() => {
-        loading.value = false
-    })
+const { target, toggleMenu, closeMenu, openMenu } = useMenu();
+const { data: permissions, pending } = await useAsyncData("permissions", () => getPermissions(), { server: false })
+// permissions = await getPermissions()
+// onMounted(() => {
+// getPermissions().then((res) => {
+//     if (res !== undefined) {
+//         permissions.value = res
+//     }
+//     console.log(permissions.value)
+// })
+// })
+const submit = (values, { setErrors, resetForm }) => {
+    loading.value = true
+    console.log("values", values)
+    // createRole({ ...values }, { setErrors }).then((res) => {
+    //     if (res !== undefined) {
+    //         showToast({ message: "مجوز جدید ایجاد شد.", type: ToastEnum.success })
+    //         resetForm()
+    //         // navigateTo("/admin/roles")
+    //     }
+    // }).finally(() => {
+    //     loading.value = false
+    // })
 }
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
