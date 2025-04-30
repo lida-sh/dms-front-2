@@ -19,5 +19,5 @@ export const useCreatePermissionService = () => {
 export const useGetPermissionsService = () => {
   const fetchData = useFetchApi<PermissionDto[], PermissionDto>(PermissionDto);
   return (customConfig: FetchCustomConfig = {}) =>
-    fetchData("admin/permissions", {}, { setToken: true, ...customConfig });
+    fetchData("admin/permissions", {}, { setToken: true,toastError: true, ...customConfig });
 };
