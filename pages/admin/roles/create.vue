@@ -117,7 +117,7 @@ const submit = (values, { setErrors, resetForm }) => {
         if (res !== undefined) {
             showToast({ message: "مجوز جدید ایجاد شد.", type: ToastEnum.success })
             resetForm()
-            // navigateTo("/admin/roles")
+            navigateTo("/admin/roles")
         }
     }).finally(() => {
         loading.value = false

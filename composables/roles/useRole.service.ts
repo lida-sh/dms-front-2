@@ -8,8 +8,8 @@ export const useCreateRoleService = ()=>{
     const {schema} = useRoleValidation()
     return ({role_name, role_display_name, permissions}: InferType<typeof schema>, customConfig:FetchCustomConfig={})=>fetchData("/admin/roles", {method: "post", body: {role_name, role_display_name, permissions}}, {setToken:true, ...customConfig})
 }  
-export const useGetPermissionsService = () => {
+export const useGetRolesService = () => {
   const fetchData = useFetchApi();
   return (customConfig: FetchCustomConfig = {}) =>
     fetchData("admin/roles", {}, { setToken: true,toastError: true, ...customConfig });
-};y
+}
