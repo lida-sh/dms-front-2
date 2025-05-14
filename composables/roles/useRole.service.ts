@@ -12,4 +12,9 @@ export const useGetRolesService = () => {
   const fetchData = useFetchApi();
   return (customConfig: FetchCustomConfig = {}) =>
     fetchData("admin/roles", {}, { setToken: true,toastError: true, ...customConfig });
-};y
+};
+export const useGetRolesAndPermissions = ()=>{
+  const fetchData = useFetchApi<RoleAndPermissions, RoleAndPermissions>(RoleAndPermissions);
+  return (customConfig: FetchCustomConfig = {}) =>
+    fetchData("admin/get-roles-permissions", {}, { setToken: true,toastError: true, ...customConfig });
+}
