@@ -17,13 +17,19 @@ export default {
     email: "ایمیل",
     password: "رمز عبور",
     username: "نام کاربری",
+    first_name: "نام",
+    last_name: "نام خانوادگی",
     itemSearch: "جستجو در",
     wordSearch: "عبارت مورد جستجو",
     notification_date: "تاریخ ابلاغ",
     permission_name: "نام مجوز",
     permission_display_name: "نام نمایشی مجوز",
     role_name: "نام نقش",
-    role_display_name: "نام نمایشی نقش"
+    role_display_name: "نام نمایشی نقش",
+    national_code: "کد ملی",
+    role: "نقش کاربری",
+    permissions: "مجوزها"
+    
     
     
     

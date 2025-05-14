@@ -23,7 +23,7 @@ export const useLogin = ()=>{
                 authStore.setToken(response.tokens)
                 authStore.setIdentity(response.identity);
                 showToast({message: "با موفقیت وارد شدید.", type: ToastEnum.success})
-                router.replace("/admin/architectures/create")
+                router.replace("/admin/dashboard")
             }
         }).finally(()=>{
             loading.value = false

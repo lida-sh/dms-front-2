@@ -4,14 +4,16 @@
             <span class="label-text">{{ label }}</span>
             <slot name="leftLabel"></slot>
         </label>
-        <select 
-            class="bg-left-center select-custom focus:ring-0 focus:ring-offset-0 focus:border-gray-300 border-gray-300 rounded-lg h-12 font-normal font-gray-700"
+        <Multiselect
+            class="bg-left-center select-custom focus:ring-0 focus:ring-offset-0 focus:border-gray-300 border-gray-300 rounded-lg font-normal font-gray-700"
             :placeholder="placeholder" v-bind="$attrs" :value="inputValue" :name="name" @change="changeSelect"
-            @blur="handleBlur">
-            <option value="" ></option>
+            @blur="handleBlur"  :close-on-select="false" :searchable="true" :create-option="true"
+            :options="optionsList">
+            
+            <!-- <option value="" ></option>
             <option v-if="optionsList" v-for="(item, index) in optionsList" :key="index" :value="item.value" class="selection:bg-gray-300">{{ item.title }}</option>
-            <option v-if="options" v-for="(item, index) in options" :key="index" :value="item.id" class="selection:bg-gray-300">{{ item.title }}</option>
-        </select>
+            <option v-if="options" v-for="(item, index) in options" :key="index" :value="item.id" class="selection:bg-gray-300">{{ item.title }}</option> -->
+        </Multiselect>
         <label class="flex items-center min-h-[1.4rem] px-1">
             <span class="label-text-alt leading-3 text-error text-2xs">{{ errorMessage || successMessage }}</span>
         </label>
@@ -19,10 +21,11 @@
 </template>
 
 <script setup lang="ts">
+import Multiselect from '@vueform/multiselect'
 import { useField } from "vee-validate";
 import { defineComponent } from "vue";
 interface OptionList {
-    title: string,
+    label: string,
     value: string
 }
 interface Option {
@@ -57,10 +60,10 @@ const {
     initialValue: props.modelValue,
     validateOnValueUpdate: false,
 });
-const changeSelect = (event) =>{
-    handleChange(event)
+const changeSelect = (event) => {
+    // handleChange(event)
     emit("selectedItem", event.target.value)
-    
+
 
 }
 watchEffect(() => {
@@ -74,11 +77,10 @@ watch(() => props.modelValue, (value) => {
 </script>
 
 <style scoped>
-
-select > option {
+/* @import '@vueform/multiselect/themes/tailwind.css'; */
+select>option {
     font-family: "siteFont", serif !important;
-    
-}
 
+}
 
 </style>

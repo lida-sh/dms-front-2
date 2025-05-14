@@ -147,7 +147,7 @@ const deleteFile = (id: number) => {
     ProcedureFiles.value.splice(index, 1)
 }
 
-const { submit, loading } = useEditProceture(route.params.id, fileIdsForDeleteArray.value)
+const { submit, loading } = useEditProceture(route.params.id as string, fileIdsForDeleteArray.value)
 
 const changeSelectItem = async (selectedItemId) => {
     const { data } = await useLazyAsyncData('processes', () => getProcesses(selectedItemId, { toastError: true }), {

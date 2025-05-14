@@ -13,7 +13,7 @@
             <IconsArrowDownSmall class="sub-menu-arrow" :class="{ 'sub-menu-arrow-open': item.isSubmenuOpen }">
             </IconsArrowDownSmall>
           </button>
-          <nuxt-link to="item.path" class="flex items-center justify-center"
+          <nuxt-link :to="item.path" class="flex items-center justify-center"
             :class="{ 'selected-dashboard-item': item.selected }" v-else>
             <div class="flex items-center gap-[0.625rem] pr-[1rem]">
               <component :is="item.icon"></component>
@@ -67,7 +67,7 @@ const menuList = ref<MenuItem[]>([
   {
     id: 1,
     title: "داشبورد",
-    path: 'dashboard',
+    path: '/admin/dashboard',
     selected: false,
     hasSubmenu: false,
     isSubmenuOpen: false,
@@ -178,16 +178,10 @@ const menuList = ref<MenuItem[]>([
         icon: ""
       },
       {
-        title: "گروه های کاربری",
-        to: "/admin/roles",
-        icon: IconsAdminRole
+        title: "ایجاد کاربر جدید",
+        to: "/admin/users/create",
+        icon: ""
       },
-      {
-        title: "مجوزها",
-        to: "/admin/permissions",
-        icon: IconsPermission
-      },
-      
     ],
   },
   {

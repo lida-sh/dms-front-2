@@ -1,5 +1,5 @@
 <template>
-  <div class="py-3 gap-3 flex relative z-20 justify-between cursor-pointer items-center transition-all duration-500"
+  <div class="py-3 gap-3 flex relative z-20 justify-between cursor-pointer items-center"
     :class="[{ 'bg-white border border-gray-300 px-[1.5rem] md:px-[4.5rem] rounded-xl shadow-sm': !noStyleBg }, { 'pr-3 pl-[1.688rem] xl:px-[4.5rem]': noStyleBg }, backgroundClassTitle]"
     @click="toggle" v-bind="$attrs">
     <slot name="title" :is-open="isOpen"></slot>

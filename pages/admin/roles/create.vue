@@ -28,7 +28,7 @@
                                                 <!-- <input :id="item.name" type="checkbox" @input="handlePermissionChange(item.name, $event)"
                                                     class="ml-2 focus:ring-0 focus:ring-offset-0 " :name="item.name"
                                                     :value="item.name"> -->
-                                                <label :for="item.name" class="">{{ item.display_name }}</label>
+                                                <label :for="item.name" class="text-sm">{{ item.display_name }}</label>
                                             </div>
                                         </template>
                                         
