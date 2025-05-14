@@ -44,13 +44,20 @@
             </div>
 
         </div>
+      </div>
+      <div v-else  class="flex items-center justify-center w-full bg-[#F7F7F7] non-select h-screen">
+      <span class="loading loading-spinner loading-md"></span>
     </div>
+    </div>
+  </div>
 </template>
 <script setup type="script">
-import {useGetRolesService} from "~/composables/roles/useRole.service"
+import { useGetRolesService } from "~/composables/roles/useRole.service";
 definePageMeta({
-  layout: "admin"
-})
-const getRoles = useGetRolesService()
-const {data, pending} = useAsyncData("roles", ()=>getRoles(), {server:false})
+  layout: "admin",
+});
+const getroles = useGetRolesService();
+const { data, pending } = useAsyncData("roles", () => getroles(), {
+  server: false,
+});
 </script>
