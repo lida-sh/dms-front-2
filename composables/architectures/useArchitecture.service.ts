@@ -3,7 +3,7 @@ import { useFetchApi } from "../api/useFetchApi";
 import { useArchitectureValidation, useEditArchitectureValidation } from "./useArchitecture.validation";
 import type { FetchCustomConfig } from "../api/FetchCustomConfig";
 import { serialize } from "object-to-formdata";
-import { ArchitectureBaseDto, ArchitectureDto, ArchitectureTreeStructDto } from "./architecture.dto";
+import { ArchitectureBaseDto, ArchitectureDto, ArchitectureTreeStructDto, ArchitectureDtoPagination } from "./architecture.dto";
 
 export const useCreateArchitectureService = () => {
   const fetchData = useFetchApi();
@@ -59,8 +59,8 @@ export const useEditArchitectureService = (id:number) => {
   };
 };
 export const useGetArchitecturesService = ()=>{
-  const fetchData = useFetchApi<ArchitectureDto[],ArchitectureDto>(ArchitectureDto);
-  return (customConfig: FetchCustomConfig = {})=>fetchData("/admin/architectures", {}, {setToken:true, toastError: true, ...customConfig})
+  const fetchData = useFetchApi<ArchitectureDtoPagination,ArchitectureDtoPagination>(ArchitectureDtoPagination);
+  return (customConfig: FetchCustomConfig = {})=>fetchData("/admin/get-architectures", {}, {setToken:true, toastError: true, ...customConfig})
 
 }
 export const useGetBaseArchitecturesService = ()=>{

@@ -2,7 +2,7 @@ import { ArchitectureBaseDto, ArchitectureClientBaseDto } from "../architectures
 import { FileDto,} from "../file.dto";
 import { Exclude, Expose, Transform, Type } from "class-transformer";
 import { SubProcessTreeStructDto } from "../sub-processes/subProcess.dto";
-
+import {UserBaseDto} from "../users/user.dto"
 export class ProcessBaseDto {
   @Expose()
   id: number;
@@ -29,6 +29,9 @@ export class ProcessDto extends ProcessBaseDto {
   @Expose()
   @Type(()=>ArchitectureBaseDto)
   architecture: ArchitectureBaseDto
+  @Expose()
+      @Type(() => UserBaseDto)
+      user: UserBaseDto;
   @Expose()
   @Transform(({ value }) => {
     return String(value);

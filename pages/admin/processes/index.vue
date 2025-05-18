@@ -49,12 +49,12 @@
           <thead>
             <tr class="bg-gray-200 rounded-lg text-base">
               <th class="text-center">شماره</th>
-              <th class="text-right">عنوان</th>
-              <th class="text-right">نام مستعار</th>
-              <th class="text-right">کد</th>
-              <th class="text-right">معماری والد</th>
+              <th class="text-center">عنوان</th>
+              <th class="text-center">کد</th>
+              <th class="text-center">معماری والد</th>
               <th class="text-center">وضعیت</th>
-              <th class="text-right">تاریخ ابلاغ</th>
+              <th class="text-center">تاریخ ابلاغ</th>
+              <th class="text-center">کاربر ثبت کننده</th>
               <th class="text-center">عملیات</th>
             </tr>
           </thead>
@@ -62,33 +62,37 @@
             <tr v-for="(item, index) in data?.processes" class="hover divide-y">
               <!-- <th class="text-center">{{ index }}</th> -->
               <td class="text-center">{{ ((data!.meta.current_page - 1) * data!.meta.per_page) + index + 1 }}</td>
-              <td class="text-right">{{ item.title }}</td>
-              <td class="text-right">{{ item.slug }}</td>
-              <td class="text-right">{{ item.code }}</td>
-              <td class="text-right">{{ item.architecture.title }}</td>
+              <td class="text-center">{{ item.title }}</td>
+              <td class="text-center">{{ item.code }}</td>
+              <td class="text-center">{{ item.architecture.title }}</td>
               <td class="text-center">
                 <span v-if="item.status == 1" class="text-green-500">فعال</span>
                 <span v-if="item.status == 0" class="text-red-500">غیر فعال</span>
               </td>
-              <td class="text-right">{{ item.notification_date }}</td>
+              <td class="text-center">{{ item.notification_date }}</td>
+              <td class="text-center">{{ item.user.fullName }}</td>
               <td class="text-right flex items-center justify-center gap-2 ">
-                <NuxtLink :to="`processes/${item.slug}`" class="btn btn-outline border-sky-700 hover:border-none border-2 btn-sm text-sky-600 text-xs hover:bg-gradient-to-b hover:from-sky-900 hover:to-sky-400 hover:text-white">نمایش
+                <NuxtLink :to="`processes/${item.slug}`"
+                  class="btn btn-outline border-sky-700 hover:border-none border-2 btn-sm text-sky-600 text-xs hover:bg-gradient-to-b hover:from-sky-900 hover:to-sky-400 hover:text-white">
+                  نمایش
                 </NuxtLink>
-                <NuxtLink :to="`processes/edit/${item.id}`" class="btn btn-outline border-amber-700 hover:border-none border-2 btn-sm text-amber-600 text-xs hover:bg-gradient-to-b hover:from-amber-900 hover:to-amber-400 hover:text-white">ویرایش
+                <NuxtLink :to="`processes/edit/${item.id}`"
+                  class="btn btn-outline border-amber-700 hover:border-none border-2 btn-sm text-amber-600 text-xs hover:bg-gradient-to-b hover:from-amber-900 hover:to-amber-400 hover:text-white">
+                  ویرایش
                 </NuxtLink>
-                <button class="btn btn-outline border-red-700 hover:border-none border-2 btn-sm text-red-600 text-xs hover:bg-gradient-to-b hover:from-red-900 hover:to-red-400 hover:text-white">حذف</button>
-                <button class="btn btn-outline border-emerald-700 hover:border-none border-2 btn-sm text-emerald-600 text-xs hover:bg-gradient-to-b hover:from-emerald-900 hover:to-emerald-400 hover:text-white">ارتقا</button>
+                <button
+                  class="btn btn-outline border-red-700 hover:border-none border-2 btn-sm text-red-600 text-xs hover:bg-gradient-to-b hover:from-red-900 hover:to-red-400 hover:text-white">حذف</button>
               </td>
 
             </tr>
-            
+
           </tbody>
         </table>
 
       </div>
-      <div class="join flex items-center justify-center mt-5"  v-if="data?.meta.total > data?.meta?.per_page!">
+      <div class="join flex items-center justify-center mt-5" v-if="data?.meta.total > data?.meta?.per_page!">
         <button v-for="(link, index) in data?.meta.last_page" :key="index" @click="handleFilter({ page: link })"
-          class="join-item btn" :class="{'btn-active': data?.meta.current_page == link}">{{ link }}</button>
+          class="join-item btn" :class="{ 'btn-active': data?.meta.current_page == link }">{{ link }}</button>
         <!-- <button class="join-item btn btn-active">2</button> -->
       </div>
     </div>

@@ -48,36 +48,35 @@
           <thead>
             <tr class="bg-stone-300 rounded-lg text-base">
               <th class="text-center">ردیف</th>
-              <th class="text-right">عنوان</th>
-              <th class="text-right">نام مستعار</th>
-              <th class="text-right">کد</th>
-              <th class="text-right">معماری والد</th>
-              <th class="text-right">فرایند والد</th>
+              <th class="text-center">عنوان</th>
+              <th class="text-center">کد</th>
+              <th class="text-center">معماری والد</th>
+              <th class="text-center">فرایند والد</th>
               <th class="text-center">وضعیت</th>
-              <th class="text-right">تاریخ ابلاغ</th>
+              <th class="text-center">تاریخ ابلاغ</th>
+               <th class="text-center">کاربر ثبت کننده</th>
               <th class="text-center">عملیات</th>
             </tr>
           </thead>
           <tbody>
             <tr v-for="(item, index) in data?.subProcesses" class="hover divide-y">
               <td class="text-center">{{ ((data!.meta.current_page - 1) * data!.meta.per_page) + index + 1 }}</td>
-              <td class="text-right">{{ item.title }}</td>
-              <td class="text-right">{{ item.slug }}</td>
-              <td class="text-right">{{ item.code }}</td>
-              <td class="text-right">{{ item.architecture.title }}</td>
-              <td class="text-right">{{ item.process.title }}</td>
+              <td class="text-center">{{ item.title }}</td>
+              <td class="text-center">{{ item.code }}</td>
+              <td class="text-center">{{ item.architecture.title }}</td>
+              <td class="text-center">{{ item.process.title }}</td>
               <td class="text-center">
                 <span v-if="item.status == 1" class="text-green-500">فعال</span>
                 <span v-if="item.status == 0" class="text-red-500">غیر فعال</span>
               </td>
-              <td class="text-right">{{ item.notification_date }}</td>
+              <td class="text-center">{{ item.notification_date }}</td>
+              <td class="text-center">{{ item.user.fullName }}</td>
               <td class="text-right flex items-center justify-center gap-2 ">
                 <NuxtLink :to="`sub-processes/${item.slug}`" class="btn btn-outline border-sky-700 hover:border-none border-2 btn-sm text-sky-600 text-xs hover:bg-gradient-to-b hover:from-sky-900 hover:to-sky-400 hover:text-white">نمایش
                 </NuxtLink>
                 <NuxtLink :to="`sub-processes/edit/${item.id}`" class="btn btn-outline border-amber-700 hover:border-none border-2 btn-sm text-amber-600 text-xs hover:bg-gradient-to-b hover:from-amber-900 hover:to-amber-400 hover:text-white">ویرایش
                 </NuxtLink>
                 <button class="btn btn-outline border-red-700 hover:border-none border-2 btn-sm text-red-600 text-xs hover:bg-gradient-to-b hover:from-red-900 hover:to-red-400 hover:text-white">حذف</button>
-                <button class="btn btn-outline border-emerald-700 hover:border-none border-2 btn-sm text-emerald-600 text-xs hover:bg-gradient-to-b hover:from-emerald-900 hover:to-emerald-400 hover:text-white">ارتقا</button>
               </td>
             </tr>
 

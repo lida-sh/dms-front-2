@@ -8,7 +8,7 @@ import {
   ProcessBaseDto,
   ProcessBaseClientDto,
 } from "~/composables/processes/process.dto";
-
+import { UserBaseDto } from "../users/user.dto";
 export class SubProcessBaseDto {
   @Expose()
   id: number;
@@ -40,6 +40,9 @@ export class SubProcessDto extends SubProcessBaseDto {
   @Expose()
   @Type(() => ProcessBaseDto)
   process: ProcessBaseDto;
+  @Expose()
+    @Type(() => UserBaseDto)
+    user: UserBaseDto;
   @Expose()
   @Transform(({ value }) => {
     return String(value);

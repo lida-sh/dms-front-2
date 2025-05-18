@@ -9,21 +9,19 @@
         <thead>
           <tr class="bg-stone-300 rounded-lg text-base">
             <th class="text-center">شماره</th>
-            <th class="text-right">عنوان</th>
-            <th class="text-right">نام مستعار</th>
-            <th class="text-right">کد</th>
-            <!-- <th class="text-right">توضیحات</th> -->
+            <th class="text-center">عنوان</th>
+            <th class="text-center">کد</th>
+            <th class="text-center">کاربر ثبت کننده</th>
             <th class="text-center">عملیات</th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(item, index) in data" :key="index" class="hover divide-y">
-            <!-- <th class="text-center">{{ index }}</th> -->
-            <td class="text-center">{{ index + 1 }}</td>
-            <td class="text-right">{{ item.displayTitle }}</td>
-            <td class="text-right">{{ item.slug }}</td>
-            <td class="text-right">{{ item.code }}</td>
-            <!-- <td class="text-right">{{ item.description }}</td> -->
+          <tr v-for="(item, index) in data?.architectures" :key="index" class="hover divide-y">
+            <td class="text-center">{{ ((data!.meta.current_page - 1) * data!.meta.per_page) + index + 1 }}</td>
+            <!-- <td class="text-center">{{ index + 1 }}</td> -->
+            <td class="text-center">{{ item.displayTitle }}</td>
+            <td class="text-center">{{ item.code }}</td>
+            <td class="text-center">{{ item.user.fullName }}</td>
             <td class="text-right flex items-center justify-center gap-2 ">
               <NuxtLink :to="`architectures/${item.slug}`"
                 class="btn btn-outline border-sky-700 hover:border-none border-2 btn-sm text-sky-600 text-xs hover:bg-gradient-to-b hover:from-sky-900 hover:to-sky-400 hover:text-white">
@@ -35,8 +33,6 @@
               </NuxtLink>
               <button
                 class="btn btn-outline border-red-700 hover:border-none border-2 btn-sm text-red-600 text-xs hover:bg-gradient-to-b hover:from-red-900 hover:to-red-400 hover:text-white">حذف</button>
-              <button
-                class="btn btn-outline border-emerald-700 hover:border-none border-2 btn-sm text-emerald-600 text-xs hover:bg-gradient-to-b hover:from-emerald-900 hover:to-emerald-400 hover:text-white">ارتقا</button>
             </td>
 
           </tr>
