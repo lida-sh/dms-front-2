@@ -17,6 +17,7 @@
     "@heroicons/vue": "^1.0.6",
     "@pinia/nuxt": "latest",
     "@vueform/multiselect": "^2.6.11",
+    "chart.js": "^4.4.9",
     "class-transformer": "^0.5.1",
     "date-fns-jalali": "^4.1.0-0",
     "dayjs": "^1.11.13",

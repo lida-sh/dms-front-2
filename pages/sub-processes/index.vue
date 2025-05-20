@@ -43,6 +43,9 @@
             <button v-for="(link, index) in data?.meta.last_page" :key="index" @click="handleFilter({ page: link })"
               class="join-item btn" :class="{ 'btn-active': data?.meta.current_page == link }">{{ link }}</button>
           </div>
+           <div class="flex w-full px-10 py-10">
+            <a class="btn bg-blue-800 text-white hover:bg-blue-600 shadow-lg transition-color" href="/">بازگشت به صفحه اصلی</a>
+          </div>
         </div>
   
         <!-- <div class="font-sm xl:text-base font-bold mb-4 mr-4">موردی یافت نشد.</div> -->

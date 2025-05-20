@@ -6,7 +6,7 @@
         <div v-else class="flex flex-col items-center justify-center p-[3rem]">
             <tree-architecture-box :title="data?.displayTitle!" id="master" class="invisible"></tree-architecture-box>
             <div
-                class="flex lg:flex-row flex-col items-center justify-center lg:border-2 lg:border-dashed lg:border-gray-400 p-10 gap-10 mt-6 invisible process">
+                class="flex lg:flex-row flex-col items-start justify-center lg:border-2 lg:border-dashed lg:border-gray-400 p-10 gap-10 mt-6 ">
                 <tree-process-box v-for="process in data?.processes" :item="process" class="process invisible"></tree-process-box>
             </div>
         </div>

@@ -9,8 +9,8 @@
                 </svg>
             </button>
             <div ref="target"
-                class="z-10 flex flex-col lg:flex-row lg:w-auto absolute lg:static bg-white inset-x-10 h-0 lg:h-auto invisible lg:visible lg:bg-transparent lg:space-x-1 xl:space-x-2 lg:space-x-reverse rounded-box lg:rounded-none border lg:border-none shadow-lg lg:shadow-none mt-1 lg:mt-0 divide-y divide-gray-200 lg:divide-none">
-                <div class="py-3 w-full  group flex xl:flex-row flex-col xl:px-3"
+                class="z-20 flex flex-col lg:flex-row lg:w-auto absolute lg:static bg-white inset-x-10 h-0 lg:h-auto invisible lg:visible lg:bg-transparent lg:space-x-1 xl:space-x-2 lg:space-x-reverse rounded-box lg:rounded-none border lg:border-none shadow-lg lg:shadow-none mt-1 lg:mt-0 divide-y divide-gray-200 lg:divide-none">
+                <div class="py-3 w-full group flex xl:flex-row flex-col xl:px-3"
                     v-for="(item, index) in links" :key="`menu-${index}`">
                     <router-link :to="item.to" class=" text-sm lg:text-base">
                         <div class="w-auto xl: hover:text-blue-600"
@@ -30,9 +30,9 @@
                         </div>
                     </router-link>
                     <div
-                        class="relative xl:absolute self-stretch xl:top-full max-h-0 group-hover:max-h-96 xl:h-auto overflow-hidden transition-all duration-300 ">
+                        class="relative xl:absolute xl:-mr-12 z-20 self-stretch xl:top-full max-h-0 group-hover:max-h-96 xl:h-auto overflow-hidden transition-all duration-300 shadow-xl rounded-b-xl">
                         <div :id="`menu-${index}`"
-                            class="xl:right-0 w-full bg-white overflow-hidden xl:rounded-b-[0.625rem] z-50 divide-y border">
+                            class="xl:right-0 w-full bg-white overflow-hidden xl:rounded-b-[0.625rem] z-20 divide-y">
                             <template v-for="(subMenuItem, i) in item.subMenu" :key="`sub-menu-${subMenuItem.title}`">
                                 <div>
                                     <NuxtLink :to="subMenuItem.to"
@@ -63,7 +63,14 @@ const links = [
             { title: "معاونت تنظیم مقررات", to: "/" },
         ],
     },
-    { title: "مستندات درون سازمانی", to: "/" },
+    { title: "مستندات درون سازمانی", to: "/", child: true,
+        subMenu: [
+            { title: "فرایندها", to: "/processes" },
+            { title: "زیرفرایندها", to: "/sub-processes" },
+            { title: "روش های اجرایی، دستورالعمل ها، فرم ها و ...", to: "/procedures" },
+            
+        ],
+     },
     { title: "مستندات برون سازمانی", to: "/" },
     { title: "اقدام اصلاحی", to: "/" },
     { title: "گزارش ها", to: "/" },

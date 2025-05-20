@@ -2,11 +2,13 @@
     <div v-if="!resultSearch" class="w-full h-full flex flex-col items-center justify-center">
         <div class="bg-[#4749e3] w-full flex items-center justify-center">
             <div
-                class="lg:grid lg:grid-cols-12 h-[56rem] w-full flex flex-col max-w-[100rem] px-4 py-8 lg:px-0 gap-4 lg:gap-8">
+                class="lg:grid lg:grid-cols-12 h-[56rem] w-full flex flex-col max-w-[100rem] px-4 pb-8 lg:px-0 gap-4 lg:gap-8">
 
                 <div
                     class="lg:col-span-5 w-full h-full flex flex-col gap-4 items-center justify-center py-4 lg:py-0 px-4 sm:px-6 space-y-2 lg:space-y-8">
-                    <p class="text-xl lg:text-[1.2rem] xl:text-[1.4rem] 2xl:text-[1.8rem] text-white font-bold">نگهداری
+                    <p
+                        class="text-lg sm:text-xl lg:text-[1.2rem] xl:text-[1.4rem] 2xl:text-[1.8rem] text-white font-bold">
+                        نگهداری
                         و دسترسی سریع به اسناد فرایندی با</p>
                     <h1 class="text-3xl lg:text-[2rem] xl:text-[3.25rem] text-white font-bold">سامانه مدیریت اسناد</h1>
                     <Form @submit="submitSearch" class="w-full">
@@ -17,7 +19,9 @@
                         دقیق</nuxt-link>
                 </div>
                 <div class="lg:col-span-7 w-full h-full flex items-center lg:justify-end justify-center">
+
                     <div class="relative w-full">
+                        <div class="head absolute w-full h-full -z-1 opacity-0.5 -inset-4"></div>
                         <img src="/images/g49.svg" alt="" id="monitor" class="monitor w-full h-full invisible">
                         <img src="/images/character 13.svg" alt="" id="man"
                             class="absolute h-[40%] right-[5%] bottom-[5%] invisible">
@@ -43,22 +47,22 @@
             <div
                 class="relative flex flex-col lg:flex-row  max-w-[90rem] h-auto lg:h-48 items-center justify-center gap-10 px-10">
                 <div
-                    class="bg-white rounded-box border border-gray-200 translate-y-0 lg:-translate-y-1/2 shadow-lg w-full h-full p-6 flex items-center justify-center gap-6">
+                    class="bg-white rounded-box border border-gray-200 translate-y-0 lg:-translate-y-1/2 shadow-lg w-full h-full p-8 flex items-center justify-center gap-6">
                     <img src="/public/images/servicees/pencil-folder.png" alt="" class="w-28 h-28">
-                    <h2 class="text-sm lg:text-lg text-indigo-700 font-bold leading-loose">
+                    <h2 class="text-sm lg:text-base text-indigo-700 font-bold leading-loose">
                         دسترسی سریع به بیش از 730 سند فرایندی
                     </h2>
                 </div>
                 <div
                     class="bg-white rounded-box border border-gray-200 translate-y-0 lg:-translate-y-1/2 shadow-lg w-full h-full p-6 flex items-center justify-center gap-6">
                     <img src="/public/images/servicees/magnifier-glass.png" alt="" class="w-28 h-28">
-                    <h2 class="text-sm lg:text-lg text-indigo-700 font-bold">
+                    <h2 class="text-sm lg:text-base text-indigo-700 font-bold">
                         جستجوی سریع و آسان فایل ها و مستندات فرایندی</h2>
                 </div>
                 <div
                     class="bg-white rounded-box border border-gray-200 translate-y-0 lg:-translate-y-1/2 shadow-lg w-full h-full p-6 flex items-center justify-center gap-6">
                     <img src="/public/images/servicees/upload-cloud-folder.png" alt="" class="w-28 h-28">
-                    <h2 class="text-sm lg:text-lg text-indigo-700 font-bold">
+                    <h2 class="text-sm lg:text-base text-indigo-700 font-bold">
                         بروز رسانی و انتشار فایل ها و مستندات و گزارشات</h2>
                 </div>
             </div>
@@ -80,7 +84,18 @@
                     <define-doc-card></define-doc-card>
                 </div>
             </div>
-            <div class="h-[25rem]"></div>
+            <ClientOnly>
+                <div class="flex items-center justify-center mt-[20rem]">
+                    
+                     <Chart></Chart>
+                </div>
+
+               
+            </ClientOnly>
+
+            <div class="h-[25rem]">
+                <h1 class="text-gray-600">chart</h1>
+            </div>
         </section>
     </div>
     <div v-else
@@ -108,6 +123,7 @@
 <script setup lang="ts">
 import { gsap } from 'gsap';
 import { Form } from "vee-validate"
+import Chart from '~/components/Chart.vue';
 import { useSearchService } from '~/composables/home/home.service';
 import { ToastEnum } from '~/types';
 import VersionControl from "~~/components/icons/slider/VersionControl.vue"
@@ -140,7 +156,7 @@ const items = [
     {
         title: "دستورالعمل ها",
         to: "/procedures",
-        description: "بیش از 50 دستوذالعمل در حوزه های مختلف بازنگری شده است.",
+        description: "بیش از 50 دستورالعمل در حوزه های مختلف بازنگری شده است.",
         image: "/images/slider/undraw_folder_files_re_2cbm.svg",
         action: "لیست  دستورالعمل ها",
         icon: "/images/slider/small-picture/instruction2.svg"
@@ -152,6 +168,14 @@ const items = [
         image: "/images/slider/undraw_folder_re_apfp(1).svg",
         action: "لیست  آئین نامه ها",
         icon: "/images/slider/small-picture/instruction1.svg"
+    },
+    {
+        title: "قرارداد ها",
+        to: "/procedures",
+        description: "حدود 4 قرارداد در حوزه های مختلف بازنگری شده است.",
+        image: "/images/slider/undraw_filing_system_re_56h6.svg",
+        action: "لیست  قرارداد ها",
+        icon: "/images/slider/small-picture/instruction2.svg"
     },
 
 ]
@@ -276,7 +300,7 @@ const backToHome = () => {
 
 <style scoped>
 .head {
-    background-image: url("/public/images/back.png");
+    background-image: url("/public/images/background.png");
     background-size: 100% 100%;
 
 }
