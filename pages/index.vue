@@ -85,12 +85,31 @@
                 </div>
             </div>
             <ClientOnly>
-                <div class="flex items-center justify-center mt-[20rem]">
-                    
-                     <Chart></Chart>
+                <div class="flex items-center justify-center mt-[20rem] w-full">
+                    <app-tabs :tabs="tabItems">
+                        <template #tab-0>
+                            <div>
+                                <div class="flex items-center justify-center w-full p-10">
+                                    <Chart :data="data1402"></Chart>
+                                </div>
+                            </div>
+                        </template>
+                        <template #tab-1>
+                            <div>
+                                <div class="flex items-center justify-center w-full p-10">
+                                    <Chart :data="data1402"></Chart>
+                                </div>
+                            </div>
+                        </template>
+                        <template #tab-2>
+                            <div>
+                                <div class="flex items-center justify-center w-full p-10">
+                                    <Chart :data="data1402"></Chart>
+                                </div>
+                            </div>
+                        </template>
+                    </app-tabs>
                 </div>
-
-               
             </ClientOnly>
 
             <div class="h-[25rem]">
@@ -127,6 +146,12 @@ import Chart from '~/components/Chart.vue';
 import { useSearchService } from '~/composables/home/home.service';
 import { ToastEnum } from '~/types';
 import VersionControl from "~~/components/icons/slider/VersionControl.vue"
+const tabItems = [
+    { label: 'ارزیابی سال 1400' },
+    { label: 'ارزیابی سال 1401' },
+    { label: 'ارزیابی سال 1402' },
+]
+const data1402 = [35, 55, 68, 28, 31, 22, 21, 28, 27, 0]
 const resultSearch = ref(false)
 const items = [
     {
