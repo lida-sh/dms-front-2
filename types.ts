@@ -9,3 +9,8 @@ export enum ToastEnum {
     error = "error",
     success = "success"
 }
+export enum ChartType {
+    architec = "architec",
+    process = "process"
+
+}

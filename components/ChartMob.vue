@@ -1,6 +1,6 @@
 <template>
-  <div ref="chartContainer" class="min-h-[600px] lg:px-10 px-4 py-4 lg:py-10"
-    :class="{ 'lg:w-[30rem] xl:w-[50rem] ': style == 'architec', 'md:w-[40rem] lg:w-[60rem] 2xl:w-[80rem] 3xl:w-[100rem]': style == 'process',}">
+  <div ref="chartContainer" class="lg:px-10 px-4 py-4 lg:py-10"
+    :class="{'min-h-[600px] w-[20rem]': style == 'architec', 'w-full min-h-[80rem]': style == 'process'}">
     <Bar v-if="showChart" :data="chartData" :options="chartOptions" />
   </div>
 </template>
@@ -72,17 +72,7 @@ const chartData = {
     }
   ]
 }
-const isLargeScreen = ref()
-const recalculate = () => {
-  isLargeScreen.value = useMediaQuery('(min-width: 1024px)').value
-}
-onMounted(() => {
-  isLargeScreen.value = useMediaQuery('(min-width: 1024px)').value
-  useEventListener("resize", useDebounceFn(()=>{
-    recalculate()
-    console.log("resize", useMediaQuery('(min-width: 1024px)').value)
-  }));
-});
+
 
 
 const chartOptions = computed(()=>({
@@ -131,7 +121,7 @@ const chartOptions = computed(()=>({
     },
   },
   maintainAspectRatio: false,
-  indexAxis: 'x',
+  indexAxis: 'y',
   animation: {
     duration: 300, // مدت زمان انیمیشن به میلی‌ثانیه (اینجا: ۱ ثانیه)
     easing: 'easeOutQuart',
