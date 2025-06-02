@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col lg:flex-row  items-start w-full gap-4 px-10 py-14 bg-[#F7F7F7] select-none h-screen">
+    <div class="flex flex-col lg:flex-row  items-start w-full gap-4 px-10 py-14 bg-[#F7F7F7] select-none">
       <section class="px-4 py-10 rounded-lg bg-white shadow-lg w-full lg:w-[30rem] ">
         <h3 class="text-lg font-bold">فیلترها</h3>
         <Form class="flex flex-col items-center justify-center w-full" >

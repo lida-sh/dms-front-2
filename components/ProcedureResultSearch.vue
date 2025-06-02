@@ -1,5 +1,5 @@
 <template>
-    <div class="w-full bg-white rounded-lg shadow-lg p-4 select-none">
+    <div class="w-full border bg-white rounded-lg shadow-lg p-4 select-none">
         <div class="w-full flex items-start gap-4 justify-between xl:justify-center xl:flex-col xl:items-center">
 
             <div class="grid grid-cols-1 gap-4 xl:grid xl:grid-cols-12 xl:w-full">

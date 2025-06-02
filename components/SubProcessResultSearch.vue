@@ -1,7 +1,6 @@
 <template>
-    <div class="w-full bg-white rounded-lg shadow-lg p-5 select-none">
+    <div class="w-full bg-white border rounded-lg shadow-lg p-5 select-none">
         <div class="w-full flex items-start gap-4 justify-between xl:justify-center xl:flex-col xl:items-center">
-
             <div class="grid grid-cols-1 gap-4 xl:grid xl:grid-cols-12 xl:w-full">
                 <div
                     class="flex items-center justify-start xl:justify-center xl:col-span-1 text-sm xl:text-xs 2xl:text-base font-bold text-gray-500">
@@ -53,7 +52,7 @@
                     {{ item.notification_date }}</div>
                 <div
                     class="flex items-center justify-start xl:justify-center xl:col-span-1 xl:whitespace-nowrap  text-sm xl:text-xs 2xl:text-sm font-medium">
-                    <NuxtLink :to="`/subProcesses/${item.slug}`"
+                    <NuxtLink :to="`/sub-processes/${item.slug}`"
                         class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 focus:outline-none focus:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:text-blue-400">
                         جزئیات</NuxtLink>
                 </div>

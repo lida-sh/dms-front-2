@@ -8,8 +8,8 @@
           class="sm:col-span-2" @selectedItem="changeSelectItem"></app-select-input>
         <app-select-input name="process_id" :options="processes!" :label="$t('process_id')" class="sm:col-span-2"
           @selectedItem="(process) => handleFilter({ process_id: process })"></app-select-input>
-        <app-select-input name="docType" :options-list="doctypes" :label="$t('docType')" @selectedItem="(docType) => handleFilter({ docType: docType })"
-          class="sm:col-span-2"></app-select-input>
+        <app-select-input name="docType" :options-list="doctypes" :label="$t('docType')"
+          @selectedItem="(docType) => handleFilter({ docType: docType })" class="sm:col-span-2"></app-select-input>
         <app-search-input name="search" label="جستجو" v-model="searchWord" class="sm:col-span-2"
           @clickSearch="searchWord !== '' && handleFilter({ search: searchWord })"></app-search-input>
         <div class="form-control sm:col-span-2">
@@ -83,13 +83,13 @@
                   class="btn btn-outline border-amber-700 hover:border-none border-2 btn-sm text-amber-600 text-xs hover:bg-gradient-to-b hover:from-amber-900 hover:to-amber-400 hover:text-white">
                   ویرایش
                 </NuxtLink>
-                <button
+                <button @click="deleteProcedureConfirmation(item.id)"
                   class="btn btn-outline border-red-700 hover:border-none border-2 btn-sm text-red-600 text-xs hover:bg-gradient-to-b hover:from-red-900 hover:to-red-400 hover:text-white">حذف</button>
                 <!-- <button
                   class="btn btn-outline border-emerald-700 hover:border-none border-2 btn-sm text-emerald-600 text-xs hover:bg-gradient-to-b hover:from-emerald-900 hover:to-emerald-400 hover:text-white">ارتقا</button> -->
               </td>
             </tr>
-            
+
           </tbody>
         </table>
 
@@ -99,6 +99,28 @@
           class="join-item btn" :class="{ 'btn-active': data?.meta.current_page == link }">{{ link }}</button>
       </div>
     </div>
+    <app-modal v-model="deleteConfirmation">
+      <template #title>
+        <h3 class="text-sm xl:text-base font-bold text-blue-800">تایید حذف سند</h3>
+      </template>
+      <div class="flex flex-col overflow-visible justify-center gap-10 mt-8">
+        <h3 class="text-sm xl:text-base">آیا از حذف سند مورد نظر مطمئن هستید؟</h3>
+      </div>
+      <template #actions>
+        <div class="flex justify-between items-center w-full">
+          <app-button :loading="loading"
+            class="btn border-2 border-[#4749e3] text-[#4749e3] hover:bg-[#4749e3] hover:text-white hover:border-[#4749e3]"
+            @click="deleteProcedureconfirmed()">حذف
+            سند</app-button>
+          <button
+            class="btn border-2 border-[#4749e3] text-[#4749e3] hover:bg-[#4749e3] hover:text-white hover:border-[#4749e3]"
+            @click="deleteConfirmation = false">بازگشت به
+            لیست
+            سندها</button>
+        </div>
+      </template>
+
+    </app-modal>
   </div>
 </template>
 
@@ -114,6 +136,9 @@ import { Form } from "vee-validate";
 import { useGetSubProcessesService } from '~/composables/sub-processes/useSubProcess.service';
 import type { ProcessBaseDto } from '~/composables/processes/process.dto';
 import { useGetProceduresService } from "~/composables/procetures/useProcedure.service";
+import { useDeleteProcedureService } from "~/composables/procetures/useProcedure.service";
+import { ToastEnum, ButtonVariantEnum } from "~/types";
+const loading = ref(false)
 const query = ref({})
 const { schema } = useSubProcessFilter()
 const searchWord = ref("")
@@ -152,7 +177,9 @@ const sortItems = [
   { title: 'جدیدترین', value: "newest" },
   { title: 'قدیمی ترین', value: "oldest" },
 ]
+const { showToast } = useToast();
 const processes = ref<ProcessBaseDto[]>([])
+const deleteConfirmation = ref(false)
 const getProcedures = useGetProceduresService()
 const { data, pending, error, refresh } = await useAsyncData('procedures', () => getProcedures(query.value), { server: false })
 // useErrorHandler(error)
@@ -173,6 +200,24 @@ const handleFilter = (link) => {
   query.value = { ...route.query, ...link }
   router.push({ query: query.value })
   refresh()
+}
+const procedureIdForDelete = ref<number>(-1)
+const deleteProcedureConfirmation = (id: number) => {
+  deleteConfirmation.value = true
+  procedureIdForDelete.value = id
+}
+const deleteProcedure = useDeleteProcedureService()
+const deleteProcedureconfirmed = () => {
+  loading.value = true
+  deleteProcedure(procedureIdForDelete.value).then((res)=>{
+    if(res !== undefined){
+      refresh()
+      showToast({ message: "سند مورد نظر حذف شد.", type: ToastEnum.success })
+    }
+  }).finally(()=>{
+    loading.value = false
+    deleteConfirmation.value = false
+  })
 }
 </script>
 

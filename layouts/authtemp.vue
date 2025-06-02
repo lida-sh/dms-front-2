@@ -1,5 +1,5 @@
 <template>
-    <div class="flex    mvbc h-screen bg-slate-200 items-center justify-center w-full">
+    <div class="flex  items-center justify-center w-full h-screen bg-slate-200">
        <slot></slot>
     </div>
 </template>

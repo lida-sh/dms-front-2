@@ -111,12 +111,13 @@ export const useGetProceduresService = () => {
 // };
 export const useGetProcedureByIdService = () => {
   const fetchData = useFetchApi<ProcedureDto, ProcedureDto>(ProcedureDto);
-  return (id: string, customConfig: FetchCustomConfig={}) => fetchData(`/admin/procedures/${id}`,{},{toastError:true, setToken:true, ...customConfig}).then((res)=>{
-    console.log("res test",  res?.notification_date)
-    return res
-  });
+  return (id: string, customConfig: FetchCustomConfig={}) => fetchData(`/admin/procedures/${id}`,{},{toastError:true, setToken:true, ...customConfig})
 };
 export const useGetProcedureBySlugService = () => {
   const fetchData = useFetchApi<ProcedureDto, ProcedureDto>(ProcedureDto);
   return (slug: string, customConfig: FetchCustomConfig={}) => fetchData(`/admin/procedures-details/${slug}`, {}, {setToken:true, ...customConfig});
 };
+export const useDeleteProcedureService = () =>{
+  const fetchData = useFetchApi();
+  return (id: number, customConfig: FetchCustomConfig={}) => fetchData(`/admin/procedures/${id}`, {method: 'Delete'}, {toastError:true, setToken:true, ...customConfig})
+}

@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="flex flex-col w-full items-center justify-center">
         <div v-if="!data" class="flex flex-col items-center justify-center min-h-screen">
             <span class="loading loading-spinner text-neutral"></span>
         </div>
@@ -29,7 +29,8 @@ const runAnimation = () => {
         ease: "power1"
     })
     .from(".process", {
-        y: "100%",
+        // y: "100%",
+        y: 100,
         duration: 2,
         autoAlpha: 0,
         ease: "power4",

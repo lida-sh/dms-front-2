@@ -1,6 +1,6 @@
 <template>
-    <NuxtLink :to="`/sub-processes/${item.slug}`" class="bg-indigo-100 border border-indigo-400 flex flex-col gap-2 items-center justify-center px-6 py-2 rounded-lg text-sm font-medium">
-       <span class="">زیر فرایند {{item.title}}</span>
+    <NuxtLink :to="`/sub-processes/${item.slug}`" class="bg-indigo-100 border border-indigo-400 flex flex-col gap-2 items-center justify-center px-4 py-2 rounded-lg text-sm font-medium">
+       <span class="whitespace-nowrap">زیر فرایند {{item.title}}</span>
        <span class="en"> {{item.code}}</span>
     </NuxtLink>
 </template>
