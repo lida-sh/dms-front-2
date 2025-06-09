@@ -1,5 +1,5 @@
 <template>
-    <div class="card lg:w-[50rem] xl:w-[60rem] 2xl:w-[80rem] h-full flex-col text-white shadow-md">
+    <div class="card w-full lg:w-[50rem] xl:w-[60rem] 2xl:w-[80rem] h-full flex-col text-white shadow-md">
         <!-- <div class="hidden lg:flex gap-4 absolute"> -->
         <button
             class="hidden lg:flex absolute z-10 top-1/2 -translate-y-1/2 -right-20 w-12 h-12 bg-[#5c5d74] text-white rounded-xl  items-center justify-center border border-gray-500 border-opacity-70"
@@ -31,7 +31,7 @@
 
         </div>
         <div class="bg-[#4749e3] h-[25rem] rounded-t-3xl px-10 lg:px-20 pt-16">
-            <h1 class="text-lg lg:text-3xl font-bold mb-12"><span class="">{{ docTypesSlides[currentSlide].title }}</span> (<span
+            <h1 class="text-lg lg:text-2xl xl:text-3xl font-bold mb-12"><span class="">{{ docTypesSlides[currentSlide].title }}</span> (<span
                     class="en">{{ docTypesSlides[currentSlide].latinTitle }}</span>) :</h1>
             <p class="text-sm lg:text-lg font-bold mb-4">{{ docTypesSlides[currentSlide].description }}</p>
             <p class="text-sm lg:text-lg font-bold">کد {{ docTypesSlides[currentSlide].title }} با {{

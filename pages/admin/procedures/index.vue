@@ -2,7 +2,7 @@
   <div class="px-[3rem]  pb-[0.2rem] min-h-screen">
 
     <div class="flex flex-col gap-4">
-      <Form :validation-schema="schema"
+      <Form 
         class="card p-8 flex flex-col sm:grid sm:grid-cols-6 gap-4 w-full rounded-box shadow-lg bg-white">
         <app-select-input name="architecture_id" :options="architectures!" :label="$t('architecture_id')"
           class="sm:col-span-2" @selectedItem="changeSelectItem"></app-select-input>
@@ -10,7 +10,7 @@
           @selectedItem="(process) => handleFilter({ process_id: process })"></app-select-input>
         <app-select-input name="docType" :options-list="doctypes" :label="$t('docType')"
           @selectedItem="(docType) => handleFilter({ docType: docType })" class="sm:col-span-2"></app-select-input>
-        <app-search-input name="search" label="جستجو" v-model="searchWord" class="sm:col-span-2"
+        <app-search-input name="search" label="جستجو" v-model="searchWord" class="sm:col-span-2" @input="checkSearchBox"
           @clickSearch="searchWord !== '' && handleFilter({ search: searchWord })"></app-search-input>
         <div class="form-control sm:col-span-2">
           <label class="flex justify-between items-center px-1 pb-1.5" for="status">
@@ -139,7 +139,7 @@ import { useGetProceduresService } from "~/composables/procetures/useProcedure.s
 import { useDeleteProcedureService } from "~/composables/procetures/useProcedure.service";
 import { ToastEnum, ButtonVariantEnum } from "~/types";
 const loading = ref(false)
-const query = ref({})
+const query = ref<any>({})
 const { schema } = useSubProcessFilter()
 const searchWord = ref("")
 const status = ref(null)
@@ -200,6 +200,17 @@ const handleFilter = (link) => {
   query.value = { ...route.query, ...link }
   router.push({ query: query.value })
   refresh()
+}
+function checkSearchBox(element) {
+  console.log(element.target.value)
+  if (element.target.value == '') {
+    if (query.value.hasOwnProperty('search')) {
+      delete query.value.search
+    }
+
+    router.push({ query: query.value })
+    refresh()
+  }
 }
 const procedureIdForDelete = ref<number>(-1)
 const deleteProcedureConfirmation = (id: number) => {

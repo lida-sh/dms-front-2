@@ -80,7 +80,7 @@
                   class="btn btn-outline border-amber-700 hover:border-none border-2 btn-sm text-amber-600 text-xs hover:bg-gradient-to-b hover:from-amber-900 hover:to-amber-400 hover:text-white">
                   ویرایش
                 </NuxtLink>
-                <button
+                <button @click="deleteProcessConfirmation(item.id)"
                   class="btn btn-outline border-red-700 hover:border-none border-2 btn-sm text-red-600 text-xs hover:bg-gradient-to-b hover:from-red-900 hover:to-red-400 hover:text-white">حذف</button>
               </td>
 
@@ -96,6 +96,28 @@
         <!-- <button class="join-item btn btn-active">2</button> -->
       </div>
     </div>
+    <app-modal v-model="deleteConfirmation">
+      <template #title>
+        <h3 class="text-sm xl:text-base font-bold text-blue-800">تایید حذف فرایند</h3>
+      </template>
+      <div class="flex flex-col overflow-visible justify-center gap-10 mt-8">
+        <h3 class="text-sm xl:text-base">آیا از حذف فرایند مورد نظر مطمئن هستید؟</h3>
+      </div>
+      <template #actions>
+        <div class="flex justify-between items-center w-full">
+          <app-button :loading="loading"
+            class="btn border-2 border-[#4749e3] text-[#4749e3] hover:bg-[#4749e3] hover:text-white hover:border-[#4749e3]"
+            @click="deleteProcessconfirmed()">حذف
+            فرایند</app-button>
+          <button
+            class="btn border-2 border-[#4749e3] text-[#4749e3] hover:bg-[#4749e3] hover:text-white hover:border-[#4749e3]"
+            @click="deleteConfirmation = false">بازگشت به
+            لیست
+            فرایندها</button>
+        </div>
+      </template>
+
+    </app-modal>
   </div>
 </template>
 
@@ -105,10 +127,14 @@ definePageMeta({
 })
 import { TailwindPagination } from 'laravel-vue-pagination';
 import { useGetBaseArchitecturesService } from "~/composables/architectures/useArchitecture.service";
-import { useGetProcessesService } from '~/composables/processes/useProcess.service';
+import { useGetProcessesService, useDeleteProcessService } from '~/composables/processes/useProcess.service';
 import { useProcessFilter } from '~/composables/processes/useProcess.validation';
 import { Form } from "vee-validate";
 const query = ref({})
+import { ToastEnum, ButtonVariantEnum } from "~/types";
+const { showToast } = useToast();
+const loading = ref(false)
+const deleteConfirmation = ref(false)
 const { schema } = useProcessFilter()
 const searchWord = ref("")
 const status = ref(null)
@@ -142,11 +168,24 @@ const handleFilter = (link) => {
   refresh()
   // console.log("query", query.value)
 }
-// watch(() => route.query, (value) => {
-//   if (value == null) {
-//     status.value = null
-//   }
-// })
+const processIdForDelete = ref<number>(-1)
+const deleteProcessConfirmation = (id: number) => {
+  deleteConfirmation.value = true
+  processIdForDelete.value = id
+}
+const deleteProcess = useDeleteProcessService()
+const deleteProcessconfirmed = () => {
+  loading.value = true
+  deleteProcess(processIdForDelete.value).then((res)=>{
+    if(res !== undefined){
+      refresh()
+      showToast({ message: "فرایند مورد نظر حذف شد.", type: ToastEnum.success })
+    }
+  }).finally(()=>{
+    loading.value = false
+    deleteConfirmation.value = false
+  })
+}
 
 </script>
 

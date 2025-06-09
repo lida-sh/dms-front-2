@@ -78,3 +78,7 @@ export const useGetProcessBySlugService = ()=>{
   return (slug:string, customConfig: FetchCustomConfig)=>fetchData(`/admin/processes-details/${slug}`, {}, {setToken:true, ...customConfig})
     
 }
+export const useDeleteProcessService = () =>{
+  const fetchData = useFetchApi();
+  return (id: number, customConfig: FetchCustomConfig={}) => fetchData(`/admin/processes/${id}`, {method: 'Delete'}, {toastError:true, setToken:true, ...customConfig})
+}

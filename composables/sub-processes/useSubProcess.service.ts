@@ -127,3 +127,7 @@ export const useGetSubProcessBySlugService = () => {
       { setToken: true, toastError: true, ...customConfig }
     );
 };
+export const useDeleteSubProcessService = () =>{
+  const fetchData = useFetchApi();
+  return (id: number, customConfig: FetchCustomConfig={}) => fetchData(`/admin/sub-processes/${id}`, {method: 'Delete'}, {toastError:true, setToken:true, ...customConfig})
+}

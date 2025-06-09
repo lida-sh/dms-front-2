@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <!-- <div class=""> -->
     <!-- <div  class="flex items-center justify-center w-full bg-[#F7F7F7] non-select h-screen">
       <span class="loading loading-spinner loading-md"></span>
     </div> -->
@@ -67,7 +67,7 @@
     <div>
 
     </div>
-  </div>
+
 </template>
 
 <script setup lang="ts">

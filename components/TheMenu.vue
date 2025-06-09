@@ -10,8 +10,8 @@
             </button>
             <div ref="target"
                 class="z-20 flex flex-col lg:flex-row lg:w-auto absolute lg:static bg-white inset-x-10 h-0 lg:h-auto invisible lg:visible lg:bg-transparent lg:space-x-1 xl:space-x-2 lg:space-x-reverse rounded-box lg:rounded-none border lg:border-none shadow-lg lg:shadow-none mt-1 lg:mt-0 divide-y divide-gray-200 lg:divide-none">
-                <div class="py-3 w-full group flex xl:flex-row flex-col xl:px-3"
-                    v-for="(item, index) in links" :key="`menu-${index}`">
+                <div class="py-3 w-full group flex xl:flex-row flex-col xl:px-3" v-for="(item, index) in links"
+                    :key="`menu-${index}`">
                     <router-link :to="item.to" class=" text-sm lg:text-base">
                         <div class="w-auto xl: hover:text-blue-600"
                             :class="{ 'text-blue-800  xl:bg-transparent': menu[index] }">
@@ -21,7 +21,8 @@
                                 </div>
                                 <div v-if="item.child">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke-width="2.5" stroke="currentColor" class="size-3 group-hover:rotate-90 transition-all duration-300">
+                                        stroke-width="2.5" stroke="currentColor"
+                                        class="size-3 group-hover:rotate-90 transition-all duration-300">
                                         <path stroke-linecap="round" stroke-linejoin="round"
                                             d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                                     </svg>
@@ -30,9 +31,9 @@
                         </div>
                     </router-link>
                     <div
-                        class="relative xl:absolute xl:-mr-12 z-20 self-stretch xl:top-full max-h-0 group-hover:max-h-96 xl:h-auto overflow-hidden transition-all duration-300 shadow-xl rounded-b-xl">
+                        class="relative lg:absolute xl:-mr-12 z-20 self-stretch lg:top-full max-h-0 group-hover:max-h-96 lg:h-auto overflow-hidden transition-all duration-300 shadow-none lg:shadow-xl rounded-b-xl">
                         <div :id="`menu-${index}`"
-                            class="xl:right-0 w-full bg-white overflow-hidden xl:rounded-b-[0.625rem] z-20 divide-y">
+                            class="lg:right-0 w-full bg-white overflow-hidden lg:rounded-b-[0.625rem] z-20 divide-y">
                             <template v-for="(subMenuItem, i) in item.subMenu" :key="`sub-menu-${subMenuItem.title}`">
                                 <div>
                                     <NuxtLink :to="subMenuItem.to"
@@ -46,12 +47,15 @@
                 </div>
             </div>
         </section>
+        <router-link class="text-gray-600 font-bold" to="/">
+            <img class="flex items-center justify-center h-14" src="/assets/images/file-icons/logo.png" alt="شرکت مخابرات ایران">
+        </router-link>
     </div>
 </template>
 
 <script setup lang="ts">
 const links = [
-    //   { title: "صفحه اصلی", to: "/" },
+    { title: "صفحه اصلی", to: "/" },
     {
         title: "معماری سازمانی", to: "/", child: true,
         subMenu: [
@@ -63,15 +67,15 @@ const links = [
             { title: "معاونت تنظیم مقررات", to: "/" },
         ],
     },
-    { title: "مستندات درون سازمانی", to: "/", child: true,
+    {
+        title: "مستندات درون سازمانی", to: "/", child: true,
         subMenu: [
             { title: "فرایندها", to: "/processes" },
             { title: "زیرفرایندها", to: "/sub-processes" },
             { title: "روش های اجرایی، دستورالعمل ها، فرم ها و ...", to: "/procedures" },
-            
+
         ],
-     },
-    { title: "مستندات برون سازمانی", to: "/" },
+    },
     { title: "اقدام اصلاحی", to: "/" },
     { title: "گزارش ها", to: "/" },
     { title: "سوابق  مطالعاتی", to: "/" },
