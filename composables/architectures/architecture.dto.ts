@@ -5,9 +5,9 @@ import type { InferType } from "yup";
 import { ProcessTreeStructDto } from "../processes/process.dto";
 import {UserBaseDto} from "../users/user.dto"
 export class ArchitectureBaseDto {
-  @Expose()
+  // @Expose()
   id: number;
-  @Expose()
+  @Expose({toClassOnly:true})
   title: string;
   @Expose()
   get displayTitle() {
@@ -26,7 +26,7 @@ export class ArchitectureBaseDto {
 export class ArchitectureClientBaseDto {
   @Expose()
   title: string;
-  @Expose()
+  @Expose({toClassOnly:true})
   get displayTitle() {
     if (this.type === "assistance") {
       return "معاونت " + this.title;
@@ -42,6 +42,8 @@ export class ArchitectureDto extends ArchitectureBaseDto {
   @Expose()
   slug: string;
   @Expose()
+  status: string;
+  @Expose()
   @Type(() => FileDto)
   files: FileDto[];
   @Expose()
@@ -49,8 +51,8 @@ export class ArchitectureDto extends ArchitectureBaseDto {
   @Expose()
   @Type(() => UserBaseDto)
   user: UserBaseDto;
-  @Expose()
-  created_at: string;
+  // @Expose()
+  // created_at: string;
 }
 export class ArchitectureDtoPagination {
   @Expose()

@@ -18,6 +18,7 @@ export const useEditArchitecture = (id:number,fileIdsForDelete:number[]) => {
             type: ToastEnum.success,
           });
           resetForm();
+          navigateTo("/admin/architectures")
         }
       })
       .finally(() => {

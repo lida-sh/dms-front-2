@@ -18,6 +18,8 @@ export const useCreateArchitecture = () => {
             type: ToastEnum.success,
           });
           resetForm();
+          navigateTo("/admin/architectures")
+
         }
       })
       .finally(() => {

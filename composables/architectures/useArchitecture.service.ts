@@ -70,8 +70,20 @@ export const useGetBaseArchitecturesService = ()=>{
 export const useGetArchitectureByIdService = ()=>{
   const fetchData = useFetchApi<ArchitectureDto, ArchitectureDto>(ArchitectureDto);
   return (id:string, customConfig: FetchCustomConfig = {})=>fetchData(`/admin/architectures/${id}`, {}, {setToken:true, toastError: true, ...customConfig})
+
 }
+
+export const useGetArchitectureBySlugService = () => {
+  const fetchData = useFetchApi<ArchitectureDto, ArchitectureDto>(ArchitectureDto);
+  return (slug: string, customConfig: FetchCustomConfig={}) => fetchData(`/admin/architectures-details/${slug}`, {}, {setToken:true, ...customConfig}).then((res)=>{
+   console.log("test", res) 
+  });
+};
 export const useArchitectureStructureService=()=>{
    const fetchData = useFetchApi<ArchitectureTreeStructDto, ArchitectureTreeStructDto>(ArchitectureTreeStructDto);
    return (slug:string, customConfig: FetchCustomConfig = {})=>fetchData(`/architectures/${slug}`, {}, {toastError: true, ...customConfig})
+}
+export const useDeleteArchitectureService = () =>{
+  const fetchData = useFetchApi();
+  return (id: number, customConfig: FetchCustomConfig={}) => fetchData(`/admin/architectures/${id}`, {method: 'Delete'}, {toastError:true, setToken:true, ...customConfig})
 }
