@@ -76,7 +76,8 @@ export const useGetArchitectureByIdService = ()=>{
 export const useGetArchitectureBySlugService = () => {
   const fetchData = useFetchApi<ArchitectureDto, ArchitectureDto>(ArchitectureDto);
   return (slug: string, customConfig: FetchCustomConfig={}) => fetchData(`/admin/architectures-details/${slug}`, {}, {setToken:true, ...customConfig}).then((res)=>{
-   console.log("test", res) 
+   console.log("test1", res) 
+   return res
   });
 };
 export const useArchitectureStructureService=()=>{

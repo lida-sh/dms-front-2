@@ -10,7 +10,7 @@
                     <app-select-input name="process_id" :options="processes!" :label="$t('process_id')"
                         class="col-span-3"></app-select-input>
                     <app-text-input name="title" :label="$t('title')" class="col-span-1 sm:col-span-6"></app-text-input>
-                    <app-code-input name="code" :label="$t('code')" class="col-span-2"></app-code-input>
+                    <app-code-input name="code" :label="$t('code')" class="col-span-2 font-normal"></app-code-input>
                     <app-select-input name="status" :options-list="options" :label="$t('status')"
                         class="col-span-2"></app-select-input>
                     <div class="col-span-1 sm:col-span-2 ">
@@ -113,4 +113,7 @@ const submit = (values, { setErrors, resetForm }: FormActions<any>) => {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.en{
+    font-family:Arial, Helvetica, sans-serif;
+}</style>

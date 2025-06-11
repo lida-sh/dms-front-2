@@ -3,7 +3,7 @@
         <div v-if="pending" class="flex flex-col items-center justify-center min-h-screen">
             <span class="loading loading-spinner text-neutral"></span>
         </div>
-        <div v-else class="flex flex-col items-center justify-center px-[3rem] py-20">
+        <div v-else class="flex flex-col w-full items-center justify-center px-[3rem] py-20">
             <div class="bg-white shadow-lg border rounded-xl p-10 sm:p-[5rem] w-full min-h-screen flex flex-col gap-4">
                 <h1 class="text-xl font-bold ">زیر فرایند <span class="text-blue-700">{{ data?.title }}</span></h1>
                 <div class="flex flex-col sm:flex-row justify-between items-center">

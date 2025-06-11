@@ -1,5 +1,5 @@
 <template>
-  <div class="px-[3rem]  pb-[0.2rem] min-h-screen">
+  <div class="pr-[2rem] pl-4 pb-[0.2rem] min-h-screen">
 
     <div class="overflow-x-auto flex flex-col gap-4">
       <Form 
@@ -62,7 +62,7 @@
             <tr v-for="(item, index) in data?.subProcesses" class="hover divide-y">
               <td class="text-center">{{ ((data!.meta.current_page - 1) * data!.meta.per_page) + index + 1 }}</td>
               <td class="text-center">{{ item.title }}</td>
-              <td class="text-center">{{ item.code }}</td>
+              <td class="text-center whitespace-nowrap">{{ item.code }}</td>
               <td class="text-center">{{ item.architecture.title }}</td>
               <td class="text-center">{{ item.process.title }}</td>
               <td class="text-center">

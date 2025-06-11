@@ -5,9 +5,9 @@ import type { InferType } from "yup";
 import { ProcessTreeStructDto } from "../processes/process.dto";
 import {UserBaseDto} from "../users/user.dto"
 export class ArchitectureBaseDto {
-  // @Expose()
+  @Expose()
   id: number;
-  @Expose({toClassOnly:true})
+  @Expose()
   title: string;
   @Expose()
   get displayTitle() {

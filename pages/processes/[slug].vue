@@ -3,18 +3,14 @@
         <div v-if="pending" class="flex flex-col w-full items-center justify-center min-h-screen">
             <span class="loading loading-spinner text-neutral"></span>
         </div>
-        <div v-else class="flex flex-col items-center justify-center px-[3rem] py-16">
+        <div v-else class="flex flex-col w-full items-center justify-center px-[3rem] py-16">
             <div class="bg-white shadow-lg border rounded-xl p-10 sm:p-[5rem] w-full min-h-screen flex flex-col gap-4">
                 <h1 class="text-xl font-bold "> فرایند <span class="text-blue-700">{{ data?.title }}</span></h1>
                 <div class="flex flex-col sm:flex-row justify-between items-center">
                     <h6 class="text-base font-medium"> کد زیر فرایند: {{ data?.code }}</h6>
                     <a class="btn btn-success" href="/admin/processes">بازگشت به لیست فرایندها</a>
                 </div>
-                <h6 class="text-base font-medium">
-                    وضعیت:
-                    <span v-if="data?.status" class="text-green-600">فعال</span>
-                    <span v-else class="text-red-600">غیر فعال</span>
-                </h6>
+                
                 <h6 class="text-base font-medium">زیر مجموعه:
                     <span v-if="data?.architecture.type == 'assistance'" class="text-blue-700">معاونت </span>
                     <span v-else-if="data?.architecture.type == 'administration'" class="text-blue-700">اداره کل

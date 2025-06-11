@@ -10,14 +10,7 @@
                     <h6 class="text-base font-medium"> کد معماری: {{ data?.code }}</h6>
                     <a class="btn btn-success" href="/admin/architectures">بازگشت به لیست سندها</a>
                 </div>
-                {{ data }}
-                <h6 class="text-base font-medium">زیر مجموعه:
-                    <span v-if="data?.architecture.type == 'assistance'" class="text-blue-700">معاونت </span>
-                    <span v-else-if="data?.architecture.type == 'administration'" class="text-blue-700">اداره کل
-                    </span><span class="text-blue-700"> {{
-                        data?.architecture.title }}</span>
-                    <span class=""> فرایند </span><span class="text-blue-700">{{ data?.process.title }}</span>
-                </h6>
+                
                 <p class="text-sm font-normal mb-4"><span class="text-base font-medium">توضیحات:</span> {{
                     data?.description
                     }}
