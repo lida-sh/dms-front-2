@@ -66,7 +66,6 @@
                         بروز رسانی و انتشار فایل ها و مستندات و گزارشات</h2>
                 </div>
             </div>
-
             <div class="w-full flex max-w-[100rem]">
                 <div class="p-10 overflow-hidden">
                     <app-slider :items="items">
@@ -84,9 +83,94 @@
                     <define-doc-card></define-doc-card>
                 </div>
             </div>
+            <div class="w-full flex flex-col gap-4 items-start justify-center relative mt-[20rem] px-8 xl:px-[18rem] ">
+                <h2 class="text-md font-bold sm:text-xl lg:text-2xl mb-10 mr-10">سوالات متداول</h2>
+                <app-collaps>
+                    <template #title>
+                        <p class="text-sm font-bold sm:text-md lg:text-lg">اقدام اصلاحی و پیشگیرانه چیست؟</p>
+                    </template>
+                    <div class="flex flex-col gap-2 w-full text-sm sm:text-md lg:text-lg py-10 ">
+                        <p class="">اقدام اصلاحی: اقدامی برای برطرف سازی علت عدم انطباق و یا شرایط نامطلوب بالفعل که
+                            به‌منظور
+                            جلوگیری از وقوع آن‌ها انجام می‌گیرد .</p>
+                        <p class="">اقدام پیشگیرانه: اقدامی برای حذف علل به وجود آورنده عدم انطباق بالقوه و یا سایر
+                            شرایط نامطلوب
+                            بالقوه و به‌منظور پیشگیری از وقوع مجدد آن‌ها.
 
+                        </p>
+                    </div>
+                </app-collaps>
+                <app-collaps>
+                    <template #title>
+                        <p class="text-sm font-bold sm:text-md lg:text-lg">اگر فرایند یا زیر فرایند مشخص شده با وظایف
+                            ساختار مربوطه مطابقت نداشته باشد چه باید کرد؟</p>
+                    </template>
+                    <div class="flex flex-col gap-2 w-full text-sm sm:text-md lg:text-lg py-10 ">
+                        <p class="">در صورتی که در واحدهای مجری فرایند با بررسی
+                            و تحلیل فرایندها، اصلاح یا حذف یک فرایند، ادغام چند فرایند و یا پیشنهاد فرایند جدید را مفید
+                            تشخیص دادند
+                            ضروری است مسئول فرایند و یا مسئول کنترل کیفیت فرایند(ضمن هماهنگی با مسئول فرآیند ذی‌ربط)،
+                            اقدام به تنظیم
+                            پیشنهاد درآخرین نسخه فرم اقدام اصلاحی و پیشگیرانه با کد FR-SBD-05 و ارسال آن به اداره کل
+                            کیفیت و فرایند
+                            نماید. بدین منظور لازم است، هر پیشنهاد در فرمی مجزا از آخرین ویرایش معتبر از فرم اقدام
+                            اصلاحی و
+                            پیشگیرانه با کد FR-SBD-05 تکمیل و ارسال گردد.
+                            در صورت ضرورت اصلاح در شاخص‌ها، معیار اندازه‌گیری، ضوابط امتیاز دهی شاخص‌ها و یا پیشنهاد
+                            شاخص جدید، از
+                            فرمت خام آخرین نسخه فرم پایش و ارزیابی خروجی فرایند با کد FR-SBD-01 استفاده گردد. این فرم
+                            نیز می بایست
+                            ضمن هماهنگی با مسئول فرایند و نیز مالک فرایند تنظیم، امضاء و ارسال شود.
+                        </p>
+                    </div>
+                </app-collaps>
+                <app-collaps>
+                    <template #title>
+                        <p class="text-sm font-bold sm:text-md lg:text-lg">آیا بعد از اقدام اصلاحی ارزیابی ها بر اساس
+                            تغییرات جدید صورت میگیرد؟</p>
+                    </template>
+                    <div class="flex flex-col gap-2 w-full text-sm sm:text-md lg:text-lg py-10 ">
+                        <p class="">تا زمانیکه اصلاحات و پیشنهادات ارسال شده به اداره کل کیفیت و فرایند به تصویب نرسد،
+                            پایش فرایندها
+                            و شاخص‌ها بر مبنای مصوبات و توافقات پیشین خواهد بود. </p>
+                    </div>
+                </app-collaps>
+                <app-collaps>
+                    <template #title>
+                        <p class="text-sm font-bold sm:text-md lg:text-lg">ارزیابی فرایندی بر چه اساسی صورت میگیرد؟</p>
+                    </template>
+                    <div class="flex flex-col gap-2 w-full text-sm sm:text-md lg:text-lg py-10 ">
+                        <p class="">فرایندهای حوز‌ه‌های ستادی، سالانه دو نوبت (مهرماه و فروردین‌ماه) توسط اداره کل کیفیت
+                            و فرایند
+                            معاونت راهبرد و توسعه کسب‌وکار مورد پایش و ارزیابی قرار خواهد گرفت. دستورالعمل اجرائی پایش فرایندهای حوزه‌های ستادی  به کد فرایندی IN-SBD-11-01 دستورالعمل اجرائی پایش
+                            فرایندهای
+                            حوزه‌های ستادی، به منظور ایجاد رویه مشترک در حین مراحل مختلف پایش، شفاف کردن مسیر ارزیابی و
+                            نیز کاستن از
+                            ابهامات و پرسش‌های احتمالی تدوین شده است تا مسئولین فرایندها، مدیران مجری فرایند و کارشناسان
+                            حوزه‌های
+                            مختلف ستادی با همکاری و تعامل مناسب با مسئولان کنترل کیفیت فرایندها به فراهم‌سازی مستندات و
+                            تنظیم دقیق
+                            فرم‌ها، مطابق مفاد ذکر شده در این دستورالعمل مبادرت نمایند.</p>
 
-            <div class="relative  mt-80 w-full">
+                    </div>
+                </app-collaps>
+                <app-collaps>
+                    <template #title>
+                        <p class="text-sm font-bold sm:text-md lg:text-lg">اقدام اصلاحی و پیشگیرانه چیست؟</p>
+                    </template>
+                    <div class="flex flex-col gap-2 w-full text-sm sm:text-md lg:text-lg py-10 ">
+                        <p class="">اقدام اصلاحی: اقدامی برای برطرف سازی علت عدم انطباق و یا شرایط نامطلوب بالفعل که
+                            به‌منظور
+                            جلوگیری از وقوع آن‌ها انجام می‌گیرد .</p>
+                        <p class="">اقدام پیشگیرانه: اقدامی برای حذف علل به وجود آورنده عدم انطباق بالقوه و یا سایر
+                            شرایط نامطلوب
+                            بالقوه و به‌منظور پیشگیری از وقوع مجدد آن‌ها.
+
+                        </p>
+                    </div>
+                </app-collaps>
+            </div>
+            <div class="relative  mt-20 w-full">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="w-full">
                     <path fill="#adb5bd" fill-opacity="1"
                         d="M0,192L34.3,202.7C68.6,213,137,235,206,224C274.3,213,343,171,411,165.3C480,160,549,192,617,202.7C685.7,213,754,203,823,176C891.4,149,960,107,1029,90.7C1097.1,75,1166,85,1234,74.7C1302.9,64,1371,32,1406,16L1440,0L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z">
@@ -95,70 +179,15 @@
             </div>
             <div class="bg-[#adb5bd] w-full -mt-1 p-4">
                 <div class="flex flex-col gap-10 lg:gap-24 items-center justify-center w-full ">
-                    <h2 class="text-md font-bold sm:text-xl lg:text-2xl">نمودارهای ارزیابی فرایندی حوزه های ستادی</h2>
-                    <ClientOnly>
-                        <app-tabs :tabs="tabItems">
-                            <template #tab-0>
-                                <div>
-                                    <div class="flex items-center justify-center">
-                                        <Chart v-if="isLargeScreen" :data="data1402" :labels="label1402" :style="'architec'"></Chart>
-                                        <ChartMob v-else :data="data1402" :labels="label1402" :style="'architec'"></ChartMob>
-                                    </div>
-                                </div>
-                            </template>
-                            <template #tab-1>
-                                <div>
-                                    <div class="flex items-center justify-center">
-                                        <Chart v-if="isLargeScreen" :data="data1402" :labels="label1402" :style="'architec'"></Chart>
-                                        <ChartMob v-else :data="data1402" :labels="label1402" :style="'architec'"></ChartMob>
-                                    </div>
-                                </div>
-                            </template>
-                            <template #tab-2>
-                                <div>
-                                    <div class="flex items-center justify-center">
-                                        <Chart v-if="isLargeScreen" :data="data1402" :labels="label1402" :style="'architec'"></Chart>
-                                        <ChartMob v-else :data="data1402" :labels="label1402" :style="'architec'"></ChartMob>
-                                    </div>
-                                </div>
-                            </template>
-                        </app-tabs>
-                    </ClientOnly>
-                    <ClientOnly>
-                        <app-tabs :tabs="tabItems">
-                            <template #tab-0>
-                                <div>
-                                    <div class="flex items-center justify-center">
-                                        <Chart v-if="isLargeScreen" :data="dataProcess1402" :labels="labelProcess1402" :style="'process'"></Chart>
-                                        <ChartMob v-else :data="dataProcess1402" :labels="labelProcess1402" :style="'process'"></ChartMob>
-                                    </div>
-                                </div>
-                            </template>
-                            <template #tab-1>
-                                <div>
-                                    <div class="flex items-center justify-center">
-                                        <Chart v-if="isLargeScreen" :data="dataProcess1402" :labels="labelProcess1402" :style="'process'"></Chart>
-                                        <ChartMob v-else :data="dataProcess1402" :labels="labelProcess1402" :style="'process'"></ChartMob>
-                                    </div>
-                                </div>
-                            </template>
-                            <template #tab-2>
-                                <div>
-                                    <div class="flex items-center justify-center">
-                                        <Chart v-if="isLargeScreen" :data="dataProcess1402" :labels="labelProcess1402" :style="'process'"></Chart>
-                                        <ChartMob v-else :data="dataProcess1402" :labels="labelProcess1402" :style="'process'"></ChartMob>
-                                    </div>
-                                </div>
-                            </template>
-                        </app-tabs>
-                    </ClientOnly>
+
+
                 </div>
 
             </div>
         </section>
     </div>
     <div v-else
-        class="flex flex-col lg:flex-row justify-center items-start w-full gap-4 px-10 py-14 bg-[#F7F7F7] h-screen">
+        class="flex flex-col lg:flex-row justify-center items-start w-full gap-4 px-10 py-20       bg-[#F7F7F7] min-h-screen">
         <section class="px-4 w-full h-full flex flex-col items-start gap-4 max-w-[100rem]">
             <h1 class=" font-sm xl:text-base font-bold mb-4 mr-4">نتایج جستجو:</h1>
             <process-result-search v-if="data?.processes || data?.data?.processes"
@@ -175,7 +204,6 @@
                 به
                 صفحه اصلی</app-button>
         </section>
-
     </div>
 </template>
 
@@ -187,15 +215,15 @@ import ChartMob from '~/components/ChartMob.vue';
 import { useSearchService } from '~/composables/home/home.service';
 import { ToastEnum } from '~/types';
 import VersionControl from "~~/components/icons/slider/VersionControl.vue"
-const tabItems = [
-    { label: 'ارزیابی سال 1400' },
-    { label: 'ارزیابی سال 1401' },
-    { label: 'ارزیابی سال 1402' },
-]
-const data1402 = [35, 55, 68, 28, 31, 22, 21, 28, 27, 0]
-const label1402 = ['معاونت شبکه', 'معاونت تنظیم مقررات', 'معاونت توسعه سرمایه انسانی', 'معاونت راهبرد و توسعه کسب و کار','معاونت تجاری و خدمات مشتریان','معاونت فنادری اطلاعات','معاونت پشتیبانی و زنجیره تامین','معاونت مالی', 'اداره کل ارتباطات و امور بین الملل']
-const labelProcess1402 = ['برنامه‌ریزی نیروی انسانی و امور کارکنان', 'توسعه سازمان', 'مدیریت عملکرد و جبران خدمت', 'رفاه و سلامت', 'آموزش و توسعه شایستگی فردی', 'استراتژی بازاریابی و فروش', 'توسعه محصول جدید', 'فروش خانگی', 'فروش عمده', ' فروش تجاری', 'عملیات و پشتیبانی از کانال‌های فروش و خدمات پس از فروش', 'مدیریت تجربه مشتری', 'ارزیابی کیفیت محصولات و خدمات', 'مدیریت صورتحساب و وصول مطالبات', 'مطالعات و برنامه‌ریزی راهبردی', 'مدیریت عملکرد راهبردی', 'مدیریت پروژه', 'برنامه و بودجه', 'کنترل و تضمین درآمد', 'بهره‌برداری از بازار سرمایه و امور سهام', 'حسابداری مالی', 'حسابداری مدیریت', 'خزانه‌داری و تأمین مالی', 'راهبرد و حاکمیت فناوری اطلاعات', 'پشتیبانی سیستم‌های سازمانی', 'پشتیبانی سیستم‌های عملیاتی', 'پشتیبانی سیستم‌های کسب‌وکار', 'درگاه‌ها و خدمات دیجیتال', 'زیرساخت و شبکه فناوری اطلاعات', 'راهبرد و معماری شبکه', 'طراحی شبکه', 'نظارت، آزمایش و تحویل', 'مدیریت عملیات شبکه', 'تضمین کیفیت خدمات شبکه', 'پشتیبانی عملیات شبکه', 'تنظیم مقررات', 'نظارت', 'ارتباط با مجامع و بررسی استاندارد', 'برنامه‌ریزی راهبردی زنجیره تأمین', 'مدیریت معاملات', 'پشتیبانی و مدیریت دارائي‌ها و اموال', 'ارتباطات و امور بین‌الملل']
-const dataProcess1402 = [68, 59, 78, 74, 48, 20, 40, 36, 27, 35, 20, 0, 35, 40, 19, 42, 31, 17.5, 36, 33, 20, 26, 22.5, 0, 11, 49.2, 42.9, 22.6, 12.2, 35, 20, 42, 48, 31, 0, 61, 63, 46, 33, 26, 24, 0]
+// const tabItems = [
+//     { label: 'ارزیابی سال 1400' },
+//     { label: 'ارزیابی سال 1401' },
+//     { label: 'ارزیابی سال 1402' },
+// ]
+// const data1402 = [35, 55, 68, 28, 31, 22, 21, 28, 27, 0]
+// const label1402 = ['معاونت شبکه', 'معاونت تنظیم مقررات', 'معاونت توسعه سرمایه انسانی', 'معاونت راهبرد و توسعه کسب و کار','معاونت تجاری و خدمات مشتریان','معاونت فنادری اطلاعات','معاونت پشتیبانی و زنجیره تامین','معاونت مالی', 'اداره کل ارتباطات و امور بین الملل']
+// const labelProcess1402 = ['برنامه‌ریزی نیروی انسانی و امور کارکنان', 'توسعه سازمان', 'مدیریت عملکرد و جبران خدمت', 'رفاه و سلامت', 'آموزش و توسعه شایستگی فردی', 'استراتژی بازاریابی و فروش', 'توسعه محصول جدید', 'فروش خانگی', 'فروش عمده', ' فروش تجاری', 'عملیات و پشتیبانی از کانال‌های فروش و خدمات پس از فروش', 'مدیریت تجربه مشتری', 'ارزیابی کیفیت محصولات و خدمات', 'مدیریت صورتحساب و وصول مطالبات', 'مطالعات و برنامه‌ریزی راهبردی', 'مدیریت عملکرد راهبردی', 'مدیریت پروژه', 'برنامه و بودجه', 'کنترل و تضمین درآمد', 'بهره‌برداری از بازار سرمایه و امور سهام', 'حسابداری مالی', 'حسابداری مدیریت', 'خزانه‌داری و تأمین مالی', 'راهبرد و حاکمیت فناوری اطلاعات', 'پشتیبانی سیستم‌های سازمانی', 'پشتیبانی سیستم‌های عملیاتی', 'پشتیبانی سیستم‌های کسب‌وکار', 'درگاه‌ها و خدمات دیجیتال', 'زیرساخت و شبکه فناوری اطلاعات', 'راهبرد و معماری شبکه', 'طراحی شبکه', 'نظارت، آزمایش و تحویل', 'مدیریت عملیات شبکه', 'تضمین کیفیت خدمات شبکه', 'پشتیبانی عملیات شبکه', 'تنظیم مقررات', 'نظارت', 'ارتباط با مجامع و بررسی استاندارد', 'برنامه‌ریزی راهبردی زنجیره تأمین', 'مدیریت معاملات', 'پشتیبانی و مدیریت دارائي‌ها و اموال', 'ارتباطات و امور بین‌الملل']
+// const dataProcess1402 = [68, 59, 78, 74, 48, 20, 40, 36, 27, 35, 20, 0, 35, 40, 19, 42, 31, 17.5, 36, 33, 20, 26, 22.5, 0, 11, 49.2, 42.9, 22.6, 12.2, 35, 20, 42, 48, 31, 0, 61, 63, 46, 33, 26, 24, 0]
 const resultSearch = ref(false)
 const items = [
     {
@@ -365,17 +393,17 @@ const submitSearch = (values, { resetForm }) => {
 const backToHome = () => {
     resultSearch.value = false
 }
-const isLargeScreen = ref()
-const recalculate = () => {
-  isLargeScreen.value = useMediaQuery('(min-width: 1024px)').value
-}
-onMounted(() => {
-  isLargeScreen.value = useMediaQuery('(min-width: 1024px)').value
-  useEventListener("resize", useDebounceFn(()=>{
-    recalculate()
-    console.log("resize", useMediaQuery('(min-width: 1024px)').value)
-  }));
-});
+// const isLargeScreen = ref()
+// const recalculate = () => {
+//   isLargeScreen.value = useMediaQuery('(min-width: 1024px)').value
+// }
+// onMounted(() => {
+//   isLargeScreen.value = useMediaQuery('(min-width: 1024px)').value
+//   useEventListener("resize", useDebounceFn(()=>{
+//     recalculate()
+//     console.log("resize", useMediaQuery('(min-width: 1024px)').value)
+//   }));
+// });
 </script>
 
 <style scoped>
@@ -383,6 +411,10 @@ onMounted(() => {
     background-image: url("/public/images/background.png");
     background-size: 100% 100%;
 
+}
+
+.en-font{
+    font-family: 'Times New Roman', serif;
 }
 
 /* .wave-container {

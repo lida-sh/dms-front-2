@@ -1,14 +1,14 @@
 <template>
-  <div class="py-[1.875rem] gap-3 flex relative z-20 justify-between cursor-pointer items-center transition-all duration-500"
-    :class="[{ 'bg-indigo-400 px-[1.5rem] md:px-[4.5rem] rounded-2xl': !noStyleBg }, { 'pr-3 pl-[1.688rem] xl:px-[4.5rem]': noStyleBg }, backgroundClassTitle]"
+  <div class="py-[1.875rem] gap-3 flex relative z-20 justify-between cursor-pointer items-center w-full"
+    :class="[{ 'bg-gray-800 text-white px-[1.5rem] md:px-[4.5rem] rounded-2xl border-b-4 border-b-[#4749e3]': !noStyleBg }, { 'pr-3 pl-[1.688rem] xl:px-[4.5rem]': noStyleBg }, backgroundClassTitle]"
     @click="toggle" v-bind="$attrs">
     <slot name="title" :is-open="isOpen"></slot>
     <IconsCollapsArrowDown v-if="withTitleIcon && !isOpen"></IconsCollapsArrowDown>
     <IconsCollapsArrowUp v-if="withTitleIcon && isOpen"></IconsCollapsArrowUp>
     <!-- <div class="mr-3" v-if="withTitleIcon">{{ isOpen ? "-" : "+" }}</div> -->
   </div>
-  <div ref="target" class="px-[1rem] md:px-[4.5rem] z-10 h-0 overflow-y-hidden  "
-    :class="[{ 'bg-gray-200 mt-[-14px] rounded-b-lg': !noStyleBg }, backgroundClassContent]">
+  <div ref="target" class=" z-10 h-0 overflow-y-hidden w-full bg-gray-200 rounded-b-lg px-[1rem] md:px-[4.5rem]"
+    :class="[{ 'bg-gray-100 mt-[-20px] rounded-b-lg': !noStyleBg }, backgroundClassContent]">
     <slot></slot>
   </div>
 </template>

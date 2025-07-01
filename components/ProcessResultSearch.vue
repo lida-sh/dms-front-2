@@ -1,6 +1,6 @@
 <template>
     <div class="w-full bg-white border rounded-lg shadow-lg p-5 select-none">
-        <div class="w-full flex items-start gap-4 justify-between xl:justify-center xl:flex-col xl:items-center">
+        <div class="w-full grid grid-cols-2 items-start gap-4 justify-between xl:flex xl:justify-center xl:flex-col xl:items-center">
 
             <div class="grid grid-cols-1 gap-4 xl:grid xl:grid-cols-12 xl:w-full">
                 <div
@@ -36,7 +36,7 @@
                 </div>
                 <div
                     class="flex items-center justify-start xl:justify-center xl:col-span-3 xl:whitespace-nowrap text-sm xl:text-xs 2xl:text-sm font-medium text-gray-800 dark:text-neutral-200">
-                    {{ item.title }}</div>
+                    {{ truncatedTitle }}</div>
                 <div
                     class="en flex items-center justify-start xl:justify-center xl:col-span-2 xl:whitespace-nowrap text-sm xl:text-xs 2xl:text-sm font-medium text-gray-800 dark:text-neutral-200">
                     {{ item.code }}</div>
@@ -66,6 +66,9 @@ import { ProcessClientDto } from '../composables/processes/process.dto';
 
 
 const props = defineProps<{ item: ProcessClientDto, rowNumber: number }>()
+const truncatedTitle = computed(() => {
+  return props.item.title.length > 50 ? props.item.title.slice(0, 50) + '...' : props.item.title
+})
 </script>
 
 <style scoped>

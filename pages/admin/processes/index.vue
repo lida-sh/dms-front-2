@@ -63,7 +63,7 @@
               <!-- <th class="text-center">{{ index }}</th> -->
               <td class="text-center">{{ ((data!.meta.current_page - 1) * data!.meta.per_page) + index + 1 }}</td>
               <td class="text-center">{{ item.title }}</td>
-              <td class="text-center">{{ item.code }}</td>
+              <td class="text-center en whitespace-nowrap">{{ item.code }}</td>
               <td class="text-center">{{ item.architecture.title }}</td>
               <td class="text-center">
                 <span v-if="item.status == 1" class="text-green-500">فعال</span>
@@ -189,4 +189,8 @@ const deleteProcessconfirmed = () => {
 
 </script>
 
-<style scoped></style>
+<style scoped>
+.en {
+    font-family: 'Times New Roman', serif;
+}
+</style>
