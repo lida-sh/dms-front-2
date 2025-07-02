@@ -64,9 +64,9 @@
             <tr v-for="(item, index) in data?.procedures" class="hover divide-y w-full">
               <td class="text-center">{{ ((data!.meta.current_page - 1) * data!.meta.per_page) + index + 1 }}</td>
               <td class="text-center ">{{ item.displayTitle }}</td>
-              <td class="text-center whitespace-nowrap en">{{ item.code }}</td>
-              <td class="text-center whitespace-nowrap">{{ item.architecture.title }}</td>
-              <td class="text-center whitespace-nowrap">{{ item.process.title }}</td>
+              <td class="text-center  xl:whitespace-nowrap en">{{ item.code }}</td>
+              <td class="text-center  xl:whitespace-nowrap">{{ item.architecture.title }}</td>
+              <td class="text-center  xl:whitespace-nowrap">{{ item.process.title }}</td>
               <td class="text-center">
                 <span v-if="item.status == 1" class="text-green-500">فعال</span>
                 <span v-if="item.status == 0" class="text-red-500">غیر فعال</span>

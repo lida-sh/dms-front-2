@@ -9,7 +9,7 @@ export const useEditProceture = (id:number,fileIdsForDelete:number[]) => {
   const editProceture = useEditProcetureService(id);
   const { showToast } = useToast();
   const submit = (values, { setErrors, resetForm }: FormActions<any>) => {
-    console.log("values are moment(values.notification_date._d).format('YYYY-MM-DD')",values);
+    
     loading.value = true;
     editProceture({...values, notification_date:dayjs(values.notification_date).format('YYYY-MM-DD'), fileIdsForDelete}, { setErrors })
       .then((res) => {

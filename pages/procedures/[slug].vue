@@ -1,9 +1,9 @@
 <template>
-    <div class="flex flex-col items-center justify-center">
+    <div class="flex flex-col items-center justify-center w-full">
         <div v-if="pending" class="flex flex-col items-center justify-center min-h-screen">
             <span class="loading loading-spinner text-neutral"></span>
         </div>
-        <div v-else class="flex flex-col items-center justify-center px-[3rem] pb-[0.2rem]">
+        <div v-else class="flex flex-col items-center justify-center px-[3rem] pb-[0.2rem] w-full">
             <div class="bg-white shadow-lg rounded-2xl p-10 sm:p-[5rem] w-full min-h-screen flex flex-col gap-4">
                 <h1 class="text-xl font-bold ">سند <span class="text-blue-700">{{ data?.displayTitle }}</span></h1>
                 <div class="flex flex-col sm:flex-row justify-between items-center">
@@ -12,7 +12,7 @@
                     <a class="btn btn-success" href="/procedures">بازگشت به لیست سندها</a>
                 </div>
                 <h6 class="text-base font-medium"> تاریخ ارجاع: <span class="text-base font-medium">{{
-                        data?.referral_date }}</span></h6>
+                        data?.notification_date }}</span></h6>
                 <h6 class="text-base font-medium">زیر مجموعه:
                     <span v-if="data?.architecture.type == 'assistance'" class="text-blue-700">معاونت </span>
                     <span v-else-if="data?.architecture.type == 'administration'" class="text-blue-700">اداره کل

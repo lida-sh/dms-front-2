@@ -25,7 +25,7 @@ export const useProceturesValidation = () => {
     architecture_id: number().required().label($t("architecture_id")),
     process_id: number().required().label($t("process_id")),
     title: string().required().label($t("title")),
-    notification_date: string().required().label($t("notification_date")),
+    notification_date: string().nullable().label($t("notification_date")),
     code: string().required().label($t("code")),
     docType: string().required().label($t("docType")),
     status: string().required().label($t("status")),
@@ -62,7 +62,7 @@ export const useEditProcetureValidation = () => {
     title: string().required().label($t("title")),
     code: string().required().label($t("code")),
     docType: string().required().label($t("docType")),
-    notification_date: string().required().label($t("notification_date")),
+    notification_date: string().nullable().label($t("notification_date")),
     status: string().required().label($t("status")),
     description: string().nullable().label($t("description")),
     files: array()
