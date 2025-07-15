@@ -316,12 +316,12 @@ onMounted(() => {
     tl.to("#monitor", {
         x: 50,
         duration: 2,
-        autoAlpha: 0,
+        autoAlpha: 1,
         ease: "power4"
     }).from("#title", {
         x: 50,
         duration: 2,
-        autoAlpha: 0,
+        autoAlpha: 1,
         ease: "power4"
     }, "-=1.5").to(".bounce", {
         y: 6,
