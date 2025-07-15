@@ -311,8 +311,8 @@ const docDefItems = [
 const loading = ref(false)
 const data = ref<any>()
 onMounted(() => {
-    gsap.set("#monitor", { x: -10, autoAlpha: 0 });
-    gsap.set("#title", { x: -10, autoAlpha: 0 });
+    gsap.set("#monitor", { x: -100, autoAlpha: 0 });
+    gsap.set("#title", { x: -100, autoAlpha: 0 });
     let tl = gsap.timeline();
     tl.to("#monitor", {
         x: 0,
