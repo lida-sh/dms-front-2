@@ -324,7 +324,7 @@ onMounted(() => {
         duration: 2,
         autoAlpha: 1,
         ease: "power4"
-    }, "-=1.5").to(".bounce", {
+    }).to(".bounce", {
         y: 6,
         rotate: "0.5deg",
         duration: 2,
