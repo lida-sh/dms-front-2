@@ -312,7 +312,7 @@ const loading = ref(false)
 const data = ref<any>()
 onMounted(() => {
     let tl = gsap.timeline();
-    gsap.set("#monitor",{position: "fixed", top:0, bottom:0, x: "-100%", opacity:0, zIndex:20})
+    gsap.set("#monitor",{position: "fixed", x: "-100%", opacity:0, zIndex:20})
     tl.to("#monitor", {
         x: 0,
         duration: 2,
