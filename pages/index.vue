@@ -312,31 +312,25 @@ const loading = ref(false)
 const data = ref<any>()
 onMounted(() => {
     let tl = gsap.timeline();
-    tl
-    .to("#monitor", {
-      x: 100,
-      opacity: 1,
-      duration: 2,
-      ease: "power4.out"
-    });
-    // tl.from("#monitor", {
-    //     x: -100,
-    //     duration: 2,
-    //     autoAlpha: 0,
-    //     ease: "power4"
-    // }).from("#title", {
-    //     x: -100,
-    //     duration: 2,
-    //     autoAlpha: 0,
-    //     ease: "power4"
-    // }, "-=1.5").to(".bounce", {
-    //     y: 6,
-    //     rotate: "0.5deg",
-    //     duration: 2,
-    //     repeat: -1,
-    //     yoyo: true,
-    //     ease: "power.out"
-    // }, 0)
+    
+    tl.to("#monitor", {
+        x: 50,
+        duration: 2,
+        autoAlpha: 0,
+        ease: "power4"
+    }).from("#title", {
+        x: 50,
+        duration: 2,
+        autoAlpha: 0,
+        ease: "power4"
+    }, "-=1.5").to(".bounce", {
+        y: 6,
+        rotate: "0.5deg",
+        duration: 2,
+        repeat: -1,
+        yoyo: true,
+        ease: "power.out"
+    }, 0)
     tl.from("#man", {
         x: 100,
         duration: 2,
