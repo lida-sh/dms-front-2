@@ -18,7 +18,7 @@
                         class="bg-red-600 h-14 text-white text-lg px-8 py-4 rounded-lg border border-red-800">جستجوی
                         دقیق</nuxt-link>
                 </div>
-                <!-- <div class="lg:col-span-7 w-full h-full flex items-center lg:justify-end justify-center">
+                <div class="lg:col-span-7 w-full h-full flex items-center lg:justify-end justify-center">
 
                     <div class="relative w-full">
                         <div class="head absolute w-full h-full -z-1 opacity-0.5 -inset-4"></div>
@@ -36,7 +36,7 @@
                         <img src="/images/title-app.svg" alt="" id="title"
                             class="absolute w-1/3 left-10 bottom-[20%] bounce">
                     </div>
-                </div> -->
+                </div>
 
             </div>
 
