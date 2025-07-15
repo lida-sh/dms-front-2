@@ -21,7 +21,7 @@
                 <div class="lg:col-span-7 w-full h-full flex items-center lg:justify-end justify-center">
 
                     <div class="relative w-full">
-                        <div class="head absolute w-full h-full -z-1 opacity-0 -inset-4"></div>
+                        <div class="absolute w-full h-full -z-1 opacity-0 -inset-4"></div>
                         <img src="/images/g49.svg" alt="" id="monitor" class="monitor w-full h-full">
                         <img src="/images/character 13.svg" alt="" id="man"
                             class="absolute h-[40%] right-[5%] bottom-[5%]">
