@@ -22,7 +22,7 @@
 
                     <div class="relative w-full">
                         <div class="head absolute w-full h-full -z-1 opacity-0.5 -inset-4"></div>
-                        <img src="/images/g49.svg" alt="" id="monitor" class="monitor w-full h-full">
+                        <img src="/images/g49.svg" alt="" id="monitor" class="monitor w-full h-full translate-x-[-100%] opacity-0 z-[20]">
                         <img src="/images/character 13.svg" alt="" id="man"
                             class="absolute h-[40%] right-[5%] bottom-[5%] invisible">
                         <img src="/images/user4.svg" alt="" id="user4"
@@ -312,11 +312,11 @@ const loading = ref(false)
 const data = ref<any>()
 onMounted(() => {
     let tl = gsap.timeline();
-    gsap.set("#monitor",{position: "fixed", x: "-100%", opacity:0, zIndex:20})
+    // gsap.set("#monitor",{x: "-100%", opacity:0, zIndex:20})
     tl.to("#monitor", {
         x: 0,
         duration: 2,
-        autoAlpha: 1,
+        opacity: 1,
         ease: "power4"
     })
 //    tl.from("#title", {
