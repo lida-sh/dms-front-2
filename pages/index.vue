@@ -22,19 +22,19 @@
 
                     <div class="relative w-full">
                         <div class="head absolute w-full h-full -z-1 opacity-0.5 -inset-4"></div>
-                        <img src="/images/g49.svg" alt="" id="monitor" class="monitor w-full h-full invisible">
+                        <img src="/images/g49.svg" alt="" id="monitor" class="monitor w-full h-full">
                         <img src="/images/character 13.svg" alt="" id="man"
-                            class="absolute h-[40%] right-[5%] bottom-[5%] invisible">
+                            class="absolute h-[40%] right-[5%] bottom-[5%]">
                         <img src="/images/user4.svg" alt="" id="user4"
-                            class="users absolute  w-[6%] right-[20%] top-[20%] invisible">
+                            class="users absolute  w-[6%] right-[20%] top-[20%]">
                         <img src="/images/user3.svg" alt="" id="user3"
-                            class="users absolute  w-[6%] right-[20%] top-[20%] invisible">
+                            class="users absolute  w-[6%] right-[20%] top-[20%]">
                         <img src="/images/g140.svg" alt="" id="user2"
-                            class="users absolute w-[6%] right-[20%] top-[20%] invisible">
+                            class="users absolute w-[6%] right-[20%] top-[20%]">
                         <img src="/images/g102.svg" alt="" id="user1"
-                            class="users absolute w-[6%] right-[20%] top-[20%] invisible">
+                            class="users absolute w-[6%] right-[20%] top-[20%]">
                         <img src="/images/title-app.svg" alt="" id="title"
-                            class="absolute w-1/3 left-10 bottom-[20%] bounce invisible">
+                            class="absolute w-1/3 left-10 bottom-[20%] bounce">
                     </div>
                 </div>
 
