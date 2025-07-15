@@ -322,7 +322,7 @@ onMounted(() => {
         duration: 2,
         autoAlpha: 0,
         ease: "power4"
-    }, "-=1.5").to(".bounce", {
+    }).to(".bounce", {
         y: 6,
         rotate: "0.5deg",
         duration: 2,
@@ -335,7 +335,7 @@ onMounted(() => {
         duration: 2,
         autoAlpha: 0,
         ease: "power4",
-    }, "-=1.5");
+    });
     tl.fromTo(".users", {
         right: "20%",
         top: "20%",
@@ -347,7 +347,7 @@ onMounted(() => {
         autoAlpha: 1,
         ease: "power4",
         duration: 1
-    }, "-=1.5");
+    });
     tl.to("#user2", {
         x: "-60%",
         ease: "power4",

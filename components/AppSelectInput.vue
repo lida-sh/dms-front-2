@@ -8,7 +8,7 @@
             class="bg-left-center select-custom focus:ring-0 focus:ring-offset-0 focus:border-gray-300 border-gray-300 rounded-lg h-12 font-normal font-gray-700"
             :placeholder="placeholder" v-bind="$attrs" :value="inputValue" :name="name" @change="changeSelect"
             @blur="handleBlur">
-            <option value="" ></option>
+            <option :value="null" ></option>
             <option v-if="optionsList" v-for="(item, index) in optionsList" :key="index" :value="item.value" class="selection:bg-gray-300">{{ item.title }}</option>
             <option v-if="options" v-for="(item, index) in options" :key="index" :value="item.id" class="selection:bg-gray-300">{{ item.title }}</option>
         </select>
