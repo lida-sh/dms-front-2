@@ -318,7 +318,7 @@ onMounted(() => {
         duration: 2,
         autoAlpha: 1,
         ease: "power4"
-    }).from("#title", {
+    }).to("#title", {
         x: 50,
         duration: 2,
         autoAlpha: 1,
