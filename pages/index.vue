@@ -313,12 +313,12 @@ const data = ref<any>()
 onMounted(() => {
     let tl = gsap.timeline();
     tl.from("#monitor", {
-        x: -100,
+        x: -50,
         duration: 2,
         autoAlpha: 0,
         ease: "power4"
     }).from("#title", {
-        x: -100,
+        x: -50,
         duration: 2,
         autoAlpha: 0,
         ease: "power4"
