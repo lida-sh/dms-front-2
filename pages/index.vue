@@ -21,8 +21,8 @@
                 <div class="lg:col-span-7 w-full h-full flex items-center lg:justify-end justify-center">
 
                     <div class="relative w-full">
-                        <div class="absolute w-full h-full -z-1 opacity-0 -inset-4"></div>
-                        <img src="/images/g49.svg" alt="" id="monitor" class="monitor w-full h-full">
+                        <div class="absolute w-full h-full -z-1 opacity-0 -inset-0"></div>
+                        <img src="/images/g49.svg" alt="" id="monitor" class="monitor w-full h-full translate-x-[-100px] opacity-0">
                         <img src="/images/character 13.svg" alt="" id="man"
                             class="absolute h-[40%] right-[5%] bottom-[5%]">
                         <img src="/images/user4.svg" alt="" id="user4"
@@ -34,7 +34,7 @@
                         <img src="/images/g102.svg" alt="" id="user1"
                             class="users absolute w-[6%] right-[20%] top-[20%]">
                         <img src="/images/title-app.svg" alt="" id="title"
-                            class="absolute w-1/3 left-10 bottom-[20%] bounce">
+                            class="absolute w-1/3 left-10 bottom-[20%] bounce translate-x-[-100px] opacity-0">
                     </div>
                 </div>
 
@@ -311,8 +311,8 @@ const docDefItems = [
 const loading = ref(false)
 const data = ref<any>()
 onMounted(() => {
-    gsap.set("#monitor", { x: -100, autoAlpha: 0 });
-    gsap.set("#title", { x: -100, autoAlpha: 0 });
+    // gsap.set("#monitor", { x: -100, autoAlpha: 0 });
+    // gsap.set("#title", { x: -100, autoAlpha: 0 });
     let tl = gsap.timeline();
     tl.to("#monitor", {
         x: 0,
