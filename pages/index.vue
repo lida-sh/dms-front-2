@@ -2,7 +2,7 @@
     <div v-if="!resultSearch" class="w-full h-full flex flex-col items-center justify-center">
         <div class="bg-[#4749e3] w-full flex items-center justify-center">
             <div
-                class="lg:grid lg:grid-cols-12 h-[56rem] w-full flex flex-col max-w-[100rem] px-4 pb-8 lg:px-0 gap-4 lg:gap-8">
+                class="lg:grid lg:grid-cols-12 h-[56rem] w-full flex flex-col max-w-[100rem] px-4 pb-8 lg:px-0 gap-4 lg:gap-8 overflow-x-hidden">
 
                 <div
                     class="lg:col-span-5 w-full h-full flex flex-col gap-4 items-center justify-center py-4 lg:py-0 px-4 sm:px-6 space-y-2 lg:space-y-8">
@@ -22,7 +22,7 @@
 
                     <div class="relative w-full">
                         <div class="head absolute w-full h-full -z-1 opacity-0.5 -inset-4"></div>
-                        <img src="/images/g49.svg" alt="" id="monitor" class="monitor w-full h-full opacity-0">
+                        <img src="/images/g49.svg" alt="" id="monitor" class="monitor w-full h-full invisible">
                         <img src="/images/character 13.svg" alt="" id="man"
                             class="absolute h-[40%] right-[5%] bottom-[5%] invisible">
                         <img src="/images/user4.svg" alt="" id="user4"
@@ -313,15 +313,15 @@ const data = ref<any>()
 onMounted(() => {
     let tl = gsap.timeline();
     
-    tl.to("#monitor", {
-        x: 50,
+    tl.from("#monitor", {
+        x: -100,
         duration: 2,
-        autoAlpha: 1,
+        autoAlpha: 0,
         ease: "power4"
-    }).to("#title", {
-        x: 50,
+    }).from("#title", {
+        x: -100,
         duration: 2,
-        autoAlpha: 1,
+        autoAlpha: 0,
         ease: "power4"
     }, "-=1.5").to(".bounce", {
         y: 6,
