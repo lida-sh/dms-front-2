@@ -22,6 +22,7 @@ export const useFetchApi = <R, T = {}>(
     config = {
       baseURL: BASE_URL,
       retry: 0,
+      // getCachedData: false,
       ...config,
     };
     fetchCustomConfig = { goToLogin: true, ...fetchCustomConfig };

@@ -2,7 +2,7 @@
     <div class="w-full border bg-white rounded-lg shadow-lg p-4 select-none">
         <div class="w-full flex items-start gap-4 justify-between xl:justify-center xl:flex-col xl:items-center">
 
-            <div class="grid grid-cols-1 gap-4 xl:grid xl:grid-cols-12 xl:w-full">
+            <div class="grid grid-cols-1 gap-4 lg:gap-2 xl:grid xl:grid-cols-12 xl:w-full">
                 <div
                     class="flex items-center justify-start xl:justify-center xl:col-span-1 text-sm xl:text-xs 2xl:text-base font-bold text-gray-500">
                     ردیف</div>
@@ -26,7 +26,7 @@
                     تاریخ ابلاغ
                 </div>
             </div>
-            <div class="grid grid-cols-1 gap-4 xl:grid xl:grid-cols-12 xl:w-full">
+            <div class="grid grid-cols-1 gap-4 lg:gap-2 xl:grid xl:grid-cols-12 xl:w-full">
                 <div
                     class="flex items-center justify-start xl:justify-center xl:col-span-1 xl:whitespace-nowrap text-sm xl:text-xs 2xl:text-sm font-medium text-gray-800 dark:text-neutral-200">
                     {{ item.rowNumber || rowNumber }}</div>

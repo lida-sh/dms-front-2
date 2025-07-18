@@ -34,6 +34,7 @@ export default defineNuxtConfig({
   },
   nitro: {
     devProxy: PROXY_CONFIG,
+    
   },
   vite: {
     esbuild: {

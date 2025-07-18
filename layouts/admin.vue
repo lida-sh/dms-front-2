@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-[#F7F7F7] flex flex-col ">
+  <div class="bg-[#F7F7F7] flex flex-col py-4 px-2 xl:px-10">
     <Suspense>
       <template v-if="authStore.isLoggedIn">
         <AdminHeader></AdminHeader>
