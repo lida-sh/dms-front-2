@@ -1,6 +1,6 @@
 <template>
     <div class="flex flex-col lg:flex-row justify-center items-start w-full gap-4 px-10 py-14 bg-[#F7F7F7]">
-        <section class="px-4 py-10 rounded-lg bg-white shadow-lg w-[30rem] ">
+        <section class="px-4 py-10 rounded-lg bg-white shadow-lg  w-full  lg:w-[30rem] ">
             <h3 class="text-lg font-bold">فیلترها</h3>
             <Form :validation-schema="schema" class="flex flex-col items-center justify-center w-full" @submit="submit">
                 <div class="divide-y w-full">

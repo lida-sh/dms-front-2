@@ -2,7 +2,7 @@
     <div v-if="!resultSearch" class="w-full h-full flex flex-col items-center justify-center">
         <div class="bg-[#4749e3] w-full flex items-center justify-center">
             <div
-                class="lg:grid lg:grid-cols-12 h-[56rem] w-full flex flex-col max-w-[100rem] px-4 pb-8 lg:px-0 gap-4 lg:gap-8">
+                class="lg:grid lg:grid-cols-12 h-[56rem] w-full flex flex-col max-w-[100rem] px-4 pb-8 lg:px-0 gap-4 lg:gap-8 overflow-x-hidden">
 
                 <div
                     class="lg:col-span-5 w-full h-full flex flex-col gap-4 items-center justify-center py-4 lg:py-0 px-4 sm:px-6 space-y-2 lg:space-y-8">
@@ -312,6 +312,7 @@ const loading = ref(false)
 const data = ref<any>()
 onMounted(() => {
     let tl = gsap.timeline();
+    
     tl.from("#monitor", {
         x: -100,
         duration: 2,
