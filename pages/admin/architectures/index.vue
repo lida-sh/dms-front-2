@@ -1,9 +1,9 @@
 <template>
-  <div class="px-[3rem]  pb-[0.2rem] min-h-screen">
+  <div class="pr-[0.5rem]  pb-[0.2rem] min-h-screen">
     <div v-if="!(data?.architectures && data?.architectures?.length > 0) && !pending" class="card p-8 w-full h-40 rounded-box shadow-lg bg-white flex items-center justify-center">
       معماری ثبت نشده است.
         </div>
-    <div v-else class="card px-16 py-8 flex flex-col gap-4 w-full rounded-box shadow-lg bg-white">
+    <div v-else class="card px-2 py-8 flex flex-col gap-4 w-full rounded-box shadow-lg bg-white">
       <h3 class="text-lg font-bold text-gray-700 mb-5">لیست معماری های مخابرات ایران</h3>
       <table class="table table-zebra ">
         <thead>

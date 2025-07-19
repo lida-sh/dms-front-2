@@ -1,5 +1,5 @@
 <template>
-  <div class="pr-[2rem] pl-4 pb-[0.2rem] min-h-screen">
+  <div class="pr-[0.5rem] pl-4 pb-[0.2rem] min-h-screen">
 
     <div class="overflow-x-auto flex flex-col gap-4">
       <Form 

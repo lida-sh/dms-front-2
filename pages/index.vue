@@ -2,7 +2,7 @@
     <div v-if="!resultSearch" class="w-full h-full flex flex-col items-center justify-center">
         <div class="bg-[#4749e3] w-full flex items-center justify-center">
             <div
-                class="lg:grid lg:grid-cols-12 h-[56rem] w-full flex flex-col max-w-[100rem] px-4 pb-8 lg:px-0 gap-4 lg:gap-8 overflow-x-hidden">
+                class="lg:grid lg:grid-cols-12 h-[48rem] w-full flex flex-col max-w-[100rem] px-4 pb-8 lg:px-0 gap-4 lg:gap-8 overflow-x-hidden">
 
                 <div
                     class="lg:col-span-5 w-full h-full flex flex-col gap-4 items-center justify-center py-4 lg:py-0 px-4 sm:px-6 space-y-2 lg:space-y-8">
@@ -83,13 +83,13 @@
                     <define-doc-card></define-doc-card>
                 </div>
             </div>
-            <div class="w-full flex flex-col gap-4 items-start justify-center relative mt-[20rem] px-8 xl:px-[18rem] ">
+            <div class="w-full flex flex-col gap-4 items-start justify-center relative mt-[20rem] px-8 lg:px-[10rem] 2xl:px-[18rem] ">
                 <h2 class="text-md font-bold sm:text-xl lg:text-2xl mb-10 mr-10">سوالات متداول</h2>
                 <app-collaps>
                     <template #title>
-                        <p class="text-sm font-bold sm:text-md lg:text-lg">اقدام اصلاحی و پیشگیرانه چیست؟</p>
+                        <p class="text-sm font-bold sm:text-md xl:text-lg">اقدام اصلاحی و پیشگیرانه چیست؟</p>
                     </template>
-                    <div class="flex flex-col gap-2 w-full text-sm sm:text-md lg:text-lg py-10 ">
+                    <div class="flex flex-col gap-2 w-full text-xs sm:text-sm xl:text-base py-10 ">
                         <p class="">اقدام اصلاحی: اقدامی برای برطرف سازی علت عدم انطباق و یا شرایط نامطلوب بالفعل که
                             به‌منظور
                             جلوگیری از وقوع آن‌ها انجام می‌گیرد .</p>
@@ -102,10 +102,10 @@
                 </app-collaps>
                 <app-collaps>
                     <template #title>
-                        <p class="text-sm font-bold sm:text-md lg:text-lg">اگر فرایند یا زیر فرایند مشخص شده با وظایف
+                        <p class="text-sm font-bold sm:text-md xl:text-lg">اگر فرایند یا زیر فرایند مشخص شده با وظایف
                             ساختار مربوطه مطابقت نداشته باشد چه باید کرد؟</p>
                     </template>
-                    <div class="flex flex-col gap-2 w-full text-sm sm:text-md lg:text-lg py-10 ">
+                    <div class="flex flex-col gap-2 w-full text-xs sm:text-sm xl:text-base py-10 ">
                         <p class="">در صورتی که در واحدهای مجری فرایند با بررسی
                             و تحلیل فرایندها، اصلاح یا حذف یک فرایند، ادغام چند فرایند و یا پیشنهاد فرایند جدید را مفید
                             تشخیص دادند
@@ -126,10 +126,10 @@
                 </app-collaps>
                 <app-collaps>
                     <template #title>
-                        <p class="text-sm font-bold sm:text-md lg:text-lg">آیا بعد از اقدام اصلاحی ارزیابی ها بر اساس
+                        <p class="text-sm font-bold sm:text-md xl:text-lg">آیا بعد از اقدام اصلاحی ارزیابی ها بر اساس
                             تغییرات جدید صورت میگیرد؟</p>
                     </template>
-                    <div class="flex flex-col gap-2 w-full text-sm sm:text-md lg:text-lg py-10 ">
+                    <div class="flex flex-col gap-2 w-full text-xs sm:text-sm xl:text-base py-10 ">
                         <p class="">تا زمانیکه اصلاحات و پیشنهادات ارسال شده به اداره کل کیفیت و فرایند به تصویب نرسد،
                             پایش فرایندها
                             و شاخص‌ها بر مبنای مصوبات و توافقات پیشین خواهد بود. </p>
@@ -139,7 +139,7 @@
                     <template #title>
                         <p class="text-sm font-bold sm:text-md lg:text-lg">ارزیابی فرایندی بر چه اساسی صورت میگیرد؟</p>
                     </template>
-                    <div class="flex flex-col gap-2 w-full text-sm sm:text-md lg:text-lg py-10 ">
+                    <div class="flex flex-col gap-2 w-full text-xs sm:text-sm xl:text-base py-10 ">
                         <p class="">فرایندهای حوز‌ه‌های ستادی، سالانه دو نوبت (مهرماه و فروردین‌ماه) توسط اداره کل کیفیت
                             و فرایند
                             معاونت راهبرد و توسعه کسب‌وکار مورد پایش و ارزیابی قرار خواهد گرفت. دستورالعمل اجرائی پایش فرایندهای حوزه‌های ستادی  به کد فرایندی IN-SBD-11-01 دستورالعمل اجرائی پایش
@@ -158,7 +158,7 @@
                     <template #title>
                         <p class="text-sm font-bold sm:text-md lg:text-lg">اقدام اصلاحی و پیشگیرانه چیست؟</p>
                     </template>
-                    <div class="flex flex-col gap-2 w-full text-sm sm:text-md lg:text-lg py-10 ">
+                    <div class="flex flex-col gap-2 w-full text-xs sm:text-sm xl:text-base py-10 ">
                         <p class="">اقدام اصلاحی: اقدامی برای برطرف سازی علت عدم انطباق و یا شرایط نامطلوب بالفعل که
                             به‌منظور
                             جلوگیری از وقوع آن‌ها انجام می‌گیرد .</p>

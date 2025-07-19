@@ -9,7 +9,7 @@
                 </svg>
             </button>
             <div ref="target" class="flex flex-col lg:flex-row lg:w-auto absolute lg:static bg-white inset-x-10 h-0 lg:h-auto invisible lg:visible lg:bg-transparent lg:space-x-1 xl:space-x-2 lg:space-x-reverse rounded-box lg:rounded-none border lg:border-none shadow-lg lg:shadow-none mt-1 lg:mt-0 divide-y divide-gray-200 lg:divide-none z-100">
-               <router-link v-for="(item, index) in links" :key="`menu-${index}`" :to="item.to" class="py-4 pr-4 text-xs xl:text-base">{{ item.title }}</router-link>
+               <router-link v-for="(item, index) in links" :key="`menu-${index}`" :to="item.to" class="py-4 pr-4 text-xs xl:text-sm">{{ item.title }}</router-link>
             </div>
         </section>
         <section class="flex items-center gap-1">
@@ -25,11 +25,9 @@
 
 <script setup lang="ts">
 const links = [
-  { title: "معماری سازمانی", to: "/" },
-  { title: "مستندات درون سازمانی", to: "/" },
-  { title: "مستندات برون سازمانی", to: "/" },
-  { title: "اقدام اصلاحی", to: "/" },
-  { title: "گزارش ها", to: "/" }
+  { title: "بخش کاربری", to: "/" },
+  { title: "تغییر رمز عبور", to: "/" },
+  
 ];
 const {target, openMenu} = useMenu();
 </script>

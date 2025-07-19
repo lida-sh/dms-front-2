@@ -9,5 +9,5 @@ export const PROXY_CONFIG = isProd ? {} : {
         }
     }
 };
-export const CLIENT_ID = 2
-export const CLIENT_SECRET = "bCQjqFGgnhDOwnXCTZiEsnMYqmW1qUxullPbVziP"
+export const CLIENT_ID = 6
+export const CLIENT_SECRET = "gwoldEjPWgQ0qfKBwFXTsN75GImFBuTifFxfMxvz"

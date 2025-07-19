@@ -1,5 +1,5 @@
 <template>
-    <div class="px-[3rem]  pb-[0.2rem]">
+    <div class="px-[0.5rem]  pb-[0.2rem]">
         <div class="bg-white shadow-lg rounded-2xl p-4 sm:p-[5rem]" v-if="data?.procedure">
             <h3 class="mb-3 text-lg text-gray-600 font-bold"> ویرایش سند {{ data?.procedure?.title }}</h3>
             <hr class="mb-5 sm:mb-10">

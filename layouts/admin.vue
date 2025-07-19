@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-[#F7F7F7] flex flex-col py-4 px-2 xl:px-10">
+  <div class="bg-[#F7F7F7] flex flex-col py-4 px-2 xl:px-6 2xl:px-10">
     <Suspense>
       <template v-if="authStore.isLoggedIn">
         <AdminHeader></AdminHeader>
@@ -10,7 +10,7 @@
       </div> -->
         <div
           class="w-full h-full max-w-[110rem] pt-[1.5rem] lg:pt-[5rem] mx-auto gap-2 2xl:gap-[0.5rem] lg:px-2 flex items-start pb-20">
-          <AdminMenuDashbard class="hidden xl:block sticky top-20 max-w-[16.5rem] min-w-[13rem] dashboard-card w-full">
+          <AdminMenuDashbard class="hidden xl:block sticky top-20 max-w-[16.5rem] min-w-[15rem] dashboard-card w-full">
           </AdminMenuDashbard>
           <main class="w-full">
             <slot></slot>

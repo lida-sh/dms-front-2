@@ -1,6 +1,6 @@
 <template>
     <!-- <div class="flex h-screen justify-center items-start py-10 scroll-none"> -->
-        <div :class="{'flex flex-col items-center inset-0 h-auto border bg-white opacity-85 border-gray-300 rounded-2xl w-[20rem] xl:w-[50rem] px-2 pt-2 pb-20 xl:px-4':!isDialog, 'px-64 py-5': isDialog}" >
+        <div :class="{'flex flex-col items-center inset-0 h-auto border bg-white opacity-85 border-gray-300 rounded-2xl w-[20rem] lg:w-[30rem] xl:w-[50rem] px-2 pt-2 pb-20 xl:px-4':!isDialog, 'px-64 py-5': isDialog}" >
             <div class="sm:mx-auto sm:w-full sm:max-w-sm">
                 <!-- <img class="mx-auto h-10 w-auto"
                     src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company"> -->
@@ -10,7 +10,7 @@
                 </h2>
             </div>
 
-            <div class="mt-2 sm:mx-auto sm:w-full sm:max-w-md">
+            <div class="mt-2 sm:mx-auto sm:w-full sm:px-8 sm:max-w-md">
                 <Form :validation-schema="schema" class="space-y-3" @submit="submit">
                     <div>
                         <app-text-input name="username" :label="$t('username')" thin class="focus:ring-2 focus:ring-inset focus:ring-indigo-600"></app-text-input>
