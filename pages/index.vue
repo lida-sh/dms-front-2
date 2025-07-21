@@ -83,7 +83,23 @@
                     <define-doc-card></define-doc-card>
                 </div>
             </div>
-            <div class="w-full flex flex-col gap-4 items-start justify-center relative mt-[20rem] px-8 lg:px-[10rem] 2xl:px-[18rem] ">
+            <div
+                class="w-full bg-gray-400 h-[40rem] flex flex-col lg:grid lg:grid-cols-12 gap-4 items-center  justify-center relative mt-[20rem] px-8 lg:px-[10rem] 2xl:px-[18rem] ">
+                <div class="col-span-6">
+                    <h3 class="">جستجوی اسناد فرایندی</h3>
+                </div>
+                <div class="col-span-6 relative h-full">
+                    <img src="/images/mobile-search/mobile-farsi.svg" alt="" id="mobile" class="mobile w-full h-full">
+                    <!-- <img src="/images/mobile-search/create-details.svg" alt="" id="mobile" class="absolute top-20">
+                    <img src="/images/mobile-search/create.svg" alt="" id="mobile" class="absolute top-50"> -->
+                    <img src="/images/mobile-search/search3.svg" alt="" id="" class="absolute top-[10%] left-[8%]">
+                    <img src="/images/mobile-search/search-details.svg" alt="" id="mobile" class="absolute top-[20%] left-[5%] w-full">
+                    <!-- <img src="/images/mobile-search/docs-details.svg" alt="" id="mobile" class="absolute top-40 w-full">
+                    <img src="/images/mobile-search/sharing.svg" alt="" id="mobile" class="absolute top-60"> -->
+                </div>
+            </div>
+            <div
+                class="w-full flex flex-col gap-4 items-start justify-center relative mt-[20rem] px-8 lg:px-[10rem] 2xl:px-[18rem] ">
                 <h2 class="text-md font-bold sm:text-xl lg:text-2xl mb-10 mr-10">سوالات متداول</h2>
                 <app-collaps>
                     <template #title>
@@ -142,7 +158,9 @@
                     <div class="flex flex-col gap-2 w-full text-xs sm:text-sm xl:text-base py-10 ">
                         <p class="">فرایندهای حوز‌ه‌های ستادی، سالانه دو نوبت (مهرماه و فروردین‌ماه) توسط اداره کل کیفیت
                             و فرایند
-                            معاونت راهبرد و توسعه کسب‌وکار مورد پایش و ارزیابی قرار خواهد گرفت. دستورالعمل اجرائی پایش فرایندهای حوزه‌های ستادی  به کد فرایندی IN-SBD-11-01 دستورالعمل اجرائی پایش
+                            معاونت راهبرد و توسعه کسب‌وکار مورد پایش و ارزیابی قرار خواهد گرفت. دستورالعمل اجرائی پایش
+                            فرایندهای
+                            حوزه‌های ستادی به کد فرایندی IN-SBD-11-01 دستورالعمل اجرائی پایش
                             فرایندهای
                             حوزه‌های ستادی، به منظور ایجاد رویه مشترک در حین مراحل مختلف پایش، شفاف کردن مسیر ارزیابی و
                             نیز کاستن از
@@ -312,7 +330,7 @@ const loading = ref(false)
 const data = ref<any>()
 onMounted(() => {
     let tl = gsap.timeline();
-    
+
     tl.from("#monitor", {
         x: -100,
         duration: 2,
@@ -414,7 +432,7 @@ const backToHome = () => {
 
 }
 
-.en-font{
+.en-font {
     font-family: 'Times New Roman', serif;
 }
 
