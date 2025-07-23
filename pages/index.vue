@@ -84,18 +84,18 @@
                 </div>
             </div>
             <div
-                class="w-full bg-gray-400 h-[40rem] flex flex-col lg:grid lg:grid-cols-12 gap-4 items-center  justify-center relative mt-[20rem] px-8 lg:px-[10rem] 2xl:px-[18rem] ">
+                class="w-full  flex flex-col lg:grid lg:grid-cols-12 gap-4 items-center  justify-center relative mt-[20rem] px-8 lg:px-[10rem] 2xl:px-[18rem] ">
                 <div class="col-span-6">
-                    <h3 class="">جستجوی اسناد فرایندی</h3>
+                    <h3 class="text-3xl">جستجوی اسناد فرایندی</h3>
                 </div>
-                <div class="col-span-6 relative h-full">
-                    <img src="/images/mobile-search/mobile-farsi.svg" alt="" id="mobile" class="mobile w-full h-full">
-                    <!-- <img src="/images/mobile-search/create-details.svg" alt="" id="mobile" class="absolute top-20">
-                    <img src="/images/mobile-search/create.svg" alt="" id="mobile" class="absolute top-50"> -->
-                    <img src="/images/mobile-search/search3.svg" alt="" id="" class="absolute top-[10%] left-[8%]">
-                    <img src="/images/mobile-search/search-details.svg" alt="" id="mobile" class="absolute top-[20%] left-[5%] w-full">
-                    <!-- <img src="/images/mobile-search/docs-details.svg" alt="" id="mobile" class="absolute top-40 w-full">
-                    <img src="/images/mobile-search/sharing.svg" alt="" id="mobile" class="absolute top-60"> -->
+                <div class="col-span-6 relative h-full w-full">
+                    <img src="/images/mobile-search/mobile-farsi2.svg" alt="" id="mobile" class="mobile w-full h-full">
+                    <img src="/images/mobile-search/create-details2.svg" alt="" id="" class="absolute top-[65%] left-0">
+                    <img src="/images/mobile-search/create2.svg" alt="" id="" class="absolute top-[50%] left-[1%] z-10">
+                    <img src="/images/mobile-search/search2.svg" alt="" id="" class="absolute top-[2%] left-[2%]">
+                    <img src="/images/mobile-search/search-details2.svg" alt="" id="mobile" class="absolute top-[16%] left-[6%]">
+                    <img src="/images/mobile-search/docs-details2.svg" alt="" id="" class="absolute top-[55%]">
+                    <img src="/images/mobile-search/sharing2.svg" alt="" id="" class="absolute top-[40%]">
                 </div>
             </div>
             <div

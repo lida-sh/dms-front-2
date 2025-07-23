@@ -4,7 +4,7 @@ export const BASE_URL = "http://localhost:3000/service/api";
 // export const BASE_URL = "http://localhost:3000/service/api";
 export const PROXY_CONFIG = isProd ? {} : {
     '/service/':{
-        target: "http://dms.test", changeOrigin:true, pathRewrite: {
+        target: "http://dms-back.test", changeOrigin:true, pathRewrite: {
             '^/service/': ''
         }
     }
