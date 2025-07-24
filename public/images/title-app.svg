@@ -7,7 +7,7 @@
    version="1.1"
    id="svg109"
    sodipodi:docname="title-app.svg"
-   inkscape:version="1.4 (86a8ad7, 2024-10-11)"
+   inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -23,10 +23,10 @@
      inkscape:deskcolor="#d1d1d1"
      showgrid="false"
      inkscape:zoom="2.1285476"
-     inkscape:cx="358.22549"
-     inkscape:cy="216.3447"
-     inkscape:window-width="1920"
-     inkscape:window-height="1017"
+     inkscape:cx="72.349803"
+     inkscape:cy="28.658039"
+     inkscape:window-width="1366"
+     inkscape:window-height="705"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
@@ -83,13 +83,13 @@
            font-size="13px"
            font-weight="bold"
            id="text49"
-           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16px;font-family:'2  Nazanin';-inkscape-font-specification:'2  Nazanin, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#333333;fill-rule:nonzero"
-           x="34.295685"
-           y="23.490196"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:18.6667px;font-family:'B Nazanin';-inkscape-font-specification:'B Nazanin, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#333333;fill-rule:nonzero"
+           x="18.792154"
+           y="23.960001"><tspan
              sodipodi:role="line"
              id="tspan130"
-             x="34.295685"
-             y="23.490196">سامانه مدیریت اسناد</tspan></text>
+             x="18.792154"
+             y="23.960001">سامانه مدیریت اسناد</tspan></text>
       </g>
     </g>
   </g>

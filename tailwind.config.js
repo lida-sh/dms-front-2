@@ -14,6 +14,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        'mdplus': '860px', // تعریف breakpoint جدید از 964px
+      },
       backgroundPosition:{
         'left-center': 'left 0.5rem center'
       },

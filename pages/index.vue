@@ -22,7 +22,7 @@
 
                     <div class="relative w-full">
                         <div class="head absolute w-full h-full -z-1 opacity-0.5 -inset-4"></div>
-                        <img src="/images/g49.svg" alt="" id="monitor" class="monitor w-full h-full invisible">
+                        <img src="/images/monitor3.svg" alt="" id="monitor" class="monitor w-full h-full invisible">
                         <img src="/images/character 13.svg" alt="" id="man"
                             class="absolute h-[40%] right-[5%] bottom-[5%] invisible">
                         <img src="/images/user4.svg" alt="" id="user4"
@@ -84,19 +84,20 @@
                 </div>
             </div>
             <div
-                class="w-full  flex flex-col lg:grid lg:grid-cols-12 gap-4 items-center  justify-center relative mt-[20rem] px-8 lg:px-[10rem] 2xl:px-[18rem] ">
-                <div class="col-span-6">
-                    <h3 class="text-3xl">جستجوی اسناد فرایندی</h3>
+                class="w-full flex flex-col mdplus:grid mdplus:grid-cols-12 gap-4 items-center  justify-center relative mt-[20rem] px-10 lg:px-20">
+                <div class="mdplus:col-span-6 flex flex-col gap-4">
+                    <h3 class="text-lg font-bold">جستجو در مستندات فرایندی از راه های زیر امکان پذیر است:</h3>
+
+                    <ul class="text-md font-normal space-y-4">
+                        <li class="">1- استفاده از گزینه جستجوی دقیق اگراز حوزه و نوع سند اطمینان دارید</li>
+                        <li class="">2- استفاده از جستجوی عادی در صورتی که عنوان یا کد سند را میدانید حتی با یک کلمه از عنوان سند می توانید به سند مورد نظر خود دست یابید.</li>
+                        <li class="">3- در قسمت انواع مستندات فرایندی می توانید به لیست هر دسته دسترسی پیدا کنید و با اعمال فیلترها سند مورد نظر خود را پیدا کنید.</li>
+                    </ul>
                 </div>
-                <div class="col-span-6 relative h-full w-full">
-                    <img src="/images/mobile-search/mobile-farsi2.svg" alt="" id="mobile" class="mobile w-full h-full">
-                    <img src="/images/mobile-search/create-details2.svg" alt="" id="" class="absolute top-[65%] left-0">
-                    <img src="/images/mobile-search/create2.svg" alt="" id="" class="absolute top-[50%] left-[1%] z-10">
-                    <img src="/images/mobile-search/search2.svg" alt="" id="" class="absolute top-[2%] left-[2%]">
-                    <img src="/images/mobile-search/search-details2.svg" alt="" id="mobile" class="absolute top-[16%] left-[6%]">
-                    <img src="/images/mobile-search/docs-details2.svg" alt="" id="" class="absolute top-[55%]">
-                    <img src="/images/mobile-search/sharing2.svg" alt="" id="" class="absolute top-[40%]">
-                </div>
+                <div class="mdplus:col-span-6 relative flex justify-center items-center w-full">
+                    <MobileIcon class="w-full max-w-[500px] h-auto"></MobileIcon>
+                </div> 
+               
             </div>
             <div
                 class="w-full flex flex-col gap-4 items-start justify-center relative mt-[20rem] px-8 lg:px-[10rem] 2xl:px-[18rem] ">
