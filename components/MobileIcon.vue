@@ -427,6 +427,7 @@
      fill="none"
      fill-rule="evenodd"
      id="mobile"
+     class="mobile-icon"
      transform="translate(1.1561526,25.795541)">
     <g
        class="wwf-device"
@@ -1281,6 +1282,7 @@
      fill="none"
      fill-rule="evenodd"
      id="create-btn"
+     class="btn-bounce"
      transform="translate(-274.485,197.34927)"
      inkscape:export-filename="..\Desktop\images-dms\create.svg"
      inkscape:export-xdpi="96"
@@ -1375,9 +1377,11 @@
      fill="none"
      fill-rule="evenodd"
      id="create-options"
+     class="mobile-icon"
      transform="translate(-307.84384,197.43341)">
     <g
-       class="wwf-create-options"
+       class="wwf-create-options mobile-icon"
+       
        transform="translate(308,64)"
        fill="none"
        id="g104">
@@ -1564,6 +1568,7 @@
      fill="none"
      fill-rule="evenodd"
      id="sharing-btn"
+     class="btn-bounce"
      transform="translate(6.3423596,32.296066)">
     <g
        class="wwf-share-btn"
@@ -1653,6 +1658,7 @@
      fill="none"
      fill-rule="evenodd"
      id="sharing-options"
+     class="mobile-icon"
      transform="translate(52.252646,216.52693)">
     <g
        class="wwf-share-options"
@@ -1886,6 +1892,7 @@
      fill="none"
      fill-rule="evenodd"
      id="search-btn"
+     class="btn-bounce"
      transform="translate(85.799481,-199.8)">
     <g
        class="wwf-collaborate-btn"
@@ -1933,6 +1940,7 @@
      fill="none"
      fill-rule="evenodd"
      id="search-options"
+     class="mobile-icon"
      transform="translate(-149.64082,-160.61723)">
     <g
        class="wwf-collaborate-options"
@@ -2092,7 +2100,99 @@
 import { onMounted } from 'vue'
 import { gsap } from 'gsap'
 onMounted(() => {
-  gsap.from('#mobile', { x: -100, opacity: 0, duration: 1 })
-//   gsap.from('#icon2', { y: 100, scale: 0, duration: 1, delay: 0.5 })
+  const tl = gsap.timeline();
+  tl.from('#mobile', { y: 100, autoAlpha: 0, duration: 0.5,
+   scrollTrigger: {
+        trigger: ".floating-box",
+        start: "top 80%",
+        toggleActions: "play none none none"
+    },
+   })
+   .from('#search-btn', { y: -120, autoAlpha: 0, duration: 0.5,
+   scrollTrigger: {
+      trigger: "#mobile",
+      scrub: 2,
+      markers: true
+   }
+   }).from('#search-options', { y: -50, autoAlpha: 0, duration: 0.5,
+   scrollTrigger: {
+      trigger: "#mobile",
+      scrub: 2,
+      markers: true
+   }
+   })
+   .from('#create-btn', { y: 250, autoAlpha: 0, duration: 0.5,
+   scrollTrigger: {
+      trigger: "#mobile",
+      scrub: 2,
+      markers: true
+   }
+   })
+   .from('#create-options', { y: 250, autoAlpha: 0, duration: 0.5,
+   scrollTrigger: {
+      trigger: "#mobile",
+      scrub: 2,
+      markers: true
+   }
+   }).from('#sharing-btn', { y: 200, autoAlpha: 0, duration: 0.5,
+   scrollTrigger: {
+      trigger: "#mobile",
+      scrub: 2,
+      markers: true
+   }
+   }).from('#sharing-options', { y: 230, autoAlpha: 0, duration: 0.5,
+   scrollTrigger: {
+      trigger: "#mobile",
+      scrub: 2,
+      markers: true
+   }
+   })
+   // tl.to('#sharing-btn',{
+   //      y: 25,
+   //    //   rotate: "2deg",
+   //      duration: 2,
+   //      delay:0.5,
+   //      repeat: -1,
+   //      yoyo: true,
+   //      ease: "sine.inOut"
+   // })
+   // .to('#search-btn',{
+   //      y: -205,
+   //    //   rotate: "2deg",
+   //      duration: 1,
+   //      repeat: -1,
+   //      yoyo: true,
+   //      ease: "none"
+   // })
+   tl.to('#create-btn',{
+        y: 195,
+        x: -270,
+        duration:2,
+        rotate: 1,
+        repeat: -1,
+        yoyo: true,
+        ease: "inOut"
+   })
+   .to('#create-btn',{
+        y: 200,
+        x:-275,
+        duration:2,
+        rotate: 0,
+        repeat: -1,
+        yoyo: true,
+        ease: "noinOutne"
+   })
+   // .to('#create-btn',{
+   //      y: 210,
+   //      x:-265,
+   //      duration:2,
+   //      rotate: 0,
+   //      repeat: -1,
+   //      yoyo: true,
+   //      ease: "noinOutne"
+   // })
+// .to(floatElement, { y: -30, x: 5, rotation: 2, ease: "sine.inOut" })
+//             .to(floatElement, { y: 0, x: 0, rotation: 0, ease: "sine.inOut" }, 0)
+//             .to(floatElement, { y: -15, x: -5, rotation: -2, ease: "sine.inOut" }, 1);
 })
 </script>

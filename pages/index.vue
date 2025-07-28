@@ -94,7 +94,7 @@
                         <li class="">3- در قسمت انواع مستندات فرایندی می توانید به لیست هر دسته دسترسی پیدا کنید و با اعمال فیلترها سند مورد نظر خود را پیدا کنید.</li>
                     </ul>
                 </div>
-                <div class="mdplus:col-span-6 relative flex justify-center items-center w-full">
+                <div class="mdplus:col-span-6 relative flex justify-center items-center w-full py-10">
                     <MobileIcon class="w-full max-w-[500px] h-auto"></MobileIcon>
                 </div> 
                
