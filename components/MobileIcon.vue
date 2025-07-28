@@ -2100,14 +2100,15 @@
 import { onMounted } from 'vue'
 import { gsap } from 'gsap'
 onMounted(() => {
-  const tl = gsap.timeline();
-  tl.from('#mobile', { y: 100, autoAlpha: 0, duration: 0.5,
+  const tl = gsap.timeline({
    scrollTrigger: {
         trigger: ".floating-box",
         start: "top 80%",
-        toggleActions: "play none none none"
-    },
-   })
+        toggleActions: "play none none none",
+        scrub: true
+    }
+   });
+  tl.from('#mobile', { y: 100, autoAlpha: 0, duration: 0.5})
    .from('#search-btn', { y: -120, autoAlpha: 0, duration: 0.5,
    scrollTrigger: {
       trigger: "#mobile",
@@ -2147,40 +2148,40 @@ onMounted(() => {
       markers: true
    }
    })
-   // tl.to('#sharing-btn',{
-   //      y: 25,
-   //    //   rotate: "2deg",
-   //      duration: 2,
-   //      delay:0.5,
-   //      repeat: -1,
-   //      yoyo: true,
-   //      ease: "sine.inOut"
-   // })
-   // .to('#search-btn',{
-   //      y: -205,
-   //    //   rotate: "2deg",
-   //      duration: 1,
-   //      repeat: -1,
-   //      yoyo: true,
-   //      ease: "none"
-   // })
+   tl.to('#sharing-btn',{
+        y: 25,
+        rotate: 1,
+        duration: 2,
+        delay:0.5,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut"
+   }, "+=0")
+   .to('#search-btn',{
+        y: -205,
+        rotate: 1,
+        duration: 1,
+        repeat: -1,
+        yoyo: true,
+        ease: "none"
+   },"<")
    tl.to('#create-btn',{
         y: 195,
-        x: -270,
+      //   x: -275,
         duration:2,
         rotate: 1,
         repeat: -1,
         yoyo: true,
-        ease: "inOut"
-   })
+        ease: "sine.inOut"
+   },"<")
    .to('#create-btn',{
         y: 200,
-        x:-275,
+      //   x:-273,
         duration:2,
-        rotate: 0,
+        rotate: 1,
         repeat: -1,
         yoyo: true,
-        ease: "noinOutne"
+        ease: "sine.inOut"
    })
    // .to('#create-btn',{
    //      y: 210,
