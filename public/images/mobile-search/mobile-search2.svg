@@ -2,15 +2,15 @@
 <svg
    class="feat-wwf-graphics"
    width="530.21869"
-   height="516.2254"
-   viewBox="0 0 572.4485 557.52343"
+   height="536.22498"
+   viewBox="0 0 572.4485 579.12297"
    version="1.1"
    id="svg123"
    sodipodi:docname="mobile-search2.svg"
    inkscape:export-filename="..\Desktop\images-dms\mobile-farsi.svg"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96"
-   inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
+   inkscape:version="1.4 (86a8ad7, 2024-10-11)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -27,9 +27,9 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:zoom="1.1525841"
      inkscape:cx="274.60035"
-     inkscape:cy="171.7879"
-     inkscape:window-width="1366"
-     inkscape:window-height="705"
+     inkscape:cy="231.21957"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
@@ -39,7 +39,7 @@
        x="0"
        y="0"
        width="572.44849"
-       height="557.52344"
+       height="579.12299"
        id="page2"
        margin="0"
        bleed="0"
@@ -424,7 +424,7 @@
      fill="none"
      fill-rule="evenodd"
      id="mobile"
-     transform="translate(1.1561526,25.795541)">
+     transform="translate(1.1561526,43.075541)">
     <g
        class="wwf-device"
        transform="translate(134,77)"
@@ -1278,7 +1278,7 @@
      fill="none"
      fill-rule="evenodd"
      id="create-btn"
-     transform="translate(-274.485,197.34927)"
+     transform="translate(-274.485,214.62927)"
      inkscape:export-filename="..\Desktop\images-dms\create.svg"
      inkscape:export-xdpi="96"
      inkscape:export-ydpi="96">
@@ -1372,7 +1372,7 @@
      fill="none"
      fill-rule="evenodd"
      id="create-options"
-     transform="translate(-307.84384,197.43341)">
+     transform="translate(-307.84384,214.71341)">
     <g
        class="wwf-create-options"
        transform="translate(308,64)"
@@ -1561,7 +1561,7 @@
      fill="none"
      fill-rule="evenodd"
      id="sharing-btn"
-     transform="translate(6.3423596,32.296066)">
+     transform="translate(6.3423596,49.576066)">
     <g
        class="wwf-share-btn"
        transform="translate(415,274)"
@@ -1650,7 +1650,7 @@
      fill="none"
      fill-rule="evenodd"
      id="sharing-options"
-     transform="translate(52.252646,216.52693)">
+     transform="translate(52.252646,233.80693)">
     <g
        class="wwf-share-options"
        transform="translate(287.78528,145.80367)"
@@ -1883,7 +1883,7 @@
      fill="none"
      fill-rule="evenodd"
      id="search-btn"
-     transform="translate(85.799481,-199.8)">
+     transform="translate(85.799481,-182.52)">
     <g
        class="wwf-collaborate-btn"
        transform="translate(0,203)"
@@ -1930,7 +1930,7 @@
      fill="none"
      fill-rule="evenodd"
      id="search-options"
-     transform="translate(-149.64082,-160.61723)">
+     transform="translate(-149.64082,-143.33723)">
     <g
        class="wwf-collaborate-options"
        transform="translate(235.87731,219.24541)"
@@ -2081,3 +2081,8 @@
        id="path1-82" />
   </g>
 </svg>
+<svg width="800" height="800" overflow="visible" ... >
+<svg width="800" height="800" viewBox="0 0 800 800" ...>
+<svg viewBox="0 -200 800 1000" ...>
+83211010-14
+88345961اتاق اصناف تهران

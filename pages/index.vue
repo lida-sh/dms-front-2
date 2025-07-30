@@ -1,10 +1,10 @@
 <template>
-    <div v-if="!resultSearch" class="w-full h-full flex flex-col items-center justify-center">
+    <div v-if="!resultSearch" id="top-of-page" class="w-full h-full flex flex-col items-center justify-center">
         <div class="bg-[#4749e3] w-full flex items-center justify-center">
             <div
                 class="lg:grid lg:grid-cols-12 h-[48rem] w-full flex flex-col max-w-[100rem] px-4 pb-8 lg:px-0 gap-4 lg:gap-8 overflow-x-hidden">
 
-                <div
+                <div id="search-section"
                     class="lg:col-span-5 w-full h-full flex flex-col gap-4 items-center justify-center py-4 lg:py-0 px-4 sm:px-6 space-y-2 lg:space-y-8">
                     <p
                         class="text-lg sm:text-xl lg:text-[1.2rem] xl:text-[1.4rem] 2xl:text-[1.8rem] text-white font-bold">
@@ -66,7 +66,7 @@
                         بروز رسانی و انتشار فایل ها و مستندات و گزارشات</h2>
                 </div>
             </div>
-            <div class="w-full flex max-w-[100rem]">
+            <div class="w-full flex max-w-[100rem]" id="types-of-docs">
                 <div class="p-10 overflow-hidden">
                     <app-slider :items="items">
                         <template #item="{ item }">
@@ -85,111 +85,28 @@
             </div>
             <div
                 class="w-full flex flex-col mdplus:grid mdplus:grid-cols-12 gap-4 items-center  justify-center relative mt-[20rem] px-10 lg:px-20">
-                <div class="mdplus:col-span-6 flex flex-col gap-4">
-                    <h3 class="text-lg font-bold">جستجو در مستندات فرایندی از راه های زیر امکان پذیر است:</h3>
-
-                    <ul class="text-md font-normal space-y-4">
-                        <li class="">1- استفاده از گزینه جستجوی دقیق اگراز حوزه و نوع سند اطمینان دارید</li>
-                        <li class="">2- استفاده از جستجوی عادی در صورتی که عنوان یا کد سند را میدانید حتی با یک کلمه از عنوان سند می توانید به سند مورد نظر خود دست یابید.</li>
-                        <li class="">3- در قسمت انواع مستندات فرایندی می توانید به لیست هر دسته دسترسی پیدا کنید و با اعمال فیلترها سند مورد نظر خود را پیدا کنید.</li>
+                <div class="mdplus:col-span-6 flex flex-col gap-8 xl:pr-[5rem]">
+                    <h3 class="text-xl font-bold">جستجو در مستندات فرایندی از راه های زیر امکان پذیر است:</h3>
+                    <ul class="text-sm lg:text-lg font-normal space-y-6">
+                        <li class="">1- استفاده از گزینه <NuxtLink class="text-blue-600" to="#search-section">جستجوی دقیق</NuxtLink> اگراز حوزه و نوع سند اطمینان دارید</li>
+                        <li class="">2- استفاده از <NuxtLink class="text-blue-600" to="#search-section">جستجوی عادی</NuxtLink> در صورتی که عنوان یا کد سند را میدانید حتی با یک کلمه از
+                            عنوان سند می
+                            توانید به سند مورد نظر خود دست یابید.</li>
+                        <li class="">3- در قسمت <NuxtLink class="text-blue-600" to="#types-of-docs">انواع مستندات فرایندی</NuxtLink> می توانید به لیست هر دسته دسترسی پیدا کنید و با
+                            اعمال فیلترها
+                            سند مورد نظر خود را پیدا کنید.</li>
+                            <li class="">4- در قسمت منوی بالای صفحه از قسمت <button class="text-blue-600" @click="scrollToTop">مستندات درون سازمانی</button> می توانید به لیست هر دسته دسترسی پیدا کنید و با
+                            اعمال فیلترها
+                            سند مورد نظر خود را پیدا کنید.</li>
                     </ul>
                 </div>
                 <div class="mdplus:col-span-6 relative flex justify-center items-center w-full py-10">
                     <MobileIcon class="w-full max-w-[500px] h-auto"></MobileIcon>
-                </div> 
-               
+                </div>
+
             </div>
-            <div
-                class="w-full flex flex-col gap-4 items-start justify-center relative mt-[20rem] px-8 lg:px-[10rem] 2xl:px-[18rem] ">
-                <h2 class="text-md font-bold sm:text-xl lg:text-2xl mb-10 mr-10">سوالات متداول</h2>
-                <app-collaps>
-                    <template #title>
-                        <p class="text-sm font-bold sm:text-md xl:text-lg">اقدام اصلاحی و پیشگیرانه چیست؟</p>
-                    </template>
-                    <div class="flex flex-col gap-2 w-full text-xs sm:text-sm xl:text-base py-10 ">
-                        <p class="">اقدام اصلاحی: اقدامی برای برطرف سازی علت عدم انطباق و یا شرایط نامطلوب بالفعل که
-                            به‌منظور
-                            جلوگیری از وقوع آن‌ها انجام می‌گیرد .</p>
-                        <p class="">اقدام پیشگیرانه: اقدامی برای حذف علل به وجود آورنده عدم انطباق بالقوه و یا سایر
-                            شرایط نامطلوب
-                            بالقوه و به‌منظور پیشگیری از وقوع مجدد آن‌ها.
 
-                        </p>
-                    </div>
-                </app-collaps>
-                <app-collaps>
-                    <template #title>
-                        <p class="text-sm font-bold sm:text-md xl:text-lg">اگر فرایند یا زیر فرایند مشخص شده با وظایف
-                            ساختار مربوطه مطابقت نداشته باشد چه باید کرد؟</p>
-                    </template>
-                    <div class="flex flex-col gap-2 w-full text-xs sm:text-sm xl:text-base py-10 ">
-                        <p class="">در صورتی که در واحدهای مجری فرایند با بررسی
-                            و تحلیل فرایندها، اصلاح یا حذف یک فرایند، ادغام چند فرایند و یا پیشنهاد فرایند جدید را مفید
-                            تشخیص دادند
-                            ضروری است مسئول فرایند و یا مسئول کنترل کیفیت فرایند(ضمن هماهنگی با مسئول فرآیند ذی‌ربط)،
-                            اقدام به تنظیم
-                            پیشنهاد درآخرین نسخه فرم اقدام اصلاحی و پیشگیرانه با کد FR-SBD-05 و ارسال آن به اداره کل
-                            کیفیت و فرایند
-                            نماید. بدین منظور لازم است، هر پیشنهاد در فرمی مجزا از آخرین ویرایش معتبر از فرم اقدام
-                            اصلاحی و
-                            پیشگیرانه با کد FR-SBD-05 تکمیل و ارسال گردد.
-                            در صورت ضرورت اصلاح در شاخص‌ها، معیار اندازه‌گیری، ضوابط امتیاز دهی شاخص‌ها و یا پیشنهاد
-                            شاخص جدید، از
-                            فرمت خام آخرین نسخه فرم پایش و ارزیابی خروجی فرایند با کد FR-SBD-01 استفاده گردد. این فرم
-                            نیز می بایست
-                            ضمن هماهنگی با مسئول فرایند و نیز مالک فرایند تنظیم، امضاء و ارسال شود.
-                        </p>
-                    </div>
-                </app-collaps>
-                <app-collaps>
-                    <template #title>
-                        <p class="text-sm font-bold sm:text-md xl:text-lg">آیا بعد از اقدام اصلاحی ارزیابی ها بر اساس
-                            تغییرات جدید صورت میگیرد؟</p>
-                    </template>
-                    <div class="flex flex-col gap-2 w-full text-xs sm:text-sm xl:text-base py-10 ">
-                        <p class="">تا زمانیکه اصلاحات و پیشنهادات ارسال شده به اداره کل کیفیت و فرایند به تصویب نرسد،
-                            پایش فرایندها
-                            و شاخص‌ها بر مبنای مصوبات و توافقات پیشین خواهد بود. </p>
-                    </div>
-                </app-collaps>
-                <app-collaps>
-                    <template #title>
-                        <p class="text-sm font-bold sm:text-md lg:text-lg">ارزیابی فرایندی بر چه اساسی صورت میگیرد؟</p>
-                    </template>
-                    <div class="flex flex-col gap-2 w-full text-xs sm:text-sm xl:text-base py-10 ">
-                        <p class="">فرایندهای حوز‌ه‌های ستادی، سالانه دو نوبت (مهرماه و فروردین‌ماه) توسط اداره کل کیفیت
-                            و فرایند
-                            معاونت راهبرد و توسعه کسب‌وکار مورد پایش و ارزیابی قرار خواهد گرفت. دستورالعمل اجرائی پایش
-                            فرایندهای
-                            حوزه‌های ستادی به کد فرایندی IN-SBD-11-01 دستورالعمل اجرائی پایش
-                            فرایندهای
-                            حوزه‌های ستادی، به منظور ایجاد رویه مشترک در حین مراحل مختلف پایش، شفاف کردن مسیر ارزیابی و
-                            نیز کاستن از
-                            ابهامات و پرسش‌های احتمالی تدوین شده است تا مسئولین فرایندها، مدیران مجری فرایند و کارشناسان
-                            حوزه‌های
-                            مختلف ستادی با همکاری و تعامل مناسب با مسئولان کنترل کیفیت فرایندها به فراهم‌سازی مستندات و
-                            تنظیم دقیق
-                            فرم‌ها، مطابق مفاد ذکر شده در این دستورالعمل مبادرت نمایند.</p>
-
-                    </div>
-                </app-collaps>
-                <app-collaps>
-                    <template #title>
-                        <p class="text-sm font-bold sm:text-md lg:text-lg">اقدام اصلاحی و پیشگیرانه چیست؟</p>
-                    </template>
-                    <div class="flex flex-col gap-2 w-full text-xs sm:text-sm xl:text-base py-10 ">
-                        <p class="">اقدام اصلاحی: اقدامی برای برطرف سازی علت عدم انطباق و یا شرایط نامطلوب بالفعل که
-                            به‌منظور
-                            جلوگیری از وقوع آن‌ها انجام می‌گیرد .</p>
-                        <p class="">اقدام پیشگیرانه: اقدامی برای حذف علل به وجود آورنده عدم انطباق بالقوه و یا سایر
-                            شرایط نامطلوب
-                            بالقوه و به‌منظور پیشگیری از وقوع مجدد آن‌ها.
-
-                        </p>
-                    </div>
-                </app-collaps>
-            </div>
-            <div class="relative  mt-20 w-full">
+            <div class="relative w-full">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="w-full">
                     <path fill="#adb5bd" fill-opacity="1"
                         d="M0,192L34.3,202.7C68.6,213,137,235,206,224C274.3,213,343,171,411,165.3C480,160,549,192,617,202.7C685.7,213,754,203,823,176C891.4,149,960,107,1029,90.7C1097.1,75,1166,85,1234,74.7C1302.9,64,1371,32,1406,16L1440,0L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z">
@@ -198,7 +115,115 @@
             </div>
             <div class="bg-[#adb5bd] w-full -mt-1 p-4">
                 <div class="flex flex-col gap-10 lg:gap-24 items-center justify-center w-full ">
+                    <div
+                        class="w-full flex flex-col gap-4 items-start justify-center relative px-8 lg:px-[5rem] 2xl:px-[12rem] pb-20">
+                        <h2 class="text-md font-bold sm:text-xl lg:text-2xl mb-10 mr-10">سوالات متداول</h2>
+                        <app-collaps>
+                            <template #title>
+                                <p class="text-sm font-bold sm:text-md xl:text-lg">اقدام اصلاحی و پیشگیرانه چیست؟</p>
+                            </template>
+                            <div class="flex flex-col gap-2 w-full text-xs sm:text-sm xl:text-base py-10 ">
+                                <p class="">اقدام اصلاحی: اقدامی برای برطرف سازی علت عدم انطباق و یا شرایط نامطلوب
+                                    بالفعل که
+                                    به‌منظور
+                                    جلوگیری از وقوع آن‌ها انجام می‌گیرد .</p>
+                                <p class="">اقدام پیشگیرانه: اقدامی برای حذف علل به وجود آورنده عدم انطباق بالقوه و یا
+                                    سایر
+                                    شرایط نامطلوب
+                                    بالقوه و به‌منظور پیشگیری از وقوع مجدد آن‌ها.
 
+                                </p>
+                            </div>
+                        </app-collaps>
+                        <app-collaps>
+                            <template #title>
+                                <p class="text-sm font-bold sm:text-md xl:text-lg">اگر فرایند یا زیر فرایند مشخص شده با
+                                    وظایف
+                                    ساختار مربوطه مطابقت نداشته باشد چه باید کرد؟</p>
+                            </template>
+                            <div class="flex flex-col gap-2 w-full text-xs sm:text-sm xl:text-base py-10 ">
+                                <p class="">در صورتی که در واحدهای مجری فرایند با بررسی
+                                    و تحلیل فرایندها، اصلاح یا حذف یک فرایند، ادغام چند فرایند و یا پیشنهاد فرایند جدید
+                                    را مفید
+                                    تشخیص دادند
+                                    ضروری است مسئول فرایند و یا مسئول کنترل کیفیت فرایند(ضمن هماهنگی با مسئول فرآیند
+                                    ذی‌ربط)،
+                                    اقدام به تنظیم
+                                    پیشنهاد درآخرین نسخه فرم اقدام اصلاحی و پیشگیرانه با کد FR-SBD-05 و ارسال آن به
+                                    اداره کل
+                                    کیفیت و فرایند
+                                    نماید. بدین منظور لازم است، هر پیشنهاد در فرمی مجزا از آخرین ویرایش معتبر از فرم
+                                    اقدام
+                                    اصلاحی و
+                                    پیشگیرانه با کد FR-SBD-05 تکمیل و ارسال گردد.
+                                    در صورت ضرورت اصلاح در شاخص‌ها، معیار اندازه‌گیری، ضوابط امتیاز دهی شاخص‌ها و یا
+                                    پیشنهاد
+                                    شاخص جدید، از
+                                    فرمت خام آخرین نسخه فرم پایش و ارزیابی خروجی فرایند با کد FR-SBD-01 استفاده گردد.
+                                    این فرم
+                                    نیز می بایست
+                                    ضمن هماهنگی با مسئول فرایند و نیز مالک فرایند تنظیم، امضاء و ارسال شود.
+                                </p>
+                            </div>
+                        </app-collaps>
+                        <app-collaps>
+                            <template #title>
+                                <p class="text-sm font-bold sm:text-md xl:text-lg">آیا بعد از اقدام اصلاحی ارزیابی ها بر
+                                    اساس
+                                    تغییرات جدید صورت میگیرد؟</p>
+                            </template>
+                            <div class="flex flex-col gap-2 w-full text-xs sm:text-sm xl:text-base py-10 ">
+                                <p class="">تا زمانیکه اصلاحات و پیشنهادات ارسال شده به اداره کل کیفیت و فرایند به تصویب
+                                    نرسد،
+                                    پایش فرایندها
+                                    و شاخص‌ها بر مبنای مصوبات و توافقات پیشین خواهد بود. </p>
+                            </div>
+                        </app-collaps>
+                        <app-collaps>
+                            <template #title>
+                                <p class="text-sm font-bold sm:text-md lg:text-lg">ارزیابی فرایندی بر چه اساسی صورت
+                                    میگیرد؟</p>
+                            </template>
+                            <div class="flex flex-col gap-2 w-full text-xs sm:text-sm xl:text-base py-10 ">
+                                <p class="">فرایندهای حوز‌ه‌های ستادی، سالانه دو نوبت (مهرماه و فروردین‌ماه) توسط اداره
+                                    کل کیفیت
+                                    و فرایند
+                                    معاونت راهبرد و توسعه کسب‌وکار مورد پایش و ارزیابی قرار خواهد گرفت. دستورالعمل
+                                    اجرائی پایش
+                                    فرایندهای
+                                    حوزه‌های ستادی به کد فرایندی IN-SBD-11-01 دستورالعمل اجرائی پایش
+                                    فرایندهای
+                                    حوزه‌های ستادی، به منظور ایجاد رویه مشترک در حین مراحل مختلف پایش، شفاف کردن مسیر
+                                    ارزیابی و
+                                    نیز کاستن از
+                                    ابهامات و پرسش‌های احتمالی تدوین شده است تا مسئولین فرایندها، مدیران مجری فرایند و
+                                    کارشناسان
+                                    حوزه‌های
+                                    مختلف ستادی با همکاری و تعامل مناسب با مسئولان کنترل کیفیت فرایندها به فراهم‌سازی
+                                    مستندات و
+                                    تنظیم دقیق
+                                    فرم‌ها، مطابق مفاد ذکر شده در این دستورالعمل مبادرت نمایند.</p>
+
+                            </div>
+                        </app-collaps>
+                        <app-collaps>
+                            <template #title>
+                                <p class="text-sm font-bold sm:text-md lg:text-lg">اقدام اصلاحی و پیشگیرانه چیست؟</p>
+                            </template>
+                            <div class="flex flex-col gap-2 w-full text-xs sm:text-sm xl:text-base py-10 ">
+                                <p class="">اقدام اصلاحی: اقدامی برای برطرف سازی علت عدم انطباق و یا شرایط نامطلوب
+                                    بالفعل که
+                                    به‌منظور
+                                    جلوگیری از وقوع آن‌ها انجام می‌گیرد .</p>
+                                <p class="">اقدام پیشگیرانه: اقدامی برای حذف علل به وجود آورنده عدم انطباق بالقوه و یا
+                                    سایر
+                                    شرایط نامطلوب
+                                    بالقوه و به‌منظور پیشگیری از وقوع مجدد آن‌ها.
+
+                                </p>
+                            </div>
+                        </app-collaps>
+                    </div>
 
                 </div>
 
@@ -206,7 +231,7 @@
         </section>
     </div>
     <div v-else
-        class="flex flex-col lg:flex-row justify-center items-start w-full gap-4 px-10 py-20       bg-[#F7F7F7] min-h-screen">
+        class="flex flex-col lg:flex-row justify-center items-start w-full gap-4 px-10 py-20 bg-[#F7F7F7] min-h-screen">
         <section class="px-4 w-full h-full flex flex-col items-start gap-4 max-w-[100rem]">
             <h1 class=" font-sm xl:text-base font-bold mb-4 mr-4">نتایج جستجو:</h1>
             <process-result-search v-if="data?.processes || data?.data?.processes"
@@ -412,6 +437,12 @@ const submitSearch = (values, { resetForm }) => {
 }
 const backToHome = () => {
     resultSearch.value = false
+}
+const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth' // اسکرول نرم
+  })
 }
 // const isLargeScreen = ref()
 // const recalculate = () => {
