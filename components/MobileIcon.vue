@@ -1,7 +1,7 @@
 <template>
    <div>
       <!-- <?xml version="1.0" encoding="UTF-8" standalone="no"?> -->
-      <svg class="feat-wwf-graphics" width="100%" height="auto" viewBox="0 0 572.4485 557.52343"
+      <svg class="feat-wwf-graphics" width="100%" height="auto" overflow="visible" viewBox="0 -20 572.4485 579.12297"
          preserveAspectRatio="xMidYMid meet" version="1.1" id="svg123" sodipodi:docname="mobile-search2.svg"
          inkscape:export-filename="..\Desktop\images-dms\mobile-farsi.svg" inkscape:export-xdpi="96"
          inkscape:export-ydpi="96" inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
@@ -1059,6 +1059,7 @@ onMounted(() => {
          y: 230, autoAlpha: 0, duration: 0.3,
 
       })
+<<<<<<< HEAD
       // const loopAnims = []
 
 //   loopAnims.push(
@@ -1083,10 +1084,35 @@ onMounted(() => {
             //    start: "top center",
             // },
             y: -205,
+=======
+
+
+
+      .to('#sharing-btn', {
+         y: 32,
+         rotate: 1,
+         duration: 1,
+         repeat: -1,
+         yoyo: true,
+         ease: "sine.inOut"
+      }, "+=0")
+      .to('#sharing-btn', {
+         y: 30,
+         rotate: 0,
+         duration: 1,
+         repeat: -1,
+         yoyo: true,
+         ease: "sine.inOut"
+      }, "<")
+      .to('#search-btn',
+         {
+            y: -202,
+>>>>>>> 3f28b9b3443b9a1736a9fc92157e6b86bfa609a1
             rotate: 1,
             duration: 1,
             repeat: -1,
             yoyo: true,
+<<<<<<< HEAD
             ease: "none"
          }, "<")
    .to('#create-btn', {
@@ -1107,15 +1133,42 @@ onMounted(() => {
          //    trigger: "#svg123",
          //    start: "top center",
          // },
+=======
+            ease: "sine.inOut"
+         }, "<")
+      .to('#search-btn',
+         {
+            y: -198,
+            rotate: 1,
+            duration: 1,
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut"
+         }, "<")
+      .to('#create-btn', {
+         
+         y: 195,
+         //   x: -275,
+         duration: 1,
+         rotate: 1,
+         repeat: -1,
+         yoyo: true,
+         ease: "sine.inOut"
+      }, "<")
+      .to('#create-btn', {
+>>>>>>> 3f28b9b3443b9a1736a9fc92157e6b86bfa609a1
          y: 200,
          //   x:-273,
-         duration: 2,
+         duration: 1,
          rotate: 1,
          repeat: -1,
          yoyo: true,
          ease: "sine.inOut"
       })
+<<<<<<< HEAD
    // )
+=======
+>>>>>>> 3f28b9b3443b9a1736a9fc92157e6b86bfa609a1
    ScrollTrigger.create({
       trigger: "#svg123",
       start: "top 50%",
@@ -1128,8 +1181,7 @@ onMounted(() => {
       },
 
       onLeaveBack: () => {
-         // alert("reversing")
-         tl.pause(tl.duration()); // برو انتها
+         // tl.pause(tl.duration()); // برو انتها
          tl.reverse(0);            // و از اونجا ریورس کن
          // loopAnims.forEach(anim => anim.pause(0))
       }, // وقتی به بالا برمی‌گردیم، همه با هم ریورس
@@ -1137,28 +1189,13 @@ onMounted(() => {
       // if (self.direction === 1 && tl.progress() === 1) {
       //   loopAnims.forEach(anim => anim.play())
       // }
+<<<<<<< HEAD
    //  },
       markers: true
+=======
+      //  },
+>>>>>>> 3f28b9b3443b9a1736a9fc92157e6b86bfa609a1
    })
-   // scrollTrigger: {
-   //    trigger: "#svg123",
-   //    start: "top bottom",
-   //    // end: "+=1500",
-   //    markers: true,
-   //    toggleActions: "play none reverse reverse", 
-
-   // }
-   // .to('#create-btn',{
-   //      y: 210,
-   //      x:-265,
-   //      duration:2,
-   //      rotate: 0,
-   //      repeat: -1,
-   //      yoyo: true,
-   //      ease: "noinOutne"
-   // })
-   // .to(floatElement, { y: -30, x: 5, rotation: 2, ease: "sine.inOut" })
-   //             .to(floatElement, { y: 0, x: 0, rotation: 0, ease: "sine.inOut" }, 0)
-   //             .to(floatElement, { y: -15, x: -5, rotation: -2, ease: "sine.inOut" }, 1);
+  
 })
 </script>
