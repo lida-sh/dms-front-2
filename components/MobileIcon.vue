@@ -1059,14 +1059,15 @@ onMounted(() => {
          y: 230, autoAlpha: 0, duration: 0.3,
 
       })
-      const loopAnims = []
+      // const loopAnims = []
 
-  loopAnims.push(
-   gsap.to('#sharing-btn', {
-      scrollTrigger: {
-         trigger: "#svg123",
-         start: "top center",
-      },
+//   loopAnims.push(
+
+   tl.to('#sharing-btn', {
+      // scrollTrigger: {
+      //    trigger: "#svg123",
+      //    start: "top center",
+      // },
       y: 25,
       rotate: 1,
       duration: 2,
@@ -1074,21 +1075,21 @@ onMounted(() => {
       repeat: -1,
       yoyo: true,
       ease: "sine.inOut"
-   }, "+=0"),
-      gsap.to('#search-btn',
+   }, "+=0")
+   .to('#search-btn',
          {
-            scrollTrigger: {
-               trigger: "#svg123",
-               start: "top center",
-            },
+            // scrollTrigger: {
+            //    trigger: "#svg123",
+            //    start: "top center",
+            // },
             y: -205,
             rotate: 1,
             duration: 1,
             repeat: -1,
             yoyo: true,
             ease: "none"
-         }, "<"),
-   gsap.to('#create-btn', {
+         }, "<")
+   .to('#create-btn', {
       scrollTrigger: {
          trigger: "#svg123",
          start: "top center",
@@ -1100,12 +1101,12 @@ onMounted(() => {
       repeat: -1,
       yoyo: true,
       ease: "sine.inOut"
-   }, "<"),
-     gsap.to('#create-btn', {
-         scrollTrigger: {
-            trigger: "#svg123",
-            start: "top center",
-         },
+   }, "<")
+     .to('#create-btn', {
+         // scrollTrigger: {
+         //    trigger: "#svg123",
+         //    start: "top center",
+         // },
          y: 200,
          //   x:-273,
          duration: 2,
@@ -1114,7 +1115,7 @@ onMounted(() => {
          yoyo: true,
          ease: "sine.inOut"
       })
-   )
+   // )
    ScrollTrigger.create({
       trigger: "#svg123",
       start: "top 50%",
@@ -1123,19 +1124,20 @@ onMounted(() => {
          console.log('Playing...');
          tl.pause(0); // از ابتدا آماده شو
          tl.play()
+         
       },
 
       onLeaveBack: () => {
          // alert("reversing")
          tl.pause(tl.duration()); // برو انتها
          tl.reverse(0);            // و از اونجا ریورس کن
-         loopAnims.forEach(anim => anim.pause(0))
+         // loopAnims.forEach(anim => anim.pause(0))
       }, // وقتی به بالا برمی‌گردیم، همه با هم ریورس
-      onUpdate: self => {
-      if (self.direction === 1 && tl.progress() === 1) {
-        loopAnims.forEach(anim => anim.play())
-      }
-    },
+      // onUpdate: self => {
+      // if (self.direction === 1 && tl.progress() === 1) {
+      //   loopAnims.forEach(anim => anim.play())
+      // }
+   //  },
       markers: true
    })
    // scrollTrigger: {
