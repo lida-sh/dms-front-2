@@ -98,7 +98,7 @@
                             <li class="">4- در قسمت منوی بالای صفحه از قسمت <button class="text-blue-600" @click="scrollToTop">مستندات درون سازمانی</button> می توانید به لیست هر دسته دسترسی پیدا کنید و با
                             اعمال فیلترها
                             سند مورد نظر خود را پیدا کنید.</li>
-                    </ul>
+                    </ul>                                                                                                                                                                                                                           
                 </div>
                 <div class="mdplus:col-span-6 relative flex justify-center items-center w-full py-10">
                     <MobileIcon class="w-full max-w-[500px] h-auto"></MobileIcon>
@@ -106,14 +106,14 @@
 
             </div>
 
-            <div class="relative w-full">
+            <!-- <div class="relative w-full">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="w-full">
                     <path fill="#adb5bd" fill-opacity="1"
                         d="M0,192L34.3,202.7C68.6,213,137,235,206,224C274.3,213,343,171,411,165.3C480,160,549,192,617,202.7C685.7,213,754,203,823,176C891.4,149,960,107,1029,90.7C1097.1,75,1166,85,1234,74.7C1302.9,64,1371,32,1406,16L1440,0L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z">
                     </path>
                 </svg>
             </div>
-            <div class="bg-[#adb5bd] w-full -mt-1 p-4">
+            <div class="bg-[#adb5bd] w-full -mt-1 p-4"> -->
                 <div class="flex flex-col gap-10 lg:gap-24 items-center justify-center w-full ">
                     <div
                         class="w-full flex flex-col gap-4 items-start justify-center relative px-8 lg:px-[5rem] 2xl:px-[12rem] pb-20">
@@ -227,7 +227,7 @@
 
                 </div>
 
-            </div>
+            <!-- </div> -->
         </section>
     </div>
     <div v-else
