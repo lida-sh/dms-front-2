@@ -8,7 +8,7 @@ export const useLogout = () => {
   const logout = async () => {
     authStore.clearToken();
     if (isAuthRoute(route.path)) {
-      return router.replace("/auth/login");
+      return router.replace("/auth");
     }
   };
   return { logout };
