@@ -1059,6 +1059,32 @@ onMounted(() => {
          y: 230, autoAlpha: 0, duration: 0.3,
 
       })
+<<<<<<< HEAD
+      // const loopAnims = []
+
+//   loopAnims.push(
+
+   tl.to('#sharing-btn', {
+      // scrollTrigger: {
+      //    trigger: "#svg123",
+      //    start: "top center",
+      // },
+      y: 25,
+      rotate: 1,
+      duration: 2,
+      delay: 0.5,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut"
+   }, "+=0")
+   .to('#search-btn',
+         {
+            // scrollTrigger: {
+            //    trigger: "#svg123",
+            //    start: "top center",
+            // },
+            y: -205,
+=======
 
 
 
@@ -1081,10 +1107,33 @@ onMounted(() => {
       .to('#search-btn',
          {
             y: -202,
+>>>>>>> 3f28b9b3443b9a1736a9fc92157e6b86bfa609a1
             rotate: 1,
             duration: 1,
             repeat: -1,
             yoyo: true,
+<<<<<<< HEAD
+            ease: "none"
+         }, "<")
+   .to('#create-btn', {
+      scrollTrigger: {
+         trigger: "#svg123",
+         start: "top center",
+      },
+      y: 195,
+      //   x: -275,
+      duration: 2,
+      rotate: 1,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut"
+   }, "<")
+     .to('#create-btn', {
+         // scrollTrigger: {
+         //    trigger: "#svg123",
+         //    start: "top center",
+         // },
+=======
             ease: "sine.inOut"
          }, "<")
       .to('#search-btn',
@@ -1107,6 +1156,7 @@ onMounted(() => {
          ease: "sine.inOut"
       }, "<")
       .to('#create-btn', {
+>>>>>>> 3f28b9b3443b9a1736a9fc92157e6b86bfa609a1
          y: 200,
          //   x:-273,
          duration: 1,
@@ -1115,6 +1165,10 @@ onMounted(() => {
          yoyo: true,
          ease: "sine.inOut"
       })
+<<<<<<< HEAD
+   // )
+=======
+>>>>>>> 3f28b9b3443b9a1736a9fc92157e6b86bfa609a1
    ScrollTrigger.create({
       trigger: "#svg123",
       start: "top 50%",
@@ -1123,6 +1177,7 @@ onMounted(() => {
          console.log('Playing...');
          tl.pause(0); // از ابتدا آماده شو
          tl.play()
+         
       },
 
       onLeaveBack: () => {
@@ -1134,7 +1189,12 @@ onMounted(() => {
       // if (self.direction === 1 && tl.progress() === 1) {
       //   loopAnims.forEach(anim => anim.play())
       // }
+<<<<<<< HEAD
+   //  },
+      markers: true
+=======
       //  },
+>>>>>>> 3f28b9b3443b9a1736a9fc92157e6b86bfa609a1
    })
   
 })
