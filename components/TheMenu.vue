@@ -15,7 +15,7 @@
                     <router-link :to="item.to" class=" text-sm lg:text-base">
                         <div class="w-auto xl: hover:text-blue-600"
                             :class="{ 'text-blue-800  xl:bg-transparent': menu[index] }">
-                            <div class="flex items-center gap-[0.8rem] px-[1.243rem] xl:px-0 py-3">
+                            <div class="flex items-center gap-[0.8rem] px-2 2xl:px-[1.243rem] xl:px-0 py-3">
                                 <div class="text-sm whitespace-nowrap">
                                     {{ item.title }}
                                 </div>
