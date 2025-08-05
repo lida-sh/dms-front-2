@@ -1059,12 +1059,6 @@ onMounted(() => {
          y: 230, autoAlpha: 0, duration: 0.3,
 
       })
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> d68db02d0a0e2cb8f231f69410db23fd1b0cb8b0
       .to('#sharing-btn', {
          y: 32,
          rotate: 1,
