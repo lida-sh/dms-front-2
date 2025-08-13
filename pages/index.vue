@@ -2,12 +2,12 @@
     <div v-if="!resultSearch" id="top-of-page" class="w-full h-full flex flex-col items-center justify-center">
         <div class="bg-[#4749e3] w-full flex items-center justify-center">
             <div
-                class="lg:grid lg:grid-cols-12 h-[48rem] w-full flex flex-col max-w-[100rem] px-4 pb-8 lg:px-0 gap-4 lg:gap-8 overflow-x-hidden">
+                class="lg:grid lg:grid-cols-12 h-[48rem] w-full flex flex-col max-w-[100rem] px-4 pb-8 lg:px-10 gap-4 lg:gap-8 overflow-x-hidden">
 
                 <div id="search-section"
                     class="lg:col-span-5 w-full h-full flex flex-col gap-4 items-center justify-center py-4 lg:py-0 px-4 sm:px-6 space-y-2 lg:space-y-8">
                     <p
-                        class="text-lg sm:text-xl lg:text-[1.2rem] xl:text-[1.4rem] 2xl:text-[1.8rem] text-white font-bold">
+                        class="text-md sm:text-xl lg:text-[1.2rem] xl:text-[1.4rem] 2xl:text-[1.8rem] text-white font-bold">
                         نگهداری
                         و دسترسی سریع به اسناد فرایندی با</p>
                     <h1 class="text-3xl lg:text-[2rem] xl:text-[3.25rem] text-white font-bold">سامانه مدیریت اسناد</h1>

@@ -1059,9 +1059,6 @@ onMounted(() => {
          y: 230, autoAlpha: 0, duration: 0.3,
 
       })
-
-
-
       .to('#sharing-btn', {
          y: 32,
          rotate: 1,
@@ -1123,7 +1120,6 @@ onMounted(() => {
          console.log('Playing...');
          tl.pause(0); // از ابتدا آماده شو
          tl.play()
-         
       },
 
       onLeaveBack: () => {
