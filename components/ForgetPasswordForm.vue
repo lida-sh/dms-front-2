@@ -2,7 +2,7 @@
     <div>
         <h2 class="mb-4 text-center text-2xl/9 font-bold tracking-tight text-gray-900">فراموشی رمز عبور
         </h2>
-        <Form :validation-schema="schema" class="space-y-3" @submit="submit">
+        <Form :validation-schema="schema" class="space-y-6" @submit="submit">
             <div>
                 <app-text-input name="email" :label="$t('email')" thin
                     class="focus:ring-2 focus:ring-inset focus:ring-indigo-600"></app-text-input>

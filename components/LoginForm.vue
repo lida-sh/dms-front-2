@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="">
         <h2 class="mb-4 text-center text-2xl/9 font-bold tracking-tight text-gray-900">ورود به حساب کاربری
         </h2>
         <Form :validation-schema="schema" class="space-y-3" @submit="submit">
