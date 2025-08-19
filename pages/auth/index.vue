@@ -17,11 +17,12 @@
 </template>
 
 <script setup lang="ts">
-import { AuthSteps } from "~/composables/auth/Auth.enum"
-
 definePageMeta({
     layout: "authtemp"
 })
+import { AuthSteps } from "~/composables/auth/Auth.enum"
+
+
 const step = ref<AuthSteps>(AuthSteps.login);
 interface Props {
     isDialog?:boolean

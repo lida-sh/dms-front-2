@@ -28,7 +28,11 @@ export default {
     role_display_name: "نام نمایشی نقش",
     national_code: "کد ملی",
     role: "نقش کاربری",
-    permissions: "مجوزها"
+    permissions: "مجوزها",
+    newPassword: "پسورد جدید",
+    confirmNewPassword: " تکرار پسورد جدید",
+    currentPassword: "پسورد فعلی",
+    passwordsMustMatch: "رمزهای عبور باید یکسان باشند"
     
     
     

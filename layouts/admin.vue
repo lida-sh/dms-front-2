@@ -1,7 +1,8 @@
 <template>
-  <div class="bg-[#F7F7F7] flex flex-col py-4 px-2 xl:px-6 2xl:px-10">
+  <!-- <div class="flex items-center justify-center w-full"> -->
     <Suspense>
       <template v-if="authStore.isLoggedIn">
+        <div class="bg-[#F7F7F7] flex flex-col py-4 px-2 xl:px-6 2xl:px-10">
         <AdminHeader></AdminHeader>
         <!-- <div class="pt-[5px] lg:pt-[10px] relative w-full bg-white h-full"> -->
         <!-- <div v-if="pageLoading"
@@ -19,12 +20,13 @@
         </div>
         <Footer></Footer>
         <!-- </div> -->
+         </div>
       </template>
       <!-- <LoginForm v-else /> -->
       <div v-else>
         <!-- <template #fallback> -->
           <!-- <AppLoader /> -->
-          <div class="flex items-center justify-center w-full bg-[#F7F7F7] non-select h-screen">
+          <div class="flex items-center justify-center w-full bg-[#F7F7F7] h-screen">
             <span class="loading loading-spinner loading-md"></span>
           </div>
         <!-- </template> -->
@@ -32,12 +34,13 @@
 
     </Suspense>
 
-  </div>
+  <!-- </div> -->
 
 
 </template>
 
 <script setup lang="ts">
+
 import { useAuthStore } from '~~/composables/auth/Auth.store';
 const pageLoading = ref(true)
 const authStore = useAuthStore()
