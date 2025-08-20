@@ -296,7 +296,7 @@ const items = [
     },
     {
         title: "دستورالعمل ها",
-        to: "/procedures",
+        to: "/procedures?docType=instruction",
         description: "بیش از 50 دستورالعمل در حوزه های مختلف بازنگری شده است.",
         image: "/images/slider/undraw_folder_files_re_2cbm.svg",
         action: "لیست  دستورالعمل ها",

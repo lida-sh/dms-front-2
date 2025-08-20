@@ -1077,17 +1077,17 @@ onMounted(() => {
       }, "<")
       .to('#search-btn',
          {
-            y: -202,
+            y: -204,
             rotate: 1,
             duration: 1,
             repeat: -1,
             yoyo: true,
             ease: "sine.inOut"
-         }, "<")
+         }, "+=0")
       .to('#search-btn',
          {
-            y: -198,
-            rotate: 1,
+            y: -200,
+            rotate: 0,
             duration: 1,
             repeat: -1,
             yoyo: true,
