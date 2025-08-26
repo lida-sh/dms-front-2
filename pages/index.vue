@@ -272,7 +272,7 @@ const resultSearch = ref(false)
 const items = [
     {
         title: "روش های اجرایی",
-        to: "/procedures",
+        to: "/procedures?docType=procedures",
         description: "بیش از 524 روش اجرایی در حوزه های مختلف مخابرات تدوین شده است.",
         image: "/images/slider/undraw_version_control_re_mg66.svg",
         action: "لیست روش های اجرایی",
@@ -298,13 +298,21 @@ const items = [
         title: "دستورالعمل ها",
         to: "/procedures?docType=instruction",
         description: "بیش از 50 دستورالعمل در حوزه های مختلف بازنگری شده است.",
-        image: "/images/slider/undraw_folder_files_re_2cbm.svg",
+        image: "/images/slider/undraw_our_solution_re_8yk6.svg",
         action: "لیست  دستورالعمل ها",
         icon: "/images/slider/small-picture/instruction2.svg"
     },
     {
+        title: "فرم ها",
+        to: "/procedures?docType=form",
+        description: "بیش از 50 دستورالعمل در حوزه های مختلف بازنگری شده است.",
+        image: "/images/slider/undraw_folder_files_re_2cbm.svg",
+        action: "لیست  فرم ها",
+        icon: "/images/slider/small-picture/instruction2.svg"
+    },
+    {
         title: "آئین نامه ها",
-        to: "/procedures",
+        to: "/procedures?docType=regulation",
         description: "بیش از 20 آئین نامه در حوزه های مختلف بازنگری شده است.",
         image: "/images/slider/undraw_folder_re_apfp(1).svg",
         action: "لیست  آئین نامه ها",
@@ -312,7 +320,7 @@ const items = [
     },
     {
         title: "قرارداد ها",
-        to: "/procedures",
+        to: "/procedures?docType=contract",
         description: "حدود 4 قرارداد در حوزه های مختلف بازنگری شده است.",
         image: "/images/slider/undraw_filing_system_re_56h6.svg",
         action: "لیست  قرارداد ها",
