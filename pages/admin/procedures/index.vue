@@ -2,8 +2,7 @@
   <div class="pr-[0.5rem]  pb-[0.2rem] min-h-screen">
 
     <div class="flex flex-col gap-4">
-      <Form 
-        class="card p-8 flex flex-col sm:grid sm:grid-cols-6 gap-4 w-full rounded-box shadow-lg bg-white">
+      <Form class="card p-8 flex flex-col sm:grid sm:grid-cols-6 gap-4 w-full rounded-box shadow-lg bg-white">
         <app-select-input name="architecture_id" :options="architectures!" :label="$t('architecture_id')"
           class="sm:col-span-2" @selectedItem="changeSelectItem"></app-select-input>
         <app-select-input name="process_id" :options="processes!" :label="$t('process_id')" class="sm:col-span-2"
@@ -46,53 +45,85 @@
       </div>
       <div v-else class="card p-8 gap-4 w-full rounded-box shadow-lg bg-white">
         <h3 class="text-lg font-bold text-gray-700 mb-5">لیست مستندات سطح چهارم مخابرات ایران</h3>
-        <table class="table table-zebra ">
-          <thead>
-            <tr class="bg-stone-300 rounded-lg text-xs">
-              <th class="text-center">ردیف</th>
-              <th class="text-center">عنوان</th>
-              <th class="text-center">کد</th>
-              <th class="text-center">معماری والد</th>
-              <th class="text-center">فرایند والد</th>
-              <th class="text-center">وضعیت</th>
-              <th class="text-center">تاریخ ابلاغ</th>
-              <th class="text-center">کاربر ثبت کننده</th>
-              <th class="text-center">عملیات</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(item, index) in data?.procedures" class="hover divide-y w-full">
-              <td class="text-center">{{ ((data!.meta.current_page - 1) * data!.meta.per_page) + index + 1 }}</td>
-              <td class="text-center ">{{ item.displayTitle }}</td>
-              <td class="text-center  en">{{ item.code }}</td>
-              <td class="text-center ">{{ item.architecture.title }}</td>
-              <td class="text-center ">{{ item.process.title }}</td>
-              <td class="text-center">
-                <span v-if="item.status == 1" class="text-green-500">فعال</span>
+        <div class="flex flex-col items-center justify-center w-full divide-y divide-gray-300">
+          <div
+            class="grid grid-cols-12 lg:grid-cols-14 gap-2 h-14 w-full bg-gray-200 text-xs xl:text-sm p-4 border border-white">
+            <div class="col-span-1 flex items-center justify-center">ردیف</div>
+            <div class="col-span-6 lg:col-span-3 flex items-center justify-center">عنوان</div>
+            <div class="col-span-3 lg:col-span-1 flex items-center justify-center">کد</div>
+            <div class="col-span-1 lg:col-span-1 flex items-center justify-center">وضعیت</div>
+            <div class="hidden lg:col-span-2 lg:flex items-center justify-center">معماری والد</div>
+            <div class="hidden lg:col-span-2 lg:flex items-center justify-center">فرایند والد</div>
+            <div class="hidden lg:col-span-1 lg:flex items-center justify-center">تاریخ ابلاغ</div>
+            <div class="hidden lg:col-span-1 lg:flex items-center justify-center">کاربر ثبت کننده</div>
+            <div class="hidden lg:col-span-2 lg:flex items-center justify-center">عملیات</div>
+            <div class="lg:hidden col-span-1 flex w-full items-center justify-center"></div>
+          </div>
+          <div class="flex flex-col items-center justify-center w-full divide-y divide-gray-200" v-for="(item, index) in data?.procedures">
+            <div class="grid grid-cols-12 lg:grid-cols-14 gap-2 h-auto w-full bg-white text-xs xl:text-sm p-4 ">
+              <div class="col-span-1 flex items-center justify-center">{{ ((data!.meta.current_page - 1) *
+                data!.meta.per_page) + index + 1 }}</div>
+              <div class="col-span-6 lg:col-span-3 flex items-center justify-center">{{ item.displayTitle }}</div>
+              <div class="col-span-3 lg:col-span-1 flex items-center justify-center en">{{ item.code }}</div>
+              <div class="hidden lg:col-span-2 lg:flex items-center justify-center">{{ item.architecture.title }}</div>
+              <div class="hidden lg:col-span-2 lg:flex items-center justify-center">{{ item.process.title }}</div>
+              <div class="col-span-1 lg:col-span-1 flex items-center justify-center"><span v-if="item.status == 1"
+                  class="text-green-500">فعال</span>
                 <span v-if="item.status == 0" class="text-red-500">غیر فعال</span>
-              </td>
-              <td class="text-center">{{ item.notification_date }}</td>
-              <td class="text-center">{{ item.user.fullName }}</td>
-              <td class="text-right flex items-center justify-center gap-2 ">
-
+              </div>
+              <div class="hidden lg:col-span-1 lg:flex items-center justify-center">{{ item.notification_date }}</div>
+              <div class="hidden lg:col-span-1 lg:flex items-center justify-center">{{ item.user.fullName }}</div>
+              <div class="hidden lg:col-span-2 lg:flex items-center justify-center gap-2">
                 <NuxtLink :to="`procedures/${item.slug}`"
-                  class="btn btn-outline border-sky-700 hover:border-none border-2 btn-sm text-sky-600 text-xs hover:bg-gradient-to-b hover:from-sky-900 hover:to-sky-400 hover:text-white">
+                  class="btn btn-outline rounded-lg border-indigo-700 hover:border-none border-2 btn-sm text-indigo-700 text-xs hover:bg-indigo-700 hover:text-white">
                   نمایش
                 </NuxtLink>
                 <NuxtLink :to="`procedures/edit/${item.id}`"
-                  class="btn btn-outline border-amber-700 hover:border-none border-2 btn-sm text-amber-600 text-xs hover:bg-gradient-to-b hover:from-amber-900 hover:to-amber-400 hover:text-white">
+                  class="btn btn-outline rounded-lg border-amber-700 hover:border-none border-2 btn-sm text-amber-600 text-xs hover:bg-amber-600  hover:text-white">
                   ویرایش
                 </NuxtLink>
                 <button @click="deleteProcedureConfirmation(item.id)"
-                  class="btn btn-outline border-red-700 hover:border-none border-2 btn-sm text-red-600 text-xs hover:bg-gradient-to-b hover:from-red-900 hover:to-red-400 hover:text-white">حذف</button>
-                <!-- <button
-                  class="btn btn-outline border-emerald-700 hover:border-none border-2 btn-sm text-emerald-600 text-xs hover:bg-gradient-to-b hover:from-emerald-900 hover:to-emerald-400 hover:text-white">ارتقا</button> -->
-              </td>
-            </tr>
-
-          </tbody>
-        </table>
-
+                  class="btn btn-outline rounded-lg border-red-700 hover:border-none border-2 btn-sm text-red-600 text-xs hover:bg-red-600 hover:text-white">حذف</button>
+              </div>
+              <div class="col-span-1 flex lg:hidden items-center justify-center">
+                <div class="flex w-2"><icons-collaps-arrow-down></icons-collaps-arrow-down></div>
+              </div>
+              
+            </div>
+            <div class="flex flex-col divide-y divide-gray-200 lg:hidden w-full text-xs px-4">
+                <div class="flex items-center justify-between w-full py-3">
+                  <div class="flex items-center justify-center">معماری والد</div>
+                  <div class="flex items-center justify-center">{{ item.architecture.title }}</div>
+                </div>
+                <div class="flex items-center justify-between w-full py-3">
+                  <div class="flex items-center justify-center">فرایند والد</div>
+                  <div class="flex items-center justify-center">{{ item.process.title }}</div>
+                </div>
+                <div class="flex items-center justify-between w-full py-3">
+                  <div class="flex items-center justify-center">تاریخ ابلاغ</div>
+                  <div class="flex items-center justify-center">{{ item.notification_date }}</div>
+                </div>
+                <div class="flex items-center justify-between w-full py-3">
+                  <div class="flex items-center justify-center">کاربر ثبت کننده</div>
+                  <div class="flex items-center justify-center">{{ item.user.fullName }}</div>
+                </div>
+                <div class="flex items-center justify-between w-full py-2">
+                  <div class="flex items-center justify-center">عملیات</div>
+                  <div class="flex items-center justify-center gap-2"><NuxtLink :to="`procedures/${item.slug}`"
+                  class="btn btn-outline rounded-lg border-indigo-700 hover:border-none border-2 btn-sm text-indigo-700 text-xs hover:bg-indigo-700 hover:text-white">
+                  نمایش
+                </NuxtLink>
+                <NuxtLink :to="`procedures/edit/${item.id}`"
+                  class="btn btn-outline rounded-lg border-amber-700 hover:border-none border-2 btn-sm text-amber-600 text-xs hover:bg-amber-600  hover:text-white">
+                  ویرایش
+                </NuxtLink>
+                <button @click="deleteProcedureConfirmation(item.id)"
+                  class="btn btn-outline rounded-lg border-red-700 hover:border-none border-2 btn-sm text-red-600 text-xs hover:bg-red-600 hover:text-white">حذف</button></div>
+                </div>
+                
+              </div>
+          </div>
+        </div>
       </div>
       <div class="join flex items-center justify-center mt-5" v-if="data?.meta.total > data?.meta?.per_page!">
         <button v-for="(link, index) in data?.meta.last_page" :key="index" @click="handleFilter({ page: link })"
@@ -220,12 +251,12 @@ const deleteProcedureConfirmation = (id: number) => {
 const deleteProcedure = useDeleteProcedureService()
 const deleteProcedureconfirmed = () => {
   loading.value = true
-  deleteProcedure(procedureIdForDelete.value).then((res)=>{
-    if(res !== undefined){
+  deleteProcedure(procedureIdForDelete.value).then((res) => {
+    if (res !== undefined) {
       refresh()
       showToast({ message: "سند مورد نظر حذف شد.", type: ToastEnum.success })
     }
-  }).finally(()=>{
+  }).finally(() => {
     loading.value = false
     deleteConfirmation.value = false
   })
@@ -234,6 +265,6 @@ const deleteProcedureconfirmed = () => {
 
 <style scoped>
 .en {
-    font-family: 'Times New Roman', serif;
+  font-family: 'Times New Roman', serif;
 }
 </style>
