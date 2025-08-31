@@ -47,50 +47,49 @@
         <h3 class="text-lg font-bold text-gray-700 mb-5">لیست مستندات سطح چهارم مخابرات ایران</h3>
         <div class="flex flex-col items-center justify-center w-full divide-y divide-gray-300">
           <div
-            class="grid grid-cols-12 lg:grid-cols-14 gap-2 h-14 w-full bg-gray-200 text-xs xl:text-sm p-4 border border-white">
+            class="grid grid-cols-12 xl:grid-cols-14 gap-2 h-14 w-full bg-gray-200 text-xs  3xl:text-sm py-4 px-2 border border-white">
             <div class="col-span-1 flex items-center justify-center">ردیف</div>
-            <div class="col-span-6 lg:col-span-3 flex items-center justify-center">عنوان</div>
-            <div class="col-span-3 lg:col-span-1 flex items-center justify-center">کد</div>
-            <div class="col-span-1 lg:col-span-1 flex items-center justify-center">وضعیت</div>
-            <div class="hidden lg:col-span-2 lg:flex items-center justify-center">معماری والد</div>
-            <div class="hidden lg:col-span-2 lg:flex items-center justify-center">فرایند والد</div>
-            <div class="hidden lg:col-span-1 lg:flex items-center justify-center">تاریخ ابلاغ</div>
-            <div class="hidden lg:col-span-1 lg:flex items-center justify-center">کاربر ثبت کننده</div>
-            <div class="hidden lg:col-span-2 lg:flex items-center justify-center">عملیات</div>
-            <div class="lg:hidden col-span-1 flex w-full items-center justify-center"></div>
+            <div class="col-span-6 xl:col-span-3 flex items-center justify-center">عنوان</div>
+            <div class="col-span-3 xl:col-span-2 flex items-center justify-center">کد</div>
+            <div class="hidden xl:col-span-2 xl:flex items-center justify-center">معماری والد</div>
+            <div class="hidden xl:col-span-2 xl:flex items-center justify-center">فرایند والد</div>
+            <div class="col-span-1 xl:col-span-1 flex items-center justify-center">وضعیت</div>
+            <div class="hidden xl:col-span-1 xl:flex items-center justify-center">تاریخ ابلاغ</div>
+            <div class="hidden xl:col-span-1 xl:flex items-center justify-center">کاربر ثبت کننده</div>
+            <div class="hidden xl:col-span-1 xl:flex items-center justify-center">عملیات</div>
+            <div class="xl:hidden col-span-1 flex w-full items-center justify-center"></div>
           </div>
           <div class="flex flex-col items-center justify-center w-full divide-y divide-gray-200" v-for="(item, index) in data?.procedures">
-            <div class="grid grid-cols-12 lg:grid-cols-14 gap-2 h-auto w-full bg-white text-xs xl:text-sm p-4 ">
+            <div class="grid grid-cols-12 xl:grid-cols-14 gap-2 h-auto w-full bg-white text-xs 2xl:text-sm py-4 px-2 ">
               <div class="col-span-1 flex items-center justify-center">{{ ((data!.meta.current_page - 1) *
                 data!.meta.per_page) + index + 1 }}</div>
-              <div class="col-span-6 lg:col-span-3 flex items-center justify-center">{{ item.displayTitle }}</div>
-              <div class="col-span-3 lg:col-span-1 flex items-center justify-center en">{{ item.code }}</div>
-              <div class="hidden lg:col-span-2 lg:flex items-center justify-center">{{ item.architecture.title }}</div>
-              <div class="hidden lg:col-span-2 lg:flex items-center justify-center">{{ item.process.title }}</div>
-              <div class="col-span-1 lg:col-span-1 flex items-center justify-center"><span v-if="item.status == 1"
+              <div class="col-span-6 xl:col-span-3 flex items-center justify-center">{{ item.displayTitle }}</div>
+              <div class="col-span-3 xl:col-span-2 flex items-center justify-center en">{{ item.code }}</div>
+              <div class="hidden xl:col-span-2 xl:flex items-center justify-center">{{ item.architecture.title }}</div>
+              <div class="hidden xl:col-span-2 xl:flex items-center justify-center">{{ item.process.title }}</div>
+              <div class="col-span-1 xl:col-span-1 flex items-center justify-center"><span v-if="item.status == 1"
                   class="text-green-500">فعال</span>
                 <span v-if="item.status == 0" class="text-red-500">غیر فعال</span>
               </div>
-              <div class="hidden lg:col-span-1 lg:flex items-center justify-center">{{ item.notification_date }}</div>
-              <div class="hidden lg:col-span-1 lg:flex items-center justify-center">{{ item.user.fullName }}</div>
-              <div class="hidden lg:col-span-2 lg:flex items-center justify-center gap-2">
+              <div class="hidden xl:col-span-1 xl:flex items-center justify-center">{{ item.notification_date }}</div>
+              <div class="hidden xl:col-span-1 xl:flex items-center justify-center">{{ item.user.fullName }}</div>
+              <div class="hidden xl:col-span-1 xl:flex items-center justify-center gap-1 2xl:gap-2">
                 <NuxtLink :to="`procedures/${item.slug}`"
-                  class="btn btn-outline rounded-lg border-indigo-700 hover:border-none border-2 btn-sm text-indigo-700 text-xs hover:bg-indigo-700 hover:text-white">
-                  نمایش
+                  class=" text-indigo-700 text-xs hover:text-indigo-400">
+                  <icons-admin-eye></icons-admin-eye>
                 </NuxtLink>
                 <NuxtLink :to="`procedures/edit/${item.id}`"
-                  class="btn btn-outline rounded-lg border-amber-700 hover:border-none border-2 btn-sm text-amber-600 text-xs hover:bg-amber-600  hover:text-white">
-                  ویرایش
+                  class=" text-amber-600 text-xs  hover:text-amber-400">
+                  <icons-admin-edit></icons-admin-edit>
                 </NuxtLink>
                 <button @click="deleteProcedureConfirmation(item.id)"
-                  class="btn btn-outline rounded-lg border-red-700 hover:border-none border-2 btn-sm text-red-600 text-xs hover:bg-red-600 hover:text-white">حذف</button>
+                  class=" text-red-600 text-xs hover:text-red-400"><icons-admin-trash></icons-admin-trash></button>
               </div>
-              <div class="col-span-1 flex lg:hidden items-center justify-center">
-                <div class="flex w-2"><icons-collaps-arrow-down></icons-collaps-arrow-down></div>
+              <div class="col-span-1 flex xl:hidden items-center justify-center">
+                <button class="flex w-2" @click="toggleDetails(item.id)"><icons-collaps-arrow-down :class="openRow === item.id ? 'rotate-90 transition-transform' : 'rotate-0 transition-transform'"></icons-collaps-arrow-down></button>
               </div>
-              
             </div>
-            <div class="flex flex-col divide-y divide-gray-200 lg:hidden w-full text-xs px-4">
+            <div :id="'details'+item.id" class="flex flex-col divide-y divide-gray-200 xl:hidden w-full text-xs px-4 h-0 overflow-hidden opacity-0">
                 <div class="flex items-center justify-between w-full py-3">
                   <div class="flex items-center justify-center">معماری والد</div>
                   <div class="flex items-center justify-center">{{ item.architecture.title }}</div>
@@ -110,15 +109,15 @@
                 <div class="flex items-center justify-between w-full py-2">
                   <div class="flex items-center justify-center">عملیات</div>
                   <div class="flex items-center justify-center gap-2"><NuxtLink :to="`procedures/${item.slug}`"
-                  class="btn btn-outline rounded-lg border-indigo-700 hover:border-none border-2 btn-sm text-indigo-700 text-xs hover:bg-indigo-700 hover:text-white">
+                  class="btn btn-outline btn-xs rounded-lg border-indigo-700 hover:border-none border-2 text-indigo-700 text-xs hover:bg-indigo-700 hover:text-white">
                   نمایش
                 </NuxtLink>
                 <NuxtLink :to="`procedures/edit/${item.id}`"
-                  class="btn btn-outline rounded-lg border-amber-700 hover:border-none border-2 btn-sm text-amber-600 text-xs hover:bg-amber-600  hover:text-white">
+                  class="btn btn-outline btn-xs rounded-lg border-amber-700 hover:border-none border-2  text-amber-600 text-xs hover:bg-amber-600  hover:text-white">
                   ویرایش
                 </NuxtLink>
                 <button @click="deleteProcedureConfirmation(item.id)"
-                  class="btn btn-outline rounded-lg border-red-700 hover:border-none border-2 btn-sm text-red-600 text-xs hover:bg-red-600 hover:text-white">حذف</button></div>
+                  class="btn btn-outline btn-xs rounded-lg border-red-700 hover:border-none border-2 text-red-600 text-xs hover:bg-red-600 hover:text-white">حذف</button></div>
                 </div>
                 
               </div>
@@ -159,7 +158,7 @@
 definePageMeta({
   layout: "admin"
 })
-
+import { gsap } from 'gsap'
 import { useGetBaseArchitecturesService } from "~/composables/architectures/useArchitecture.service";
 import { useGetBaseProcessesService, useGetProcessesService } from '~/composables/processes/useProcess.service';
 import { useSubProcessFilter } from '~/composables/sub-processes/useSubProcess.validation';
@@ -260,6 +259,31 @@ const deleteProcedureconfirmed = () => {
     loading.value = false
     deleteConfirmation.value = false
   })
+}
+const openRow = ref<number|null>(null)
+const toggleDetails = async (id:number)=>{
+    if (openRow.value === id) {
+    const el = document.getElementById('details'+id)
+    if (el) {
+      gsap.to(el, { height: 0, opacity: 0, duration: 0.4, ease: "power2.inOut" })
+    }
+    openRow.value = null}
+     else {
+    // اگر قبلی باز بود، اول ببندش
+    if (openRow.value !== null) {
+      const prevEl = document.getElementById('details'+openRow.value)
+      if (prevEl) {
+        gsap.to(prevEl, { height: 0, opacity: 0, duration: 0.3, ease: "power2.inOut" })
+      }
+    }
+    // باز کردن جدید
+    openRow.value = id
+    await nextTick()
+    const el = document.getElementById('details'+id)
+    if (el) {
+      gsap.fromTo(el, { height: 0, opacity: 0 }, { height: "auto", opacity: 1, duration: 0.5, ease: "power2.out" })
+    }
+  }
 }
 </script>
 
