@@ -4,10 +4,10 @@ export const BASE_URL = "http://localhost:3000/service/api";
 // export const BASE_URL = "http://localhost:3000/service/api";
 export const PROXY_CONFIG = isProd ? {} : {
     '/service/':{
-        target: "http://dms.test", changeOrigin:true, pathRewrite: {
+        target: "http://dms-back.test", changeOrigin:true, pathRewrite: {
             '^/service/': ''
         }
     }
 };
 export const CLIENT_ID = 4
-export const CLIENT_SECRET = "m6vyMy9V1EO7PsCIDhW2CsqmYbpaJTI2hvs6Tq3J"
+export const CLIENT_SECRET = "7BXRL0jwuOFEmnUmTejPhIaRWqGSKEGkFSUFW5Di"
