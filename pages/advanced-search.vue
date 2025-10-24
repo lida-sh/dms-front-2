@@ -37,11 +37,16 @@
             </Form>
         </section>
         <section class="w-full h-full flex">
+            <div class="p-4">
+                    <h1 class="text-xl font-bold">Reverb Test Page</h1>
+                    <p>Listening for <code>test.event</code>...</p>
+                         </div>
             <div v-if="!searchOnced" class=""></div>
             <div v-else class="w-full h-full flex flex-col">
                 <div class="px-4 w-full h-full flex flex-col items-start gap-4"
                     v-if="(data?.subProcesses?.length !== (0 || undefined) || data?.processes?.length !== (0 || undefined) || data?.procedures?.length !== (0 || undefined))">
                     <h1 class="font-sm xl:text-base font-bold mb-4 mr-4">نتایج جستجو:</h1>
+                    
                     <sub-process-result-search v-if="data?.subProcesses" v-for="(itemDoc, index) in data?.subProcesses"
                         :key="index" :item="itemDoc"
                         :row-number="((data!.meta.current_page - 1) * data!.meta.per_page) + index + 1"></sub-process-result-search>
@@ -121,6 +126,7 @@ const itemsInSearch = [
         value: "code"
     },
 ]
+const { $echo } = useNuxtApp()
 const query = ref({})
 const route = useRoute()
 const router = useRouter()
@@ -185,6 +191,14 @@ const handleFilter = (link) => {
         searchOnced.value = true
     })
 }
+onMounted(() => {
+  console.log('📡 Listening on test-channel...', '✅ echo', $echo)
+
+   $echo.channel('test-channel')
+    .listen('.test.event', (data: any) => {
+      console.log('📩 Message received:', data)
+    })
+})
 </script>
 
 <style scoped></style>
