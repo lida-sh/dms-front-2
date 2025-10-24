@@ -128,7 +128,7 @@ const itemsInSearch = [
     },
 ]
 
-const { $echo } = useNuxtApp() as { $echo: Echo }
+const { $echo } = useNuxtApp() as { $echo: Echo<'reverb'> }
 
 const query = ref({})
 const route = useRoute()
