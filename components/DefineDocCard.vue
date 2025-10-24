@@ -41,8 +41,7 @@
         </div>
         <div class="bg-white h-[10rem] rounded-b-3xl pr-20 pt-16">
             <img :src="docTypesSlides[currentSlide].image" alt=""
-                class="absolute bottom-[12%] lg:bottom-[8%]  rounded-md shadow-xl"
-                :class="docTypesSlides[currentSlide].style">
+                class="absolute bottom-[12%] lg:bottom-[8%] rounded-md shadow-xl w-[80%] sm:w-1/3 left-[10%]">
         </div>
         <div class="hidden lg:flex gap-8 w-full h-10 items-center justify-center absolute -bottom-14">
             <button v-for="(slide, index) in docTypesSlides" :key="index" @click="goToSlide(index)" class="w-3 h-3 rounded-full"
@@ -51,7 +50,6 @@
             <div class="bg-gray-300 rounded-full w-3 h-3"></div>
             <div class="bg-gray-300 rounded-full w-3 h-3"></div> -->
         </div>
-
     </div>
 </template>
 
@@ -81,14 +79,14 @@ const docTypesSlides = ref([
         image: "/images/PROCEDURE.png",
         style: "w-[80%] sm:w-1/3 left-[10%]"
     },
-    {
-        title: "دستورالعمل",
-        latinTitle: "Instruction",
-        description: "مستندی است که به طور دقیق بیان می کند، وظایف چگونه باید انجام شوند.",
-        code: "IN",
-        image: "/images/INSTRUCTION_3_2.png",
-        style: "w-[40%] sm:w-1/5 left-[25%] sm:left-[10%]"
-    },
+    // {
+    //     title: "دستورالعمل",
+    //     latinTitle: "Instruction",
+    //     description: "مستندی است که به طور دقیق بیان می کند، وظایف چگونه باید انجام شوند.",
+    //     code: "IN",
+    //     image: "/images/1.png",
+    //     style: "w-[40%] sm:w-1/5 left-[25%] sm:left-[10%]"
+    // },
 
 ])
 const currentSlide = ref(0)

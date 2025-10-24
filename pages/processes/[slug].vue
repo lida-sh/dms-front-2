@@ -8,7 +8,7 @@
                 <h1 class="text-xl font-bold "> فرایند <span class="text-blue-700">{{ data?.title }}</span></h1>
                 <div class="flex flex-col sm:flex-row justify-between items-center">
                     <h6 class="text-base font-medium"> کد زیر فرایند: {{ data?.code }}</h6>
-                    <a class="btn btn-success" href="/admin/processes">بازگشت به لیست فرایندها</a>
+                    <a class="btn btn-success" href="/processes">بازگشت به لیست فرایندها</a>
                 </div>
                 
                 <h6 class="text-base font-medium">زیر مجموعه:
@@ -29,13 +29,13 @@
                             <button @click="clickDownload(file.fileName, file.filePath)"
                                 class="btn btn-outline border-purple-700 hover:border-none border-2 btn-sm text-purple-600 text-xs hover:bg-gradient-to-b hover:from-purple-900 hover:to-purple-400 hover:text-white">دانلود
                                 فایل</button>
-                            <!-- <a :href="file.filePath" download="file.fileName" target="_self" class="btn btn-outline border-purple-700 hover:border-none border-2 btn-sm text-purple-600 text-xs hover:bg-gradient-to-b hover:from-purple-900 hover:to-purple-400 hover:text-white">دانلود فایل</a> -->
-                            <!-- <div
+                            <a :href="file.filePath" download="file.fileName" target="_self" class="btn btn-outline border-purple-700 hover:border-none border-2 btn-sm text-purple-600 text-xs hover:bg-gradient-to-b hover:from-purple-900 hover:to-purple-400 hover:text-white">دانلود فایل</a> -->
+                            <div
                           v-if="file.fileName && (file.fileName.split('.').pop().toLowerCase() == 'png') || (file.fileName.split('.').pop().toLowerCase() == 'jpg') || (file.fileName.split('.').pop().toLowerCase() == 'jpeg')">
                           <button @click="showImage = true"
                               class="btn btn-outline border-purple-700 hover:border-none border-2 btn-sm text-purple-600 text-xs hover:bg-gradient-to-b hover:from-purple-900 hover:to-purple-400 hover:text-white">نمایش
                               فایل</button>
-                      </div> -->
+                      </div> 
                         </div>
                     </template>
                 </div>
