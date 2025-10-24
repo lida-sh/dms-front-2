@@ -17,7 +17,7 @@
                 @selectedItem="(process) => handleFilter({ process_id: process })"></app-select-input>
             </div>
             <div class="p-3">
-              <app-select-input name="docType" :options-list="doctypes" :label="$t('docType')" class="w-full"
+              <app-select-input name="docType" v-model="query.docType" :options-list="doctypes" :label="$t('docType')" class="w-full"
                 @selectedItem="(docType) => handleFilter({ docType: docType })"></app-select-input>
             </div>
             <div class="p-3">
@@ -74,14 +74,15 @@
 import { useGetBaseArchitecturesService, useGetBaseProcessesService, useGetProceduresService } from '~/composables/home/home.service'
 import type { ProcessBaseDto } from '~/composables/processes/process.dto'
 const pengingOnGetProcesses = ref(false)
-const query = ref<any>({})
+
 
 const searchWord = ref("")
 
 const sortedBy = ref(null)
 const route = useRoute()
 const router = useRouter()
-router.push({ query: {} })
+
+const query = ref<any>({})
 
 const doctypes = [
   {
@@ -136,6 +137,10 @@ const sortItems = [
 // }
 //
 const processes = ref<ProcessBaseDto[]>([])
+onMounted(()=>{
+  query.value = route.query
+  router.push({ query: query.value })
+})
 const getProcedures = useGetProceduresService()
 const { data, pending, error, refresh } = await useAsyncData('procedures', () => getProcedures(query.value), {})
 // useErrorHandler(error)

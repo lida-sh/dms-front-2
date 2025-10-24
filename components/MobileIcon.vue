@@ -2,7 +2,7 @@
    <div>
       <!-- <?xml version="1.0" encoding="UTF-8" standalone="no"?> -->
       <svg class="feat-wwf-graphics" width="100%" height="auto" overflow="visible" viewBox="0 -20 572.4485 579.12297"
-         preserveAspectRatio="xMidYMid meet" version="1.1" id="svg123" sodipodi:docname="mobile-search2.svg"
+         preserveAspectRatio="xMidYMid meet" version="1.1" id="svg123" sodipodi:docname="mobile-search3.svg"
          inkscape:export-filename="..\Desktop\images-dms\mobile-farsi.svg" inkscape:export-xdpi="96"
          inkscape:export-ydpi="96" inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
          xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
@@ -1077,7 +1077,7 @@ onMounted(() => {
       }, "<")
       .to('#search-btn',
          {
-            y: -204,
+            y: -200,
             rotate: 1,
             duration: 1,
             repeat: -1,
@@ -1086,8 +1086,8 @@ onMounted(() => {
          }, "+=0")
       .to('#search-btn',
          {
-            y: -200,
-            rotate: 0,
+            y: -195,
+            rotate: 1,
             duration: 1,
             repeat: -1,
             yoyo: true,

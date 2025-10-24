@@ -45,7 +45,84 @@
       </div>
       <div v-else class="card p-4 gap-4 w-full rounded-box shadow-lg bg-white">
         <h3 class="text-lg font-bold text-gray-700 mb-5">لیست فرایند های مخابرات ایران</h3>
-        <table class="table table-zebra ">
+        <div class="flex flex-col items-center justify-center w-full divide-y divide-gray-300">
+          <div
+            class="grid grid-cols-12 xl:grid-cols-14 gap-2 h-14 w-full bg-gray-200 text-xs  3xl:text-sm py-4 px-2 border border-white">
+            <div class="col-span-1 flex items-center justify-center">ردیف</div>
+            <div class="col-span-6 xl:col-span-3 flex items-center justify-center">عنوان</div>
+            <div class="col-span-3 xl:col-span-2 flex items-center justify-center">کد</div>
+            <div class="hidden xl:col-span-2 xl:flex items-center justify-center">معماری والد</div>
+            <div class="col-span-1 xl:col-span-1 flex items-center justify-center">وضعیت</div>
+            <div class="hidden xl:col-span-2 xl:flex items-center justify-center">تاریخ ابلاغ</div>
+            <div class="hidden xl:col-span-1 xl:flex items-center justify-center">کاربر ثبت کننده</div>
+            <div class="hidden xl:col-span-2 xl:flex items-center justify-center">عملیات</div>
+            <div class="xl:hidden col-span-1 flex w-full items-center justify-center"></div>
+          </div>
+          <div class="flex flex-col items-center justify-center w-full divide-y divide-gray-200"
+            v-for="(item, index) in data?.processes">
+            <div class="grid grid-cols-12 xl:grid-cols-14 gap-2 h-auto w-full bg-white text-xs 2xl:text-sm py-4 px-2 ">
+              <div class="col-span-1 flex items-center justify-center">{{ ((data!.meta.current_page - 1) *
+                data!.meta.per_page) + index + 1 }}</div>
+              <div class="col-span-6 xl:col-span-3 flex items-center justify-center">{{ item.title }}</div>
+              <div class="col-span-3 xl:col-span-2 flex items-center justify-center en">{{ item.code }}</div>
+              <div class="hidden xl:col-span-2 xl:flex items-center justify-center">{{ item.architecture.title }}</div>
+              <div class="col-span-1 xl:col-span-1 flex items-center justify-center"><span v-if="item.status == 1"
+                  class="text-green-500">فعال</span>
+                <span v-if="item.status == 0" class="text-red-500">غیر فعال</span>
+              </div>
+              <div class="hidden xl:col-span-2 xl:flex items-center justify-center">{{ item.notification_date }}</div>
+              <div class="hidden xl:col-span-1 xl:flex items-center justify-center">{{ item.user.fullName }}</div>
+              <div class="hidden xl:col-span-2 xl:flex items-center justify-center gap-1 2xl:gap-2">
+                <NuxtLink :to="`processes/${item.slug}`"
+                    class="text-indigo-700 text-xs hover:text-indigo-400">
+                    <icons-admin-eye></icons-admin-eye>
+                  </NuxtLink>
+                  <NuxtLink :to="`processes/edit/${item.id}`"
+                    class="text-amber-600 text-xs  hover:text-amber-400">
+                    <icons-admin-edit></icons-admin-edit>
+                  </NuxtLink>
+                  <button @click="deleteProcessConfirmation(item.id)"
+                    class="text-red-600 text-xs hover:text-red-400"><icons-admin-trash></icons-admin-trash></button>
+              </div>
+              <div class="col-span-1 flex xl:hidden items-center justify-center">
+                <button class="flex w-2" @click="toggleDetails(item.id)"><icons-collaps-arrow-down
+                    :class="openRow === item.id ? 'rotate-90 transition-transform' : 'rotate-0 transition-transform'"></icons-collaps-arrow-down></button>
+              </div>
+            </div>
+            <div :id="'details' + item.id"
+              class="flex flex-col divide-y divide-gray-200 xl:hidden w-full text-xs px-4 h-0 overflow-hidden opacity-0">
+              <div class="flex items-center justify-between w-full py-3">
+                <div class="flex items-center justify-center">معماری والد</div>
+                <div class="flex items-center justify-center">{{ item.architecture.title }}</div>
+              </div>
+              <div class="flex items-center justify-between w-full py-3">
+                <div class="flex items-center justify-center">تاریخ ابلاغ</div>
+                <div class="flex items-center justify-center">{{ item.notification_date }}</div>
+              </div>
+              <div class="flex items-center justify-between w-full py-3">
+                <div class="flex items-center justify-center">کاربر ثبت کننده</div>
+                <div class="flex items-center justify-center">{{ item.user.fullName }}</div>
+              </div>
+              <div class="flex items-center justify-between w-full py-2">
+                <div class="flex items-center justify-center">عملیات</div>
+                <div class="flex items-center justify-center gap-2">
+                  <NuxtLink :to="`processes/${item.slug}`"
+                    class="text-indigo-700 text-xs hover:text-indigo-400">
+                    <icons-admin-eye></icons-admin-eye>
+                  </NuxtLink>
+                  <NuxtLink :to="`processes/edit/${item.id}`"
+                    class="text-amber-600 text-xs  hover:text-amber-400">
+                    <icons-admin-edit></icons-admin-edit>
+                  </NuxtLink>
+                  <button @click="deleteProcessConfirmation(item.id)"
+                    class="text-red-600 text-xs hover:text-red-400"><icons-admin-trash></icons-admin-trash></button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <!-- <table class="table table-zebra ">
           <thead>
             <tr class="bg-gray-200 rounded-lg text-base">
               <th class="text-center">شماره</th>
@@ -60,8 +137,8 @@
           </thead>
           <tbody>
             <tr v-for="(item, index) in data?.processes" class="hover divide-y">
-              <!-- <th class="text-center">{{ index }}</th> -->
-              <td class="text-center">{{ ((data!.meta.current_page - 1) * data!.meta.per_page) + index + 1 }}</td>
+              <th class="text-center">{{ index }}</th> -->
+              <!-- <td class="text-center">{{ ((data!.meta.current_page - 1) * data!.meta.per_page) + index + 1 }}</td>
               <td class="text-center">{{ item.title }}</td>
               <td class="text-center en whitespace-nowrap">{{ item.code }}</td>
               <td class="text-center">{{ item.architecture.title }}</td>
@@ -87,7 +164,7 @@
             </tr>
 
           </tbody>
-        </table>
+        </table>  -->
 
       </div>
       <div class="join flex items-center justify-center mt-5" v-if="data?.meta.total > data?.meta?.per_page!">
@@ -125,6 +202,7 @@
 definePageMeta({
   layout: "admin"
 })
+import { gsap } from 'gsap'
 import { TailwindPagination } from 'laravel-vue-pagination';
 import { useGetBaseArchitecturesService } from "~/composables/architectures/useArchitecture.service";
 import { useGetProcessesService, useDeleteProcessService } from '~/composables/processes/useProcess.service';
@@ -176,21 +254,46 @@ const deleteProcessConfirmation = (id: number) => {
 const deleteProcess = useDeleteProcessService()
 const deleteProcessconfirmed = () => {
   loading.value = true
-  deleteProcess(processIdForDelete.value).then((res)=>{
-    if(res !== undefined){
+  deleteProcess(processIdForDelete.value).then((res) => {
+    if (res !== undefined) {
       refresh()
       showToast({ message: "فرایند مورد نظر حذف شد.", type: ToastEnum.success })
     }
-  }).finally(()=>{
+  }).finally(() => {
     loading.value = false
     deleteConfirmation.value = false
   })
 }
-
+const openRow = ref<number | null>(null)
+const toggleDetails = async (id: number) => {
+  if (openRow.value === id) {
+    const el = document.getElementById('details' + id)
+    if (el) {
+      gsap.to(el, { height: 0, opacity: 0, duration: 0.4, ease: "power2.inOut" })
+    }
+    openRow.value = null
+  }
+  else {
+    // اگر قبلی باز بود، اول ببندش
+    if (openRow.value !== null) {
+      const prevEl = document.getElementById('details' + openRow.value)
+      if (prevEl) {
+        gsap.to(prevEl, { height: 0, opacity: 0, duration: 0.3, ease: "power2.inOut" })
+      }
+    }
+    // باز کردن جدید
+    openRow.value = id
+    await nextTick()
+    const el = document.getElementById('details' + id)
+    if (el) {
+      gsap.fromTo(el, { height: 0, opacity: 0 }, { height: "auto", opacity: 1, duration: 0.5, ease: "power2.out" })
+    }
+  }
+}
 </script>
 
 <style scoped>
 .en {
-    font-family: 'Times New Roman', serif;
+  font-family: 'Times New Roman', serif;
 }
 </style>

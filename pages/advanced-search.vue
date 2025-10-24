@@ -124,7 +124,7 @@ const itemsInSearch = [
     },
     {
         title: "فایل های شناسنامه ",
-        value: "code"
+        value: "files"
     },
 ]
 
@@ -142,6 +142,13 @@ const showProceeeSelect = ref(false)
 const getArchitectures = useGetBaseArchitecturesService()
 const getProcesses = useGetBaseProcessesService();
 const { schema } = useAdvancedSearchValidation()
+onMounted(() => {
+  console.log('Listening to ocr-results...')
+  $echo.channel('ocr-results')
+    .listen('.ocr.completed', (e) => {
+       alert('✅ تمام OCR‌ها انجام شد!');
+    })
+})
 
 getArchitectures().then((response) => {
     if (response !== undefined) {
