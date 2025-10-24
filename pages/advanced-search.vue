@@ -75,6 +75,7 @@
 </template>
 
 <script setup lang="ts">
+import  Echo from 'laravel-echo'
 import type { ArchitectureBaseDto } from '~/composables/architectures/architecture.dto';
 import { useAdvancedSearchService, useGetBaseArchitecturesService, useGetBaseProcessesService } from '~/composables/home/home.service';
 import { useAdvancedSearchValidation } from '~/composables/home/home.validation';
@@ -126,7 +127,9 @@ const itemsInSearch = [
         value: "code"
     },
 ]
-const { $echo } = useNuxtApp()
+
+const { $echo } = useNuxtApp() as { $echo: Echo }
+
 const query = ref({})
 const route = useRoute()
 const router = useRouter()
