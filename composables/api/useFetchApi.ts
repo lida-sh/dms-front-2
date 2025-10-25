@@ -1,4 +1,4 @@
-import { type FetchOptions, FetchError, $fetch } from "ohmyfetch";
+import { type FetchOptions, FetchError, $fetch } from "ofetch";
 import type { FetchCustomConfig } from "./FetchCustomConfig";
 import { BASE_URL } from "./api.config";
 import { ToastEnum } from "~~/types";

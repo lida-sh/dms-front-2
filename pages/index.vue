@@ -23,7 +23,7 @@
                     <div class="relative w-full">
                         <div class="head absolute w-full h-full -z-1 opacity-0.5 -inset-4"></div>
                         <img src="/images/monitor3.svg" alt="" id="monitor" class="monitor w-full h-full invisible">
-                        <img src="/images/character 13.svg" alt="" id="man"
+                        <img src="/images/character13.svg" alt="" id="man"
                             class="absolute h-[40%] right-[5%] bottom-[5%] invisible">
                         <img src="/images/user4.svg" alt="" id="user4"
                             class="users absolute  w-[6%] right-[20%] top-[20%] invisible">
@@ -254,8 +254,6 @@
 <script setup lang="ts">
 import { gsap } from 'gsap';
 import { Form } from "vee-validate"
-import Chart from '~/components/Chart.vue';
-import ChartMob from '~/components/ChartMob.vue';
 import { useSearchService } from '~/composables/home/home.service';
 import { ToastEnum } from '~/types';
 import VersionControl from "~~/components/icons/slider/VersionControl.vue"
