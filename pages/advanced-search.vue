@@ -59,11 +59,11 @@
                 </div>
                 <!-- <div v-else-if="(data?.subProcesses?.length === 0 && data?.processes?.length === 0 && data?.procedures?.length === 0)"
                     class="font-sm xl:text-base font-bold mb-4 mr-4">موردی یافت نشد.</div> -->
-                <div class="join flex items-center justify-center mt-5" v-if="data?.meta.total > data?.meta?.per_page!">
+                <!-- <div class="join flex items-center justify-center mt-5" v-if="data?.meta.total > data?.meta?.per_page!">
                     <button v-for="(link, index) in data?.meta.last_page" :key="index"
                         @click="handleFilter({ page: link })" class="join-item btn"
                         :class="{ 'btn-active': data?.meta.current_page == link }">{{ link }}</button>
-                </div>
+                </div> -->
             </div>
 
         </section>
@@ -204,8 +204,12 @@ const handleFilter = (link) => {
 onMounted(() => {
   console.log('📡 Listening on test-channel...', '✅ echo', $echo)
 
-   $echo.channel('test-channel')
-    .listen('.test.event', (data: any) => {
+//    $echo.channel('test-channel')
+//     .listen('.test.event', (data: any) => {
+//       console.log('📩 Message received:', data)
+//     })
+    $echo.channel('ocr-results')
+    .listen('.ocr.completed', (data: any) => {
       console.log('📩 Message received:', data)
     })
 })
