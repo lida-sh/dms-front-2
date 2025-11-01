@@ -37,16 +37,11 @@
             </Form>
         </section>
         <section class="w-full h-full flex">
-            <div class="p-4">
-                    <h1 class="text-xl font-bold">Reverb Test Page</h1>
-                    <p>Listening for <code>test.event</code>...</p>
-                         </div>
             <div v-if="!searchOnced" class=""></div>
             <div v-else class="w-full h-full flex flex-col">
                 <div class="px-4 w-full h-full flex flex-col items-start gap-4"
-                    v-if="(data?.subProcesses?.length !== (0 || undefined) || data?.processes?.length !== (0 || undefined) || data?.procedures?.length !== (0 || undefined))">
+                    v-if="(data?.subProcesses?.length !== (0 || undefined) || data?.processes?.length !== (0 || undefined) || data?.procedures?.length !== (0 || undefined) || data?.files?.length !== (0 || undefined))">
                     <h1 class="font-sm xl:text-base font-bold mb-4 mr-4">نتایج جستجو:</h1>
-                    
                     <sub-process-result-search v-if="data?.subProcesses" v-for="(itemDoc, index) in data?.subProcesses"
                         :key="index" :item="itemDoc"
                         :row-number="((data!.meta.current_page - 1) * data!.meta.per_page) + index + 1"></sub-process-result-search>
@@ -56,6 +51,8 @@
                     <procedure-result-search v-if="data?.procedures" v-for="(itemDoc, index) in data?.procedures"
                         :key="index" :item="itemDoc"
                         :row-number="((data!.meta.current_page - 1) * data!.meta.per_page) + index + 1"></procedure-result-search>
+                    <file-result-search v-if="data?.files" v-for="(itemDoc, index) in data?.files" :key="index" :row-number="((data!.meta.current_page - 1) * data!.meta.per_page) + index + 1"
+                        :item="itemDoc" :typeDoc="data.typeDoc"></file-result-search>
                 </div>
                 <!-- <div v-else-if="(data?.subProcesses?.length === 0 && data?.processes?.length === 0 && data?.procedures?.length === 0)"
                     class="font-sm xl:text-base font-bold mb-4 mr-4">موردی یافت نشد.</div> -->
@@ -75,7 +72,7 @@
 </template>
 
 <script setup lang="ts">
-import  Echo from 'laravel-echo'
+import Echo from 'laravel-echo'
 import type { ArchitectureBaseDto } from '~/composables/architectures/architecture.dto';
 import { useAdvancedSearchService, useGetBaseArchitecturesService, useGetBaseProcessesService } from '~/composables/home/home.service';
 import { useAdvancedSearchValidation } from '~/composables/home/home.validation';
@@ -143,11 +140,11 @@ const getArchitectures = useGetBaseArchitecturesService()
 const getProcesses = useGetBaseProcessesService();
 const { schema } = useAdvancedSearchValidation()
 onMounted(() => {
-  console.log('Listening to ocr-results...')
-  $echo.channel('ocr-results')
-    .listen('.ocr.completed', (e) => {
-       alert('✅ تمام OCR‌ها انجام شد!');
-    })
+    console.log('Listening to ocr-results...')
+    $echo.channel('ocr-results')
+        .listen('.ocr.completed', (e) => {
+            alert('✅ تمام OCR‌ها انجام شد!');
+        })
 })
 
 getArchitectures().then((response) => {
@@ -177,8 +174,8 @@ const submit = (values) => {
     router.push({ query: query.value })
     doSearch(values).then((response) => {
         if (response !== undefined) {
-            console.log(response)
             data.value = response
+            console.log("response is بهمثس",data.value)
 
         }
 
@@ -202,16 +199,16 @@ const handleFilter = (link) => {
     })
 }
 onMounted(() => {
-  console.log('📡 Listening on test-channel...', '✅ echo', $echo)
+    console.log('📡 Listening on test-channel...', '✅ echo', $echo)
 
-//    $echo.channel('test-channel')
-//     .listen('.test.event', (data: any) => {
-//       console.log('📩 Message received:', data)
-//     })
+    //    $echo.channel('test-channel')
+    //     .listen('.test.event', (data: any) => {
+    //       console.log('📩 Message received:', data)
+    //     })
     $echo.channel('ocr-results')
-    .listen('.ocr.completed', (data: any) => {
-      console.log('📩 Message received:', data)
-    })
+        .listen('.ocr.completed', (data: any) => {
+            console.log('📩 Message received:', data)
+        })
 })
 </script>
 
