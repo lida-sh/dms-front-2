@@ -52,7 +52,7 @@
                         :key="index" :item="itemDoc"
                         :row-number="((data!.meta.current_page - 1) * data!.meta.per_page) + index + 1"></procedure-result-search>
                     <file-result-search v-if="data?.files" v-for="(itemDoc, index) in data?.files" :key="index" :row-number="((data!.meta.current_page - 1) * data!.meta.per_page) + index + 1"
-                        :item="itemDoc" :typeDoc="data.typeDoc"></file-result-search>
+                        :item="itemDoc" :typeDoc="data.typeDoc" :keyword="data?.keyword"></file-result-search>
                 </div>
                 <!-- <div v-else-if="(data?.subProcesses?.length === 0 && data?.processes?.length === 0 && data?.procedures?.length === 0)"
                     class="font-sm xl:text-base font-bold mb-4 mr-4">موردی یافت نشد.</div> -->

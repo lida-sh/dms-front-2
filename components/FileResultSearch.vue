@@ -36,15 +36,15 @@
                     class="en flex items-center justify-start xl:justify-center xl:col-span-2 xl:whitespace-nowrap text-xs sm:text-sm xl:text-xs 2xl:text-sm font-medium text-gray-800 dark:text-neutral-200">
                     {{ item.code }}</div>
             </div> 
-            <!-- <div class="grid grid-cols-2 xl:col-span-2 gap-4 lg:gap-2 xl:flex xl:flex-col xl:w-full">
+            <div class="grid grid-cols-2 xl:col-span-2 gap-4 lg:gap-2 xl:flex xl:flex-col xl:w-full">
                 <div
                     class="flex items-center justify-start xl:justify-center xl:col-span-2 text-xs sm:text-sm xl:text-xs 2xl:text-base font-bold text-gray-500">
                     معماری والد</div>
                <div
                     class="flex items-center justify-start xl:justify-center xl:col-span-2 xl:whitespace-nowrap text-xs sm:text-sm xl:text-xs 2xl:text-sm font-medium text-gray-800 dark:text-neutral-200">
-                    {{ item.architecture?.title }}</div>
+                    {{ item.architecture_name }}</div>
             </div>
-             -->
+            
             <div class="grid grid-cols-2 xl:col-span-2 gap-4 lg:gap-2 xl:flex xl:flex-col xl:w-full">
                 <div
                     class="flex items-center justify-start xl:justify-center xl:col-span-1 text-xs sm:text-sm xl:text-xs 2xl:text-base font-bold text-gray-500">
@@ -58,9 +58,9 @@
                 <div class=""></div>
                 <div
                     class="flex items-center justify-start xl:justify-center xl:col-span-1 xl:whitespace-nowrap text-xs sm:text-sm xl:text-xs 2xl:text-sm font-medium">
-                    <NuxtLink :to="`/processes/${item.slug}`"
+                    <button @click="openDetails(item.file_path, item.found_in_text, keyword)"
                         class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 focus:outline-none focus:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:text-blue-400">
-                        جزئیات</NuxtLink>
+                        جزئیات</button>
                 </div>
             </div>
 
@@ -72,10 +72,10 @@
 <script setup lang="ts">
 
 import { ProcessClientDto } from '../composables/processes/process.dto';
+import { useRouter } from 'vue-router'
+const router = useRouter()
 
-
-
-const props = defineProps<{ item: any, rowNumber: number, typeDoc: string }>()
+const props = defineProps<{ item: any, rowNumber: number, typeDoc: string, keyword:string }>()
 const truncatedTitle = computed(() => {
     if (props.item.doc_name) {
         return props.item.doc_name.length > 50 ? props.typeDoc + ' ' + props.item.doc_name.slice(0, 50) + '...' : props.typeDoc + ' ' + props.item.doc_name
@@ -84,6 +84,18 @@ const truncatedTitle = computed(() => {
     }
 
 })
+const openDetails = ($path, $pages, $keyword) => {
+    console.log("items",$path, JSON.stringify($pages), $keyword )
+  router.push({
+    path: '/pdf-viewer',
+    query: {
+      path: $path,
+      keyword: $keyword,
+      pages: JSON.stringify($pages),
+      
+    }
+  })
+}
 </script>
 
 <style scoped>
