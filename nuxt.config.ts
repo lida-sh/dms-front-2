@@ -34,6 +34,16 @@ export default defineNuxtConfig({
   },
   nitro: {
     devProxy: PROXY_CONFIG,
+     publicAssets: [
+      {
+        dir: 'node_modules/pdfjs-dist/cmaps',
+        baseURL: '/cmaps'
+      },
+      {
+        dir: 'node_modules/pdfjs-dist/standard_fonts',
+        baseURL: '/standard_fonts'
+      }
+    ]
     
   },
   vite: {
