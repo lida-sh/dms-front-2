@@ -26,13 +26,15 @@ import * as pdfjsLib from 'pdfjs-dist'
 pdfjsLib.GlobalWorkerOptions.workerSrc = '/js/pdf.worker.min.js'
 
 const props = defineProps({
-  pdfUrl: { type: String, required: true }
+  pdfUrl: { type: String, required: true },
+  pageNumber: { type: [Number, String], default: 1 } // 👈 شماره صفحه هدف
 })
 
 const loading = ref(false)
 const error = ref('')
 const fullError = ref('')
 const canvas = ref(null)
+const currentPage = ref(1)
 let pdfDoc = null
 let pdfReady = ref(false)
 
@@ -51,7 +53,8 @@ const renderPage = async (num) => {
   ctx.clearRect(0, 0, viewport.width, viewport.height)
 
   await page.render({ canvasContext: ctx, viewport }).promise
-  console.log('✅ صفحه 1 رندر شد.')
+  currentPage.value = num
+  console.log(`✅ صفحه ${num} رندر شد.`)
 }
 
 const loadPdf = async () => {
@@ -83,12 +86,14 @@ const loadPdf = async () => {
   }
 }
 
-// وقتی canvas واقعاً mount شد و PDF آماده بود → renderPage انجام بده
+// وقتی canvas و pdf آماده شدند، صفحه‌ی مشخص‌شده را نمایش بده
 watch([canvas, pdfReady], async ([canvasEl, ready]) => {
   if (canvasEl && ready) {
     await nextTick()
-    console.log('🎯 canvas آماده است — شروع رندر')
-    await renderPage(1)
+    const targetPage = parseInt(props.pageNumber) || 1
+    const safePage = Math.min(Math.max(targetPage, 1), pdfDoc.numPages)
+    console.log('🎯 رفتن به صفحه:', safePage)
+    await renderPage(safePage)
   }
 })
 
