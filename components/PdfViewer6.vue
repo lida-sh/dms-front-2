@@ -20,10 +20,11 @@
 </template>
 
 <script setup>
-import { ref, watch, nextTick, onMounted } from 'vue'
-import * as pdfjsLib from 'pdfjs-dist'
+definePageMeta({
+  ssr: false
+})
+const { $pdfjsLib } = useNuxtApp();
 
-pdfjsLib.GlobalWorkerOptions.workerSrc = '/js/pdf.worker.min.js'
 
 const props = defineProps({
   pdfUrl: { type: String, required: true },
@@ -67,7 +68,7 @@ const loadPdf = async () => {
     const pdfPath = `http://dms-back.test/pdf/${props.pdfUrl}`
     console.log('📄 مسیر PDF:', pdfPath)
 
-    const loadingTask = pdfjsLib.getDocument({
+    const loadingTask = $pdfjsLib.getDocument({
       url: pdfPath,
       cMapUrl: '/cmaps/',
       cMapPacked: true,

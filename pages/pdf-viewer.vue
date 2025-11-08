@@ -2,8 +2,8 @@
   <div>
     <ClientOnly fallback="در حال بارگذاری...">
       
-      <!-- <PdfViewer6 :pdfUrl="filePath" :highlightWord="keyword" :highlightPages="[1, 2, 4]" :page-number="page"/> -->
-      <PdfViewer7 :pdfUrl="`http://dms-back.test/pdf/${filePath}`" :keyword="keyword" :highlightPages="[1, 2, 4]" :page-number="page"/>
+      <PdfViewer6 :pdfUrl="filePath" :highlightWord="keyword" :highlightPages="[1, 2, 4]" :page-number="page"/>
+      <!-- <PdfViewer7 :pdfUrl="`http://dms-back.test/pdf/${filePath}`" :keyword="keyword" :highlightPages="[1, 2, 4]" :page-number="page"/> -->
     </ClientOnly>
     <!-- <PdfViewer :path="filePath" :keyword="keyword" :pages="pages" /> -->
     <!-- <PdfViewer2 :pdfUrl="filePath" /> -->
@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import PdfViewer2 from '~/components/PdfViewer2.vue'
+
 const route = useRoute()
 
 const filePath = route.query.path as string
