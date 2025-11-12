@@ -2,12 +2,12 @@
   <div class="flex w-full items-center justify-center">
     <ClientOnly fallback="در حال بارگذاری...">
       
-      <!-- <PdfViewer6 :pdfUrl="filePath" :highlightWord="keyword" :highlightPages="[1, 2, 4]" :page-number="page"/> -->
-      <PdfViewerWithTextLayer 
+      <PdfViewer6 :pdfUrl="filePath" :highlightWord="keyword" :highlightPages="[1, 2, 4]" :page-number="page"/>
+      <!--<PdfViewerWithTextLayer 
             :pdfUrl="filePath" 
             :positions="positions"
             :pageNumber="getFirstPage(positions)"
-          />
+          /> -->
     </ClientOnly>
     <!-- <PdfViewer :path="filePath" :keyword="keyword" :pages="pages" /> -->
     <!-- <PdfViewer2 :pdfUrl="filePath" /> -->
