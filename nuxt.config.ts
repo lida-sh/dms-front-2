@@ -48,6 +48,7 @@ export default defineNuxtConfig({
     
   },
   vite: {
+    assetsInclude: ['**/*.svg'],
     optimizeDeps: {
       include: [
         'pdfjs-dist',
@@ -56,6 +57,7 @@ export default defineNuxtConfig({
         'pdfjs-dist/build/pdf.worker.min.mjs',
       ],
     },
+    
     esbuild: {
       tsconfigRaw: {
         compilerOptions: {

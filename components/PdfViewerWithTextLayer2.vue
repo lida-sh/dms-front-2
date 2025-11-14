@@ -19,17 +19,13 @@
             <span>{{ Math.round(scale * 100) }}%</span>
             <button @click="zoomIn">🔍+</button>
           </div>
-          <div class="position-controls">
-            <button @click="adjustPosition('up')">⬆️ بالا</button>
-            <button @click="adjustPosition('down')">⬇️ پایین</button>
-            <span>تنظیم: {{ positionAdjustment }}px</span>
-          </div>
         </div>
 
         <div class="viewer-container">
           <div class="pdf-page-container">
             <canvas ref="canvas"></canvas>
             <div ref="highlightLayer" class="highlightLayer" :style="highlightLayerStyle"></div>
+            <div ref="textLayer" class="textLayer" :style="highlightLayerStyle"></div>
           </div>
         </div>
 
@@ -38,23 +34,18 @@
             <h4>اطلاعات موقعیت:</h4>
             <p>صفحه: {{ currentPage }}</p>
             <p>هایلایت‌ها: {{ currentHighlights.length }}</p>
-            <p>موقعیت نمونه: خط {{ sampleHighlight?.line }}, ستون {{ sampleHighlight?.column }}</p>
-            <p>محاسبه شده: TOP={{ sampleHighlight?.top }}, LEFT={{ sampleHighlight?.left }}</p>
-            <p>تنظیمات: {{ positionAdjustment }}px</p>
+            <p>متن‌های یافت شده: {{ textItems.length }}</p>
+            <button @click="showTextItems = !showTextItems">
+              {{ showTextItems ? 'مخفی کردن متن‌ها' : 'نمایش متن‌های صفحه' }}
+            </button>
           </div>
 
-          <div v-if="currentHighlights.length > 0" class="highlights-list">
-            <h4>هایلایت‌های صفحه {{ currentPage }}</h4>
-            <div v-for="(highlight, index) in currentHighlights" :key="index" class="highlight-item">
-              <span class="highlight-type" :class="highlight.type">
-                {{ highlight.type === 'text' ? 'متن' : 'OCR' }}
-              </span>
-              <div class="highlight-context">
-                "{{ highlight.context }}"
-              </div>
-              <div class="highlight-position">
-                خط {{ highlight.line }} - ستون {{ highlight.column }}
-              </div>
+          <div v-if="showTextItems" class="text-items-list">
+            <h4>متن‌های صفحه {{ currentPage }}</h4>
+            <div v-for="(item, index) in textItems" :key="index" class="text-item">
+              <span class="item-index">#{{ index }}</span>
+              <span class="item-text">"{{ item.str }}"</span>
+              <span class="item-coords">({{ Math.round(item.transform[4]) }}, {{ Math.round(item.transform[5]) }})</span>
             </div>
           </div>
         </div>
@@ -77,11 +68,13 @@ const loading = ref(false)
 const error = ref('')
 const canvas = ref(null)
 const highlightLayer = ref(null)
+const textLayer = ref(null)
 const currentPage = ref(1)
 const totalPages = ref(0)
 const currentHighlights = ref([])
+const textItems = ref([])
+const showTextItems = ref(false)
 const scale = ref(1.5)
-const positionAdjustment = ref(-50) // تنظیم موقعیت - منفی یعنی بالاتر
 
 let pdfDoc = null
 let currentViewport = null
@@ -95,10 +88,6 @@ const highlightLayerStyle = computed(() => {
   }
 })
 
-const sampleHighlight = computed(() => {
-  return currentHighlights.value[0] || null
-})
-
 // هایلایت‌های صفحه جاری
 const updateCurrentHighlights = () => {
   if (!props.positions || !Array.isArray(props.positions)) {
@@ -110,14 +99,42 @@ const updateCurrentHighlights = () => {
   currentHighlights.value = allPositions.filter(position => position.page === currentPage.value)
 }
 
-// تنظیم موقعیت
-const adjustPosition = (direction) => {
-  if (direction === 'up') {
-    positionAdjustment.value -= 10
-  } else if (direction === 'down') {
-    positionAdjustment.value += 10
+// پیدا کردن موقعیت واقعی متن در PDF
+const findTextPosition = async (highlight) => {
+  if (!pdfDoc || !currentViewport) return null
+
+  try {
+    const page = await pdfDoc.getPage(currentPage.value)
+    const textContent = await page.getTextContent()
+    
+    const searchText = highlight.context || highlight.text || ''
+    if (!searchText) return null
+
+    // جستجوی متن در بین آیتم‌های متنی
+    for (const item of textContent.items) {
+      if (item.str.includes(searchText) || searchText.includes(item.str)) {
+        const transform = item.transform
+        const x = transform[4]
+        const y = transform[5]
+        
+        // تبدیل مختصات PDF به مختصات صفحه
+        const viewportCoords = currentViewport.convertToViewportPoint(x, y)
+        
+        return {
+          left: viewportCoords[0],
+          top: currentViewport.height - viewportCoords[1], // PDF Y معکوس است
+          width: item.width * currentViewport.scale,
+          height: item.height * currentViewport.scale,
+          text: item.str
+        }
+      }
+    }
+    
+    return null
+  } catch (err) {
+    console.error('خطا در پیدا کردن موقعیت متن:', err)
+    return null
   }
-  renderHighlights()
 }
 
 // رندر صفحه
@@ -139,41 +156,23 @@ const renderPage = async (pageNum) => {
       viewport: currentViewport
     }
 
-    // 🔹 رندر صفحه PDF
     await page.render(renderContext).promise
 
-    // 🔹 استخراج متن واقعی صفحه از PDF
+    // استخراج متن برای دیباگ
     const textContent = await page.getTextContent()
+    textItems.value = textContent.items
 
-    // 🔹 ساخت لایه متنی مخفی برای محاسبه مختصات واقعی متن‌ها
-    const textLayerDiv = document.createElement('div')
-    textLayerDiv.style.display = 'none'
-    document.body.appendChild(textLayerDiv)
-
-    await $pdfjsLib.renderTextLayer({
-      textContent,
-      container: textLayerDiv,
-      viewport: currentViewport
-    }).promise
-
-    // 🔹 چاپ مختصات واقعی هر کلمه در console
-    Array.from(textLayerDiv.querySelectorAll('span')).forEach(span => {
-      const rect = span.getBoundingClientRect()
-      console.log('📍 متن:', span.textContent, rect)
-    })
-
-    // ✅ حالا می‌تونی از این مختصات برای جایگذاری دقیق هایلایت استفاده کنی
     currentPage.value = pageNum
     updateCurrentHighlights()
-    renderHighlights()
+    await renderHighlights()
 
   } catch (err) {
     console.error('خطا در رندر صفحه:', err)
   }
 }
 
-// رندر هایلایت‌ها
-const renderHighlights = () => {
+// رندر هایلایت‌ها با مختصات واقعی
+const renderHighlights = async () => {
   if (!highlightLayer.value || !currentViewport) return
 
   // پاک کردن هایلایت‌های قبلی
@@ -182,51 +181,65 @@ const renderHighlights = () => {
   const highlights = currentHighlights.value
   if (highlights.length === 0) return
 
-  highlights.forEach((highlight, index) => {
-    createHighlightElement(highlight, index)
-  })
+  for (const highlight of highlights) {
+    await createHighlightElement(highlight)
+  }
 }
 
-// ایجاد المان هایلایت با تنظیمات دقیق
-const createHighlightElement = (highlight, index) => {
-  if (!highlightLayer.value || !currentViewport) return
+// ایجاد المان هایلایت با مختصات واقعی
+const createHighlightElement = async (highlight) => {
+  if (!highlightLayer.value) return
+
+  // پیدا کردن موقعیت واقعی متن
+  const textPosition = await findTextPosition(highlight)
+  
+  if (!textPosition) {
+    console.warn('متن پیدا نشد برای هایلایت:', highlight)
+    
+    // روش جایگزین: استفاده از موقعیت‌های تقریبی
+    createApproximateHighlight(highlight)
+    return
+  }
 
   const highlightDiv = document.createElement('div')
   highlightDiv.className = `pdf-highlight ${highlight.type}`
+  
+  highlightDiv.style.position = 'absolute'
+  highlightDiv.style.left = `${textPosition.left}px`
+  highlightDiv.style.top = `${textPosition.top}px`
+  highlightDiv.style.width = `${textPosition.width}px`
+  highlightDiv.style.height = `${textPosition.height}px`
 
-  // 📏 مقادیر پایه از ابعاد واقعی صفحه
+  highlightDiv.style.backgroundColor = highlight.type === 'text' 
+    ? 'rgba(255, 235, 59, 0.6)' 
+    : 'rgba(76, 175, 80, 0.6)'
+  highlightDiv.style.border = '2px solid #ff9800'
+  highlightDiv.style.borderRadius = '3px'
+  highlightDiv.style.pointerEvents = 'auto'
+  highlightDiv.style.zIndex = '100'
+
+  // اضافه کردن اطلاعات برای دیباگ
+  highlightDiv.title = `متن: "${textPosition.text}"`
+
+  highlightLayer.value.appendChild(highlightDiv)
+}
+
+// روش جایگزین برای زمانی که متن دقیق پیدا نمی‌شود
+const createApproximateHighlight = (highlight) => {
+  const highlightDiv = document.createElement('div')
+  highlightDiv.className = `pdf-highlight ${highlight.type} approximate`
+  
+  // استفاده از موقعیت‌های نسبی
   const pageWidth = currentViewport.width
   const pageHeight = currentViewport.height
-
-  // تنظیمات نسبی بر اساس ابعاد صفحه
-  const config = {
-    topMargin: pageHeight * 0.05,      // 5٪ از بالا
-    leftMargin: pageWidth * 0.08,      // 8٪ از چپ
-    lineHeight: pageHeight / 45,       // حدود 45 خط در هر صفحه
-    charWidth: pageWidth / 100,        // حدود 100 کاراکتر در هر خط
-    lineOffset: -1
-  }
-
-  const line = (highlight.line || 1) + config.lineOffset
+  
+  const line = highlight.line || 1
   const column = highlight.column || 1
-
-  // 📍 محاسبه موقعیت درون صفحه
-  let top = config.topMargin + (line * config.lineHeight)
-  let left = config.leftMargin + (column * config.charWidth)
-
-  // 📐 جهت فارسی (از راست به چپ)
-  const textWidth = (highlight.length || 5) * config.charWidth
-  left = pageWidth - left - textWidth // محاسبه از سمت راست
-
-  // 🎯 تصحیح دستی چون الان بالاتر و راست‌تر نیست — بلکه چپ و بالا است:
-  // اگر در گوشه چپ بالا افتاده، یعنی اعداد خیلی کوچک‌اند
-  // پس باید کمی به پایین و راست ببریم:
-  top += 40       // می‌برد پایین‌تر
-  left += 40     // می‌برد راست‌تر
-
-  // 📏 اندازه‌های نهایی
-  const width = Math.max(80, textWidth)
-  const height = config.lineHeight * 0.7
+  
+  const top = (line / 50) * pageHeight  // فرض 50 خط در صفحه
+  const left = (column / 100) * pageWidth // فرض 100 ستون در صفحه
+  const width = pageWidth * 0.2
+  const height = pageHeight * 0.03
 
   highlightDiv.style.position = 'absolute'
   highlightDiv.style.left = `${left}px`
@@ -234,16 +247,13 @@ const createHighlightElement = (highlight, index) => {
   highlightDiv.style.width = `${width}px`
   highlightDiv.style.height = `${height}px`
 
-  highlightDiv.style.backgroundColor = highlight.type === 'text'
-    ? 'rgba(255, 235, 59, 0.6)'
-    : 'rgba(76, 175, 80, 0.6)'
-  highlightDiv.style.border = '1px solid #ff9800'
+  highlightDiv.style.backgroundColor = 'rgba(255, 0, 0, 0.3)'
+  highlightDiv.style.border = '1px dashed #f44336'
   highlightDiv.style.borderRadius = '3px'
-  highlightDiv.style.pointerEvents = 'auto'
+  highlightDiv.title = 'هایلایت تقریبی - متن دقیق پیدا نشد'
 
   highlightLayer.value.appendChild(highlightDiv)
 }
-
 
 // کنترل‌های صفحه
 const nextPage = async () => {
@@ -287,7 +297,6 @@ const loadPdf = async () => {
     pdfDoc = await loadingTask.promise
     totalPages.value = pdfDoc.numPages
 
-    // رندر صفحه اول
     const initialPage = parseInt(props.pageNumber) || 1
     await renderPage(initialPage)
   } catch (err) {
@@ -330,6 +339,7 @@ watch(() => props.pdfUrl, async (newUrl) => {
 </script>
 
 <style scoped>
+/* استایل‌ها مانند قبل */
 .loading,
 .error {
   text-align: center;
@@ -374,21 +384,6 @@ watch(() => props.pdfUrl, async (newUrl) => {
   cursor: not-allowed;
 }
 
-.position-controls {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: #fff3cd;
-  padding: 0.5rem;
-  border-radius: 6px;
-  border: 1px solid #ffeaa7;
-}
-
-.position-controls button {
-  padding: 0.3rem 0.6rem !important;
-  font-size: 0.8rem;
-}
-
 .zoom-controls {
   display: flex;
   align-items: center;
@@ -430,6 +425,14 @@ canvas {
   pointer-events: none;
 }
 
+.textLayer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.2;
+  pointer-events: none;
+}
+
 .pdf-highlight {
   position: absolute;
   cursor: pointer;
@@ -442,72 +445,59 @@ canvas {
 .pdf-highlight:hover {
   transform: scale(1.03);
   z-index: 200;
+  box-shadow: 0 0 8px rgba(255, 152, 0, 0.8);
+}
+
+.pdf-highlight.approximate {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+  100% { opacity: 0.3; }
 }
 
 .debug-panel {
   margin-top: 1rem;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 1rem;
-}
-
-.positions-debug {
-  padding: 1rem;
-  background: #e3f2fd;
-  border-radius: 8px;
-  border-right: 4px solid #2196f3;
-}
-
-.positions-debug h4 {
-  margin: 0 0 0.5rem 0;
-  color: #1976d2;
-}
-
-.highlights-list {
   padding: 1rem;
   background: #f8f9fa;
   border-radius: 8px;
-  border-right: 4px solid #007bff;
-  max-height: 400px;
+}
+
+.positions-debug {
+  margin-bottom: 1rem;
+}
+
+.text-items-list {
+  max-height: 300px;
   overflow-y: auto;
-}
-
-.highlight-item {
-  padding: 0.75rem;
-  margin: 0.5rem 0;
-  background: white;
+  border: 1px solid #ddd;
   border-radius: 6px;
-  border-right: 3px solid #ddd;
+  padding: 1rem;
+  background: white;
 }
 
-.highlight-type {
-  display: inline-block;
-  padding: 0.2rem 0.6rem;
-  border-radius: 12px;
-  font-size: 0.75rem;
-  margin-left: 0.5rem;
-  color: white;
-  font-weight: bold;
-}
-
-.highlight-type.text {
-  background: #ff9800;
-}
-
-.highlight-type.ocr {
-  background: #4caf50;
-}
-
-.highlight-context {
-  margin: 0.5rem 0;
-  font-size: 0.9rem;
-  line-height: 1.4;
-  color: #333;
-}
-
-.highlight-position {
+.text-item {
+  padding: 0.5rem;
+  margin: 0.25rem 0;
+  border-bottom: 1px solid #eee;
+  font-family: monospace;
   font-size: 0.8rem;
+}
+
+.item-index {
   color: #666;
-  margin-top: 0.25rem;
+  margin-left: 0.5rem;
+}
+
+.item-text {
+  color: #333;
+  margin: 0 0.5rem;
+}
+
+.item-coords {
+  color: #007bff;
+  font-size: 0.7rem;
 }
 </style>

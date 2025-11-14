@@ -16,6 +16,7 @@
     "@alireza-ab/vue3-persian-datepicker": "^1.0.5",
     "@heroicons/vue": "^1.0.6",
     "@pinia/nuxt": "latest",
+    "@vue-pdf-viewer/viewer": "^3.2.2",
     "@vueform/multiselect": "^2.6.11",
     "chart.js": "^4.4.9",
     "class-transformer": "^0.5.1",
