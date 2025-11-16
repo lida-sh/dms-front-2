@@ -1,22 +1,18 @@
 <template>
   <div class="flex flex-col w-full items-center justify-center p-10">
     <ClientOnly fallback="در حال بارگذاری...">
-<<<<<<< HEAD
       <!-- <div class="flex w-full items-center justify-center"> -->
       <PdfViewerF :pdfUrl="url" :keyword="keyword" :pagesWithKeyword="[1, 2, 4]" :firstPageToShow="page"/>
       <!-- <PdfViewer9 :pdfUrl="url" :keyword="keyword" :highlightPages="[1, 2, 4]" :page="page"/> -->
       <!-- <PdfViewer6 :pdfUrl="filePath" :highlightWord="keyword" :highlightPages="[1, 2, 4]" :page-number="page"/> -->
       <!-- <PdfViewerWithTextLayer2 
-=======
       
       <PdfViewer6 :pdfUrl="filePath" :highlightWord="keyword" :highlightPages="[1, 2, 4]" :page-number="page"/>
       <!--<PdfViewerWithTextLayer 
->>>>>>> cc50a8440f75f9828332d51c0ddc1758ec6fbfc0
             :pdfUrl="filePath" 
             :positions="positions"
             :pageNumber="getFirstPage(positions)"
           /> -->
-<<<<<<< HEAD
           
     <!-- <VPdfViewer ref="pdfViewer"
       :src="url"
@@ -25,8 +21,6 @@
       @document-loaded="onDocumentLoaded"
     /> -->
     <!-- </div> -->
-=======
->>>>>>> cc50a8440f75f9828332d51c0ddc1758ec6fbfc0
     </ClientOnly>
     <!-- <PdfViewer :path="filePath" :keyword="keyword" :pages="pages" /> -->
     <!-- <PdfViewer2 :pdfUrl="filePath" /> -->

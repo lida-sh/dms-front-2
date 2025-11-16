@@ -60,7 +60,7 @@
                     class="flex items-center justify-start xl:justify-center xl:col-span-1 xl:whitespace-nowrap text-xs sm:text-sm xl:text-xs 2xl:text-sm font-medium">
                     <button @click="openDetails(item.file_path, item.found_in_text,item.text_positions, keyword)"
                         class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 focus:outline-none focus:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:text-blue-400">
-                        جزئیات</button>
+                        مشاهده فایل</button>
                 </div>
             </div>
 

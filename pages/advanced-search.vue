@@ -132,7 +132,7 @@ const route = useRoute()
 const router = useRouter()
 const searchOnced = ref(false)
 const loading = ref(false)
-const data = ref<any>()
+let data = ref<any>()
 const architectures = ref<ArchitectureBaseDto[]>([]);
 const processes = ref<ProcessBaseDto[]>([])
 const showProceeeSelect = ref(false)
@@ -175,8 +175,6 @@ const submit = (values) => {
     doSearch(values).then((response) => {
         if (response !== undefined) {
             data.value = response
-            console.log("response is بهمثس",data.value)
-
         }
 
     }).finally(() => {
@@ -200,14 +198,13 @@ const handleFilter = (link) => {
 }
 onMounted(() => {
     console.log('📡 Listening on test-channel...', '✅ echo', $echo)
-
-    //    $echo.channel('test-channel')
-    //     .listen('.test.event', (data: any) => {
-    //       console.log('📩 Message received:', data)
-    //     })
     $echo.channel('ocr-results')
-        .listen('.ocr.completed', (data: any) => {
-            console.log('📩 Message received:', data)
+        .listen('.ocr.completed', (dataOcr: any) => {
+            console.log('📩 Message received:', dataOcr)
+            data = dataOcr
+            console.log('data recieved:', data)
+
+            
         })
 })
 </script>
