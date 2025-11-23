@@ -1,10 +1,10 @@
 <template>
-    <div class="w-full bg-white border rounded-lg shadow-lg p-5 select-none">
-        <div class="w-full flex flex-col xl:grid xl:grid-cols-12 gap-4 xl:gap-2">
-
+    <div class="w-full bg-white border rounded-lg shadow-lg py-5 px-5  select-none">
+        <div class="w-full flex flex-col xl:grid xl:grid-cols-12 gap-2 xl:gap-2">
+            
             <div class="grid grid-cols-2 xl:col-span-1 gap-4 lg:gap-2 xl:flex xl:flex-col xl:w-full">
                 <div
-                    class="flex items-center justify-start xl:justify-center xl:col-span-1 text-xs sm:text-sm xl:text-xs 2xl:text-base font-bold text-gray-500">
+                    class="flex items-center justify-start xl:justify-center xl:col-span-1 text-xs sm:text-sm xl:text-xs 2xl:text-sm font-bold text-gray-500">
                     ردیف</div>
                 <div
                     class="flex items-center justify-start xl:justify-center xl:col-span-1 xl:whitespace-nowrap text-xs sm:text-sm xl:text-xs 2xl:text-sm font-medium text-gray-800 dark:text-neutral-200">
@@ -15,12 +15,12 @@
                     class="flex items-center justify-start xl:justify-center xl:col-span-1 text-xs sm:text-sm xl:text-xs 2xl:text-base font-bold text-gray-500">
                     نام فایل</div>
                 <div
-                    class="flex items-center justify-start xl:justify-center xl:col-span-1 xl:whitespace-nowrap text-xs sm:text-sm xl:text-xs 2xl:text-sm font-medium text-gray-800 dark:text-neutral-200">
-                    {{ item.file_name }}
+                    class="flex items-center justify-start xl:justify-center xl:col-span-1 xl:whitespace-nowrap text-xs sm:text-sm xl:text-xs  font-medium text-gray-800 dark:text-neutral-200">
+                    {{ item.file_name }} 
                 </div>
             </div>
 
-            <div class="grid grid-cols-2 xl:col-span-3 gap-4 lg:gap-2 xl:flex xl:flex-col xl:w-full">
+            <div class="grid grid-cols-2 xl:col-span-2 gap-4 lg:gap-2 xl:flex xl:flex-col xl:w-full">
                 <div
                     class="flex items-center justify-start xl:justify-center xl:col-span-3 text-xs sm:text-sm xl:text-xs 2xl:text-base font-bold text-gray-500">
                     نام سند</div>
@@ -28,7 +28,7 @@
                     class="flex items-center justify-start xl:justify-center xl:col-span-3 text-xs sm:text-sm xl:text-xs 2xl:text-sm font-medium text-gray-800 dark:text-neutral-200">
                     {{ truncatedTitle }}</div>
             </div>
-            <div class="grid grid-cols-2 xl:col-span-2 gap-4 lg:gap-2 xl:flex xl:flex-col xl:w-full">
+            <div class="grid grid-cols-2 xl:col-span-1 gap-4 lg:gap-2 xl:flex xl:flex-col xl:w-full">
                 <div
                     class="flex items-center justify-start xl:justify-center xl:col-span-1 text-xs sm:text-sm xl:text-xs 2xl:text-base font-bold text-gray-500">
                     کد</div>
@@ -48,16 +48,25 @@
             <div class="grid grid-cols-2 xl:col-span-2 gap-4 lg:gap-2 xl:flex xl:flex-col xl:w-full">
                 <div
                     class="flex items-center justify-start xl:justify-center xl:col-span-1 text-xs sm:text-sm xl:text-xs 2xl:text-base font-bold text-gray-500">
-                    صفحات
+                    پیدا شده در متن
                 </div>
                 <div
                     class="flex items-center justify-start xl:justify-center xl:col-span-2 xl:whitespace-nowrap text-xs sm:text-sm xl:text-xs 2xl:text-sm font-medium text-gray-800 dark:text-neutral-200">
-                    {{ item.found_in_text }}</div>
+                   صفحات {{ item.found_in_text }}</div>
+            </div>
+            <div class="grid grid-cols-2 xl:col-span-2 gap-4 lg:gap-2 xl:flex xl:flex-col xl:w-full">
+                <div
+                    class="flex items-center justify-start xl:justify-center xl:col-span-1 text-xs sm:text-sm xl:text-xs 2xl:text-base font-bold text-gray-500">
+                    پیدا شده در تصویر
+                </div>
+                <div
+                    class="flex items-center justify-start xl:justify-center xl:col-span-2 xl:whitespace-nowrap text-xs sm:text-sm xl:text-xs 2xl:text-sm font-medium text-gray-800 dark:text-neutral-200">
+                   صفحات {{ item.found_in_images }}</div>
             </div>
             <div class="grid grid-cols-2 xl:col-span-1 gap-4 lg:gap-2 xl:flex xl:flex-col xl:w-full">
                 <div class=""></div>
                 <div
-                    class="flex items-center justify-start xl:justify-center xl:col-span-1 xl:whitespace-nowrap text-xs sm:text-sm xl:text-xs 2xl:text-sm font-medium">
+                    class="flex items-center justify-start xl:justify-center xl:col-span-1 xl:whitespace-nowrap text-xs sm:text-sm xl:text-xs  font-medium">
                     <button @click="openDetails(item.file_path, item.found_in_text,item.text_positions, keyword)"
                         class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 focus:outline-none focus:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:text-blue-400">
                         مشاهده فایل</button>

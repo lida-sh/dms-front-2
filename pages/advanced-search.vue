@@ -41,7 +41,7 @@
             <div v-else class="w-full h-full flex flex-col">
                 <div class="px-4 w-full h-full flex flex-col items-start gap-4"
                     v-if="(data?.subProcesses?.length !== (0 || undefined) || data?.processes?.length !== (0 || undefined) || data?.procedures?.length !== (0 || undefined) || data?.files?.length !== (0 || undefined))">
-                    <h1 class="font-sm xl:text-base font-bold mb-4 mr-4">نتایج جستجو:</h1>
+                    <h1 class="font-sm xl:text-base font-bold mb-4 mr-4">نتایج جستجو:{{ data.status }}</h1>
                     <sub-process-result-search v-if="data?.subProcesses" v-for="(itemDoc, index) in data?.subProcesses"
                         :key="index" :item="itemDoc"
                         :row-number="((data!.meta.current_page - 1) * data!.meta.per_page) + index + 1"></sub-process-result-search>
@@ -72,6 +72,7 @@
 </template>
 
 <script setup lang="ts">
+import { toRaw } from "vue";
 import Echo from 'laravel-echo'
 import type { ArchitectureBaseDto } from '~/composables/architectures/architecture.dto';
 import { useAdvancedSearchService, useGetBaseArchitecturesService, useGetBaseProcessesService } from '~/composables/home/home.service';
@@ -139,13 +140,7 @@ const showProceeeSelect = ref(false)
 const getArchitectures = useGetBaseArchitecturesService()
 const getProcesses = useGetBaseProcessesService();
 const { schema } = useAdvancedSearchValidation()
-onMounted(() => {
-    console.log('Listening to ocr-results...')
-    $echo.channel('ocr-results')
-        .listen('.ocr.completed', (e) => {
-            alert('✅ تمام OCR‌ها انجام شد!');
-        })
-})
+
 
 getArchitectures().then((response) => {
     if (response !== undefined) {
@@ -197,16 +192,19 @@ const handleFilter = (link) => {
     })
 }
 onMounted(() => {
+
     console.log('📡 Listening on test-channel...', '✅ echo', $echo)
     $echo.channel('ocr-results')
         .listen('.ocr.completed', (dataOcr: any) => {
-            console.log('📩 Message received:', dataOcr)
-            data = dataOcr
+            alert('✅ جستجو در تصاویر انجام شد!');
+            console.log('📩 Message received:', dataOcr[0])
+            data.value = dataOcr[0]
             console.log('data recieved:', data)
 
             
         })
 })
+
 </script>
 
 <style scoped></style>
