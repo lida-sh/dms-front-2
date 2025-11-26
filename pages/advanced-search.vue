@@ -197,9 +197,8 @@ onMounted(() => {
     $echo.channel('ocr-results')
         .listen('.ocr.completed', (dataOcr: any) => {
             alert('✅ جستجو در تصاویر انجام شد!');
-            console.log('📩 Message received:', dataOcr[0])
-            data.value = dataOcr[0]
-            console.log('data recieved:', data)
+            console.log('📩 Message received:', dataOcr)
+            
 
             
         })
