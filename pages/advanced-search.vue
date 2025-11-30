@@ -75,11 +75,12 @@
 import { toRaw } from "vue";
 import Echo from 'laravel-echo'
 import type { ArchitectureBaseDto } from '~/composables/architectures/architecture.dto';
-import { useAdvancedSearchService, useGetBaseArchitecturesService, useGetBaseProcessesService } from '~/composables/home/home.service';
+import { useAdvancedSearchService, useGetBaseArchitecturesService, useGetBaseProcessesService, useGetOcrResultsService } from '~/composables/home/home.service';
 import { useAdvancedSearchValidation } from '~/composables/home/home.validation';
 import type { ProcessBaseDto } from '~/composables/processes/process.dto';
 import { ButtonVariantEnum } from '~/types';
 import { Form } from "vee-validate"
+
 const doctypes = [
     {
         title: "فرایند",
@@ -191,6 +192,8 @@ const handleFilter = (link) => {
         searchOnced.value = true
     })
 }
+const getOcrResults = useGetOcrResultsService()
+
 onMounted(() => {
 
     console.log('📡 Listening on test-channel...', '✅ echo', $echo)
@@ -198,7 +201,14 @@ onMounted(() => {
         .listen('.ocr.completed', (dataOcr: any) => {
             alert('✅ جستجو در تصاویر انجام شد!');
             console.log('📩 Message received:', dataOcr)
-            
+            if(dataOcr[0] !== undefined)
+            getOcrResults(dataOcr[0].search_id).then((response)=>{
+            if (response !== undefined) {
+            console.log(response)
+            data.value = response
+
+        }
+        })
 
             
         })

@@ -1,6 +1,9 @@
 import { useFetchApi } from "../api/useFetchApi";
 import { ArchitectureBaseDto } from "../architectures/architecture.dto";
-import { ProcessBaseDto, ProcessClientDtoPagination } from "../processes/process.dto";
+import {
+  ProcessBaseDto,
+  ProcessClientDtoPagination,
+} from "../processes/process.dto";
 import type { FetchCustomConfig } from "../api/FetchCustomConfig";
 import {
   useAdvancedSearchValidation,
@@ -38,20 +41,44 @@ export const useAdvancedSearchService = () => {
       process_id,
       wordSearch,
       itemSearch,
-      page
+      page,
     }: InferType<typeof schema>,
     customConfig: FetchCustomConfig = {}
   ) =>
     fetchData(
       "/advanced-search",
-      { params: { architecture_id, docType, process_id, wordSearch, itemSearch, page } },
+      {
+        params: {
+          architecture_id,
+          docType,
+          process_id,
+          wordSearch,
+          itemSearch,
+          page,
+        },
+      },
+      { toastError: true, ...customConfig }
+    );
+};
+export const useGetOcrResultsService = () => {
+  const fetchData = useFetchApi();
+  return (searchId, customConfig: FetchCustomConfig = {}) =>
+    fetchData(
+      "/get-ocr-results",
+      { params: { searchId } },
       { toastError: true, ...customConfig }
     );
 };
 export const useSearchService = () => {
   const { schema } = useSearchValidation();
-  const fetchData = useFetchApi<resultSearchDtoPagination, resultSearchDtoPagination>(resultSearchDtoPagination);
-  return ({ search }:InferType<typeof schema>, customConfig: FetchCustomConfig = {}) =>
+  const fetchData = useFetchApi<
+    resultSearchDtoPagination,
+    resultSearchDtoPagination
+  >(resultSearchDtoPagination);
+  return (
+    { search }: InferType<typeof schema>,
+    customConfig: FetchCustomConfig = {}
+  ) =>
     fetchData(
       "/search",
       { params: { search } },
@@ -59,23 +86,30 @@ export const useSearchService = () => {
     );
 };
 export const useGetProceduresService = () => {
-  const fetchData = useFetchApi<ProcedureClientDtoPagination, ProcedureClientDtoPagination>(
+  const fetchData = useFetchApi<
+    ProcedureClientDtoPagination,
     ProcedureClientDtoPagination
-  );
+  >(ProcedureClientDtoPagination);
   return (params, customConfig: FetchCustomConfig = {}) =>
-    fetchData("/procedures", { params }, {toastError: true, ...customConfig});
+    fetchData("/procedures", { params }, { toastError: true, ...customConfig });
 };
 export const useGetProcessesService = () => {
-  const fetchData = useFetchApi<ProcessClientDtoPagination, ProcessClientDtoPagination>(
+  const fetchData = useFetchApi<
+    ProcessClientDtoPagination,
     ProcessClientDtoPagination
-  );
+  >(ProcessClientDtoPagination);
   return (params, customConfig: FetchCustomConfig = {}) =>
-    fetchData("/processes", { params }, {toastError: true, ...customConfig});
+    fetchData("/processes", { params }, { toastError: true, ...customConfig });
 };
 export const useGetSubProcessesService = () => {
-  const fetchData = useFetchApi<SubProcessClientDtoPagination, SubProcessClientDtoPagination>(
+  const fetchData = useFetchApi<
+    SubProcessClientDtoPagination,
     SubProcessClientDtoPagination
-  );
+  >(SubProcessClientDtoPagination);
   return (params, customConfig: FetchCustomConfig = {}) =>
-    fetchData("/sub-processes", { params }, {toastError: true, ...customConfig});
+    fetchData(
+      "/sub-processes",
+      { params },
+      { toastError: true, ...customConfig }
+    );
 };
