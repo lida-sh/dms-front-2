@@ -15,7 +15,7 @@
                     class="flex items-center justify-start xl:justify-center xl:col-span-1 text-xs sm:text-sm xl:text-xs 2xl:text-base font-bold text-gray-500">
                     نام فایل</div>
                 <div
-                    class="flex items-center justify-start xl:justify-center xl:col-span-1 xl:whitespace-nowrap text-xs sm:text-sm xl:text-xs  font-medium text-gray-800 dark:text-neutral-200">
+                    class="flex items-center justify-start xl:justify-center xl:col-span-1 xl:whitespace-wrap text-xs sm:text-sm xl:text-xs  font-medium text-gray-800 dark:text-neutral-200">
                     {{ item.file_name }} 
                 </div>
             </div>

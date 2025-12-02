@@ -26,10 +26,10 @@
                         <div
                             class="relative flex flex-col items-center gap-4 justify-center border px-2 py-3 w-40 shadow-lg rounded-lg">
                             <type-file-display :file-name="file.fileName"></type-file-display>
-                            <button @click="clickDownload(file.fileName, file.filePath)"
+                            <!-- <button @click="clickDownload(file.fileName, file.filePath)"
                                 class="btn btn-outline border-purple-700 hover:border-none border-2 btn-sm text-purple-600 text-xs hover:bg-gradient-to-b hover:from-purple-900 hover:to-purple-400 hover:text-white">دانلود
-                                فایل</button>
-                            <a :href="file.filePath" download="file.fileName" target="_self" class="btn btn-outline border-purple-700 hover:border-none border-2 btn-sm text-purple-600 text-xs hover:bg-gradient-to-b hover:from-purple-900 hover:to-purple-400 hover:text-white">دانلود فایل</a> -->
+                                فایل</button> -->
+                            <a :href="file.filePath" download="file.fileName" target="_self" class="btn btn-outline border-purple-700 hover:border-none border-2 btn-sm text-purple-600 text-xs hover:bg-gradient-to-b hover:from-purple-900 hover:to-purple-400 hover:text-white">دانلود فایل</a>
                             <div
                           v-if="file.fileName && (file.fileName.split('.').pop().toLowerCase() == 'png') || (file.fileName.split('.').pop().toLowerCase() == 'jpg') || (file.fileName.split('.').pop().toLowerCase() == 'jpeg')">
                           <button @click="showImage = true"
