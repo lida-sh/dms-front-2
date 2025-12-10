@@ -199,7 +199,7 @@ onMounted(() => {
     console.log('📡 Listening on test-channel...', '✅ echo', $echo)
     $echo.channel('ocr-results')
         .listen('.ocr.completed', (dataOcr: any) => {
-            alert('✅ جستجو در تصاویر انجام شد!');
+            // alert('✅ جستجو در تصاویر انجام شد!');
             console.log('📩 Message received:', dataOcr)
             if(dataOcr[0] !== undefined)
             getOcrResults(dataOcr[0].search_id).then((response)=>{
