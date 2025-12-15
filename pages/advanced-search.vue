@@ -198,21 +198,41 @@ onMounted(() => {
 
     console.log('📡 Listening on test-channel...', '✅ echo', $echo)
     $echo.channel('ocr-results')
-        .listen('.ocr.completed', (dataOcr: any) => {
+        .listen('.ocr.completed', onOcrCompleted
             // alert('✅ جستجو در تصاویر انجام شد!');
-            console.log('📩 Message received:', dataOcr)
-            if(dataOcr[0] !== undefined)
-            getOcrResults(dataOcr[0].search_id).then((response)=>{
-            if (response !== undefined) {
-            console.log(response)
-            data.value = response
+        //     console.log('📩 Message received:', dataOcr)
+        //     if(dataOcr[0] !== undefined)
+        //     console.count('OCR EVENT RECEIVED')
+        //     getOcrResults(dataOcr[0].search_id, dataOcr[0].dir, dataOcr[0].type).then((response)=>{
+        //     if (response !== undefined) {
+        //     console.log(response)
+        //     data.value = response
 
-        }
-        })
+        // }
+        // })
 
             
-        })
+        )
 })
+onUnmounted(() => {
+  console.log('🧹 Leaving channel ocr-results')
+  $echo.leave('ocr-results')
+})
+const onOcrCompleted = (dataOcr: any) => {
+  console.log('📩 Message received:', dataOcr)
+
+  if (dataOcr?.[0]) {
+    getOcrResults(
+      dataOcr[0].search_id,
+      dataOcr[0].dir,
+      dataOcr[0].type
+    ).then((response) => {
+      if (response) {
+        data.value = response
+      }
+    })
+  }
+}
 
 </script>
 

@@ -2,7 +2,7 @@
   <div class="flex flex-col w-full items-center justify-center p-10">
     <ClientOnly fallback="در حال بارگذاری...">
       <!-- <div class="flex w-full items-center justify-center"> -->
-      <PdfViewerF :pdfUrl="url" :keyword="keyword" :pagesWithKeyword="[1, 2, 4]" :firstPageToShow="page"/>
+      <PdfViewerF :pdfUrl="url" :keyword="keyword" :pagesWithKeyword="pages" :firstPageToShow="page"/>
       <!-- <PdfViewer9 :pdfUrl="url" :keyword="keyword" :highlightPages="[1, 2, 4]" :page="page"/> -->
       <!-- <PdfViewer6 :pdfUrl="filePath" :highlightWord="keyword" :highlightPages="[1, 2, 4]" :page-number="page"/> -->
       <!-- <PdfViewerWithTextLayer2 
@@ -42,11 +42,12 @@ const getFirstPage = (positions) => {
 }
 
 const filePath = encodeURIComponent(route.query.path as string)
-const url = `http://dms-back.test/pdf/${filePath}`
+const dir = route.query.dir as string
+const url = `http://dms-back.test/pdf/${dir}/${filePath}`
 const keyword = route.query.keyword as string
 const pages = JSON.parse(route.query.pages as string)
-const positions = JSON.parse(route.query.positions as string)
-const fileName = route.query.name as string
+// const positions = JSON.parse(route.query.positions as string)
+// const fileName = route.query.name as string
 const page = Array.isArray(pages) ? pages[0] : parseInt(pages)
 // onBeforeMount(() => {
   // useLicense must be used here to ensure proper license

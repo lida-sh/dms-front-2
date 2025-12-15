@@ -66,7 +66,7 @@
                 <div class=""></div>
                 <div
                     class="flex items-center justify-start xl:justify-center xl:col-span-1 xl:whitespace-nowrap text-xs sm:text-sm xl:text-xs  font-medium">
-                    <button @click="openDetails(item.file_path, item.found_in_text,item.text_positions, keyword)"
+                    <button @click="openDetails(item.file_path, item.found_in_text, item.dir, keyword)"
                         class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 focus:outline-none focus:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:text-blue-400">
                         مشاهده فایل</button>
                 </div>
@@ -92,14 +92,14 @@ const truncatedTitle = computed(() => {
     }
 
 })
-const openDetails = ($path, $pages,$positions, $keyword) => {
+const openDetails = ($path, $pages, $dir, $keyword) => {
     console.log("items",$path, JSON.stringify($pages), $keyword )
   router.push({
     path: '/pdf-viewer',
     query: {
       path: $path,
       keyword: $keyword,
-      positions: JSON.stringify($positions),
+      dir: $dir,
       pages: JSON.stringify($pages),
       
     }

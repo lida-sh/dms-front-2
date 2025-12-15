@@ -62,10 +62,10 @@ export const useAdvancedSearchService = () => {
 };
 export const useGetOcrResultsService = () => {
   const fetchData = useFetchApi();
-  return (searchId, customConfig: FetchCustomConfig = {}) =>
+  return (searchId, dir, type, customConfig: FetchCustomConfig = {}) =>
     fetchData(
       "/get-ocr-results",
-      { params: { searchId } },
+      { params: { searchId, dir, type } },
       { toastError: true, ...customConfig }
     );
 };
