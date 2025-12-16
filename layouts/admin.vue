@@ -11,7 +11,7 @@
       </div> -->
         <div
           class="w-full h-full max-w-[110rem] pt-[1.5rem] lg:pt-[5rem] mx-auto gap-2 2xl:gap-[0.5rem] lg:px-2 flex items-start pb-20">
-          <AdminMenuDashbard class="hidden xl:block sticky top-20 max-w-[16.5rem] min-w-[15rem] dashboard-card w-full">
+          <AdminMenuDashbard class="hidden lg:block sticky top-20 max-w-[16.5rem] min-w-[15rem] dashboard-card w-full">
           </AdminMenuDashbard>
           <main class="w-full">
             <slot></slot>

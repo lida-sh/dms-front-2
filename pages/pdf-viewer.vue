@@ -2,6 +2,7 @@
   <div class="flex flex-col w-full items-center justify-center p-10">
     <ClientOnly fallback="در حال بارگذاری...">
       <!-- <div class="flex w-full items-center justify-center"> -->
+      
       <PdfViewerF :pdfUrl="url" :keyword="keyword" :pagesWithKeyword="pages" :firstPageToShow="page"/>
       <!-- <PdfViewer9 :pdfUrl="url" :keyword="keyword" :highlightPages="[1, 2, 4]" :page="page"/> -->
       <!-- <PdfViewer6 :pdfUrl="filePath" :highlightWord="keyword" :highlightPages="[1, 2, 4]" :page-number="page"/> -->

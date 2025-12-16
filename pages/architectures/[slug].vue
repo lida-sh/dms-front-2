@@ -31,7 +31,7 @@ const runAnimation = () => {
     .from(".process", {
         // y: "100%",
         y: 100,
-        duration: 2,
+        duration: 1,
         autoAlpha: 0,
         ease: "power4",
         stagger: 0.3
@@ -40,6 +40,12 @@ const runAnimation = () => {
     },1000)
 
 }
+watch(data, async (val) => {
+  if (val) {
+    await nextTick()
+    runAnimation()
+  }
+}, { immediate: true })
 onMounted(async () => {
     // await nextTick();
     // watch(data,()=>{
@@ -47,7 +53,7 @@ onMounted(async () => {
     //     runAnimation()
     // }
     // },{immediate: true})
-    runAnimation()
+    // runAnimation()
 })
 
 

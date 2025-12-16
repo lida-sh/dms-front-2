@@ -32,7 +32,6 @@
                     <app-button type="button" :loading="loading"
                         class="bg-indigo-600 btn w-full h-10 text-white text-sm text-bold hover:bg-indigo-500">جستجو</app-button>
 
-
                 </div>
             </Form>
         </section>
@@ -40,8 +39,9 @@
             <div v-if="!searchOnced" class=""></div>
             <div v-else class="w-full h-full flex flex-col">
                 <div class="px-4 w-full h-full flex flex-col items-start gap-4"
-                    v-if="(data?.subProcesses?.length !== (0 || undefined) || data?.processes?.length !== (0 || undefined) || data?.procedures?.length !== (0 || undefined) || data?.files?.length !== (0 || undefined))">
+                    v-if="(searchResults.length || data?.subProcesses?.length !== (0 || undefined) || data?.processes?.length !== (0 || undefined) || data?.procedures?.length !== (0 || undefined) || data?.files?.length !== (0 || undefined))">
                     <h1 class="font-sm xl:text-base font-bold mb-4 mr-4">نتایج جستجو:{{ data.status }}</h1>
+                    {{searchResults}}
                     <sub-process-result-search v-if="data?.subProcesses" v-for="(itemDoc, index) in data?.subProcesses"
                         :key="index" :item="itemDoc"
                         :row-number="((data!.meta.current_page - 1) * data!.meta.per_page) + index + 1"></sub-process-result-search>
@@ -51,8 +51,9 @@
                     <procedure-result-search v-if="data?.procedures" v-for="(itemDoc, index) in data?.procedures"
                         :key="index" :item="itemDoc"
                         :row-number="((data!.meta.current_page - 1) * data!.meta.per_page) + index + 1"></procedure-result-search>
-                    <file-result-search v-if="data?.files" v-for="(itemDoc, index) in data?.files" :key="index" :row-number="((data!.meta.current_page - 1) * data!.meta.per_page) + index + 1"
-                        :item="itemDoc" :typeDoc="data.typeDoc" :keyword="data?.keyword"></file-result-search>
+                    <file-result-search v-if="data?.files || searchResults.length" v-for="(itemDoc, index) in (data?.files ||searchResults?.files)" :key="index"
+                        :row-number="((data!.meta.current_page - 1) * data!.meta.per_page) + index + 1" :item="itemDoc"
+                        :typeDoc="data.typeDoc" :keyword="data?.keyword"></file-result-search>
                 </div>
                 <!-- <div v-else-if="(data?.subProcesses?.length === 0 && data?.processes?.length === 0 && data?.procedures?.length === 0)"
                     class="font-sm xl:text-base font-bold mb-4 mr-4">موردی یافت نشد.</div> -->
@@ -141,7 +142,8 @@ const showProceeeSelect = ref(false)
 const getArchitectures = useGetBaseArchitecturesService()
 const getProcesses = useGetBaseProcessesService();
 const { schema } = useAdvancedSearchValidation()
-
+const searchResults = useState('searchResults', () => [])
+const searchKeyword = useState('searchKeyword', () => '')
 
 getArchitectures().then((response) => {
     if (response !== undefined) {
@@ -171,6 +173,8 @@ const submit = (values) => {
     doSearch(values).then((response) => {
         if (response !== undefined) {
             data.value = response
+            // searchResults.value = data.value
+            // searchKeyword.value = data.keyword.value
         }
 
     }).finally(() => {
@@ -200,38 +204,41 @@ onMounted(() => {
     $echo.channel('ocr-results')
         .listen('.ocr.completed', onOcrCompleted
             // alert('✅ جستجو در تصاویر انجام شد!');
-        //     console.log('📩 Message received:', dataOcr)
-        //     if(dataOcr[0] !== undefined)
-        //     console.count('OCR EVENT RECEIVED')
-        //     getOcrResults(dataOcr[0].search_id, dataOcr[0].dir, dataOcr[0].type).then((response)=>{
-        //     if (response !== undefined) {
-        //     console.log(response)
-        //     data.value = response
+            //     console.log('📩 Message received:', dataOcr)
+            //     if(dataOcr[0] !== undefined)
+            //     console.count('OCR EVENT RECEIVED')
+            //     getOcrResults(dataOcr[0].search_id, dataOcr[0].dir, dataOcr[0].type).then((response)=>{
+            //     if (response !== undefined) {
+            //     console.log(response)
+            //     data.value = response
 
-        // }
-        // })
+            // }
+            // })
 
-            
+
         )
 })
 onUnmounted(() => {
-  console.log('🧹 Leaving channel ocr-results')
-  $echo.leave('ocr-results')
+    console.log('🧹 Leaving channel ocr-results')
+    $echo.leave('ocr-results')
 })
 const onOcrCompleted = (dataOcr: any) => {
-  console.log('📩 Message received:', dataOcr)
+    console.log('📩 Message received:', dataOcr)
 
-  if (dataOcr?.[0]) {
-    getOcrResults(
-      dataOcr[0].search_id,
-      dataOcr[0].dir,
-      dataOcr[0].type
-    ).then((response) => {
-      if (response) {
-        data.value = response
-      }
-    })
-  }
+    if (dataOcr?.[0]) {
+        searchKeyword.value = dataOcr?.[0].keyword
+        getOcrResults(
+            dataOcr[0].search_id,
+            dataOcr[0].dir,
+            dataOcr[0].type
+        ).then((response) => {
+            if (response) {
+                data.value = response
+                searchResults.value = data.value
+                
+            }
+        })
+    }
 }
 
 </script>

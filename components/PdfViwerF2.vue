@@ -1,12 +1,25 @@
 <template>
-  <div class="pdf-container items-center justify-center" ref="container">
-    <div class="flex flex-col w-full items-start justify-center px-10 gap-4">
-          <h6 class="text-base font-bold">کلمه مورد جستجو: <span class="text-blue-700">{{ keyword }}</span></h6>
-          <h6 class="text-base font-bold">پیدا شده در صفحات: <span class="text-blue-700">{{ pagesWithKeyword }}</span></h6>
-      </div>
-    <div 
-      v-for="(pageNum, index) in pageCount" 
-      :key="index" 
+  <div class="controls">
+    <button @click="prevResult" :disabled="currentIndex === 0">
+      قبلی
+    </button>
+
+    <span>
+      نتیجه {{ currentIndex + 1 }} از {{ pagesWithKeyword.length }}
+    </span>
+
+    <button
+      @click="nextResult"
+      :disabled="currentIndex === pagesWithKeyword.length - 1"
+    >
+      بعدی
+    </button>
+  </div>
+
+  <div class="pdf-container" ref="container">
+    <div
+      v-for="(pageNum, index) in pageCount"
+      :key="index"
       class="pdf-page"
       :ref="el => pageRefs[index] = el"
     >
@@ -14,6 +27,7 @@
     </div>
   </div>
 </template>
+
 
 <script setup>
 import { onMounted, ref, watch } from "vue";
@@ -104,6 +118,27 @@ onMounted(loadPdf);
 watch(() => props.keyword, () => {
   renderAllPages();
 });
+const currentIndex = ref(0);
+
+const scrollToPage = (pageNumber) => {
+  const el = pageRefs.value[pageNumber - 1];
+  el?.scrollIntoView({ behavior: "smooth", block: "start" });
+};
+
+const nextResult = () => {
+  if (currentIndex.value < props.pagesWithKeyword.length - 1) {
+    currentIndex.value++;
+    scrollToPage(props.pagesWithKeyword[currentIndex.value]);
+  }
+};
+
+const prevResult = () => {
+  if (currentIndex.value > 0) {
+    currentIndex.value--;
+    scrollToPage(props.pagesWithKeyword[currentIndex.value]);
+  }
+};
+
 </script>
 
 <style scoped>
