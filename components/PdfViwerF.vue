@@ -2,7 +2,7 @@
   <div class="pdf-container items-center justify-center" ref="container">
     <div class="flex flex-col w-full items-start justify-center px-10 gap-4">
           <h6 class="text-base font-bold">کلمه مورد جستجو: <span class="text-blue-700">{{ keyword }}</span></h6>
-          <h6 class="text-base font-bold">پیدا شده در صفحات: <span class="text-blue-700">{{ pagesWithKeyword }}</span></h6>
+          <h6 class="text-base font-bold">پیدا شده در صفحات: <span class="text-blue-700">{{ useArrayToString(pagesWithKeyword) }}</span></h6>
       </div>
     <div 
       v-for="(pageNum, index) in pageCount" 
@@ -104,6 +104,21 @@ onMounted(loadPdf);
 watch(() => props.keyword, () => {
   renderAllPages();
 });
+const useArrayToString = (arr) => {
+    return arr.slice()      // برای اینکه آرایه اصلی تغییر نکند
+        .reverse().join(',');
+};
+// const arrayState = (arr) => {
+//     if (!Array.isArray(arr) || arr.length === 0) {
+//         return 0;        // آرایه مقداری ندارد
+//     }
+
+//     if (arr.length === 1) {
+//         return 1;       // فقط یک مقدار دارد
+//     }
+
+//     return 2;       // بیشتر از یک مقدار دارد
+// }
 </script>
 
 <style scoped>

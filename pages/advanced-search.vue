@@ -41,7 +41,7 @@
                 <div class="px-4 w-full h-full flex flex-col items-start gap-4"
                     v-if="(searchResults.length || data?.subProcesses?.length !== (0 || undefined) || data?.processes?.length !== (0 || undefined) || data?.procedures?.length !== (0 || undefined) || data?.files?.length !== (0 || undefined))">
                     <h1 class="font-sm xl:text-base font-bold mb-4 mr-4">نتایج جستجو:{{ data.status }}</h1>
-                    {{searchResults}}
+                    
                     <sub-process-result-search v-if="data?.subProcesses" v-for="(itemDoc, index) in data?.subProcesses"
                         :key="index" :item="itemDoc"
                         :row-number="((data!.meta.current_page - 1) * data!.meta.per_page) + index + 1"></sub-process-result-search>
@@ -51,7 +51,7 @@
                     <procedure-result-search v-if="data?.procedures" v-for="(itemDoc, index) in data?.procedures"
                         :key="index" :item="itemDoc"
                         :row-number="((data!.meta.current_page - 1) * data!.meta.per_page) + index + 1"></procedure-result-search>
-                    <file-result-search v-if="data?.files || searchResults.length" v-for="(itemDoc, index) in (data?.files ||searchResults?.files)" :key="index"
+                    <file-result-search v-if="data?.files || searchResults.length" v-for="(itemDoc, index) in (data?.files)" :key="index"
                         :row-number="((data!.meta.current_page - 1) * data!.meta.per_page) + index + 1" :item="itemDoc"
                         :typeDoc="data.typeDoc" :keyword="data?.keyword"></file-result-search>
                 </div>
@@ -229,12 +229,14 @@ const onOcrCompleted = (dataOcr: any) => {
         searchKeyword.value = dataOcr?.[0].keyword
         getOcrResults(
             dataOcr[0].search_id,
+            dataOcr[0].keyword,
             dataOcr[0].dir,
             dataOcr[0].type
         ).then((response) => {
             if (response) {
                 data.value = response
                 searchResults.value = data.value
+                console.log(data.value)
                 
             }
         })
