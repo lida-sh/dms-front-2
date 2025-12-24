@@ -28,20 +28,24 @@
                     <div class="p-3">
                         <app-text-input name="wordSearch" :label="$t('wordSearch')" class="w-full"></app-text-input>
                     </div>
-
                     <app-button type="button" :loading="loading"
                         class="bg-indigo-600 btn w-full h-10 text-white text-sm text-bold hover:bg-indigo-500">جستجو</app-button>
-
                 </div>
             </Form>
         </section>
         <section class="w-full h-full flex">
-            <div v-if="!searchOnced" class=""></div>
-            <div v-else class="w-full h-full flex flex-col">
-                <div class="px-4 w-full h-full flex flex-col items-start gap-4"
+            
+            <div v-if="!searchOnced" class="flex w-full p-20">
+                <h3 class="">با انتخاب فیلترهای مناسب به سند مورد نظر خود دست پیدا کنید.</h3>
+            </div>
+            <div v-else class="w-full flex flex-col">
+                <div class="px-4 w-full flex flex-col items-start gap-4"
                     v-if="(searchResults.length || data?.subProcesses?.length !== (0 || undefined) || data?.processes?.length !== (0 || undefined) || data?.procedures?.length !== (0 || undefined) || data?.files?.length !== (0 || undefined))">
-                    <h1 class="font-sm xl:text-base font-bold mb-4 mr-4">نتایج جستجو:{{ data.status }}</h1>
-                    
+                    <div class="w-full gap-8 flex justify-center items-center">
+                        <h1 class="text-center font-sm xl:text-base font-bold mb-2 mr-4">وضعیت: {{ data.statusText }}</h1>
+                        <span v-if="!data.status" class="loading loading-dots loading-lg"></span>
+                    </div>
+                    <h1 class="font-sm xl:text-base font-bold mb-4 mr-4">نتایج جستجو:</h1>
                     <sub-process-result-search v-if="data?.subProcesses" v-for="(itemDoc, index) in data?.subProcesses"
                         :key="index" :item="itemDoc"
                         :row-number="((data!.meta.current_page - 1) * data!.meta.per_page) + index + 1"></sub-process-result-search>
@@ -51,19 +55,13 @@
                     <procedure-result-search v-if="data?.procedures" v-for="(itemDoc, index) in data?.procedures"
                         :key="index" :item="itemDoc"
                         :row-number="((data!.meta.current_page - 1) * data!.meta.per_page) + index + 1"></procedure-result-search>
-                    <file-result-search v-if="data?.files || searchResults.length" v-for="(itemDoc, index) in (data?.files)" :key="index"
+                    <file-result-search v-if="data?.files || searchResults.length"
+                        v-for="(itemDoc, index) in (data?.files)" :key="index"
                         :row-number="((data!.meta.current_page - 1) * data!.meta.per_page) + index + 1" :item="itemDoc"
                         :typeDoc="data.typeDoc" :keyword="data?.keyword"></file-result-search>
                 </div>
-                <!-- <div v-else-if="(data?.subProcesses?.length === 0 && data?.processes?.length === 0 && data?.procedures?.length === 0)"
-                    class="font-sm xl:text-base font-bold mb-4 mr-4">موردی یافت نشد.</div> -->
-                <!-- <div class="join flex items-center justify-center mt-5" v-if="data?.meta.total > data?.meta?.per_page!">
-                    <button v-for="(link, index) in data?.meta.last_page" :key="index"
-                        @click="handleFilter({ page: link })" class="join-item btn"
-                        :class="{ 'btn-active': data?.meta.current_page == link }">{{ link }}</button>
-                </div> -->
+                <div v-if="searchOnced && ( data?.subProcesses?.length === 0 || data?.processes?.length === 0 || data?.procedures?.length === 0  || data?.files?.length === 0)" class="flex w-full p-5 bg-red-50 border border-red-300 rounded-lg"><h3 class="font-sm xl:text-base font-normal">سندی یافت نشد.</h3></div>
             </div>
-
         </section>
 
 
@@ -167,6 +165,7 @@ const changeDocTypeItem = (selectedItemId) => {
 }
 const doSearch = useAdvancedSearchService();
 const submit = (values) => {
+    // searchOnced.value =false
     loading.value = true
     query.value = { ...values }
     router.push({ query: query.value })
@@ -237,7 +236,6 @@ const onOcrCompleted = (dataOcr: any) => {
                 data.value = response
                 searchResults.value = data.value
                 console.log(data.value)
-                
             }
         })
     }
