@@ -47,22 +47,22 @@
             <div
                 class="relative flex flex-col lg:flex-row  max-w-[90rem] h-auto lg:h-48 items-center justify-center gap-10 px-10">
                 <div
-                    class="bg-white rounded-box border border-gray-200 translate-y-0 lg:-translate-y-1/2 shadow-lg w-full h-full p-8 flex items-center justify-center gap-6">
-                    <img src="/public/images/servicees/pencil-folder.png" alt="" class="w-28 h-28">
+                    class="bg-white rounded-box border border-gray-200 translate-y-0 lg:-translate-y-1/2 shadow-lg w-full h-full p-4 flex items-center justify-center gap-6">
+                    <img src="/public/images/servicees/automation.png" alt="" class="w-16 h-16">
                     <h2 class="text-sm lg:text-base text-indigo-700 font-bold leading-loose">
                        <h2 class="text-sm lg:text-base xl:text-3xl text-indigo-700 font-bold"><CountUp :end="300" />+</h2><h2 class="text-sm lg:text-base text-indigo-700 font-bold">فرایند 
                        </h2>
                     </h2>
                 </div>
                 <div
-                    class="bg-white rounded-box border border-gray-200 translate-y-0 lg:-translate-y-1/2 shadow-lg w-full h-full p-6 flex items-center justify-center gap-6">
-                    <img src="/public/images/servicees/magnifier-glass.png" alt="" class="w-28 h-28">
+                    class="bg-white rounded-box border border-gray-200 translate-y-0 lg:-translate-y-1/2 shadow-lg w-full h-full p-4 flex items-center justify-center gap-6">
+                    <img src="/public/images/servicees/workflow-optimization.png" alt="" class="w-16 h-16">
                     <h2 class="text-sm lg:text-base xl:text-3xl text-indigo-700 font-bold"><CountUp :end="600" />+</h2><h2 class="text-sm lg:text-base text-indigo-700 font-bold">زیرفرایند 
                        </h2>
                 </div>
                 <div
-                    class="bg-white rounded-box border border-gray-200 translate-y-0 lg:-translate-y-1/2 shadow-lg w-full h-full p-6 flex items-center justify-center gap-6">
-                    <img src="/public/images/servicees/upload-cloud-folder.png" alt="" class="w-28 h-28">
+                    class="bg-white rounded-box border border-gray-200 translate-y-0 lg:-translate-y-1/2 shadow-lg w-full h-full p-4 flex items-center justify-center gap-6">
+                    <img src="/public/images/servicees/workflow.png" alt="" class="w-16 h-16">
                     <h2 class="text-sm lg:text-base xl:text-3xl text-indigo-700 font-bold"><CountUp :end="1200" />+</h2><h2 class="text-sm lg:text-base text-indigo-700 font-bold">روش اجرایی 
                        </h2>
                 </div>
