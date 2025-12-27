@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col w-full items-center justify-center p-10">
-    <ClientOnly fallback="در حال بارگذاری...">
+    <!-- <ClientOnly fallback="در حال بارگذاری..."> -->
       <!-- <div class="flex w-full items-center justify-center"> -->
       
       <PdfViewerF :pdfUrl="url" :keyword="keyword" :pagesWithKeyword="pages" :firstPageToShow="page"/>
@@ -22,7 +22,7 @@
       @document-loaded="onDocumentLoaded"
     /> -->
     <!-- </div> -->
-    </ClientOnly>
+    <!-- </ClientOnly> -->
     <!-- <PdfViewer :path="filePath" :keyword="keyword" :pages="pages" /> -->
     <!-- <PdfViewer2 :pdfUrl="filePath" /> -->
     <!-- <PdfViewer3 :pdfUrl="filePath" /> -->
@@ -46,7 +46,7 @@ const filePath = encodeURIComponent(route.query.path as string)
 const dir = route.query.dir as string
 const url = `http://dms-back.test/pdf/${dir}/${filePath}`
 const keyword = route.query.keyword as string
-const textPages = JSON.parse(route.query.testPages as string || '[]');
+const textPages = JSON.parse(route.query.textPages as string || '[]');
 const imagePages = JSON.parse(route.query.imagePages as string || '[]');
 const pages = textPages.concat(imagePages)
 // const positions = JSON.parse(route.query.positions as string)

@@ -1,15 +1,15 @@
 <template>
   <div class="pdf-container items-center justify-center" ref="container">
-    <div class="flex flex-col w-full items-start justify-center px-10 gap-4">
-          <h6 class="text-base font-bold">کلمه مورد جستجو: <span class="text-blue-700">{{ keyword }}</span></h6>
-          <h6 class="text-base font-bold">پیدا شده در صفحات: <span class="text-blue-700">{{ useArrayToString(pagesWithKeyword) }}</span></h6>
-      </div>
-    <div 
-      v-for="(pageNum, index) in pageCount" 
-      :key="index" 
-      class="pdf-page"
-      :ref="el => pageRefs[index] = el"
-    >
+    <div v-if="loading" class="flex gap-4 text-center">
+      <h3 class="text-base font-normal">در حال بارگذاری...</h3>
+      <span class="loading loading-bars loading-xl"></span>
+    </div>
+    <div v-else class="flex flex-col w-full items-start justify-center px-10 gap-4">
+      <h6 class="text-base font-bold">کلمه مورد جستجو: <span class="text-blue-700">{{ keyword }}</span></h6>
+      <h6 class="text-base font-bold">پیدا شده در صفحات: <span class="text-blue-700">{{
+        useArrayToString(pagesWithKeyword) }}</span></h6>
+    </div>
+    <div v-for="(pageNum, index) in pageCount" :key="index" class="pdf-page" :ref="el => pageRefs[index] = el">
       <canvas :ref="el => canvasRefs[index] = el"></canvas>
     </div>
   </div>
@@ -18,7 +18,7 @@
 <script setup>
 import { onMounted, ref, watch } from "vue";
 const { $pdfjsLib } = useNuxtApp();
-
+const loading = ref(true)
 // ---------------- props از والد ----------------
 const props = defineProps({
   pdfUrl: { type: String, required: true },
@@ -34,6 +34,7 @@ let pdfDoc = null;
 
 // -------------------- بارگذاری PDF --------------------
 const loadPdf = async () => {
+
   pdfDoc = await $pdfjsLib.getDocument({
     url: props.pdfUrl,
     disableFontFace: true,
@@ -43,6 +44,7 @@ const loadPdf = async () => {
 
   pageCount.value = pdfDoc.numPages;
   await renderAllPages();
+  loading.value = false
 };
 
 // -------------------- رندر تمام صفحات --------------------
@@ -97,7 +99,6 @@ const highlightOnCanvas = (ctx, textContent, keyword, viewport) => {
 
   ctx.restore();
 };
-
 onMounted(loadPdf);
 
 // اگر keyword تغییر کرد → همه صفحات دوباره رندر شود
@@ -105,8 +106,8 @@ watch(() => props.keyword, () => {
   renderAllPages();
 });
 const useArrayToString = (arr) => {
-    return arr.slice()      // برای اینکه آرایه اصلی تغییر نکند
-        .reverse().join(',');
+  return arr.slice()      // برای اینکه آرایه اصلی تغییر نکند
+    .reverse().join(',');
 };
 // const arrayState = (arr) => {
 //     if (!Array.isArray(arr) || arr.length === 0) {

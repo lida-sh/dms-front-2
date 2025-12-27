@@ -50,20 +50,21 @@
                     class="bg-white rounded-box border border-gray-200 translate-y-0 lg:-translate-y-1/2 shadow-lg w-full h-full p-8 flex items-center justify-center gap-6">
                     <img src="/public/images/servicees/pencil-folder.png" alt="" class="w-28 h-28">
                     <h2 class="text-sm lg:text-base text-indigo-700 font-bold leading-loose">
-                        دسترسی سریع به بیش از 730 سند فرایندی
+                       <h2 class="text-sm lg:text-base xl:text-3xl text-indigo-700 font-bold"><CountUp :end="300" />+</h2><h2 class="text-sm lg:text-base text-indigo-700 font-bold">فرایند 
+                       </h2>
                     </h2>
                 </div>
                 <div
                     class="bg-white rounded-box border border-gray-200 translate-y-0 lg:-translate-y-1/2 shadow-lg w-full h-full p-6 flex items-center justify-center gap-6">
                     <img src="/public/images/servicees/magnifier-glass.png" alt="" class="w-28 h-28">
-                    <h2 class="text-sm lg:text-base text-indigo-700 font-bold">
-                        جستجوی سریع و آسان فایل ها و مستندات فرایندی</h2>
+                    <h2 class="text-sm lg:text-base xl:text-3xl text-indigo-700 font-bold"><CountUp :end="600" />+</h2><h2 class="text-sm lg:text-base text-indigo-700 font-bold">زیرفرایند 
+                       </h2>
                 </div>
                 <div
                     class="bg-white rounded-box border border-gray-200 translate-y-0 lg:-translate-y-1/2 shadow-lg w-full h-full p-6 flex items-center justify-center gap-6">
                     <img src="/public/images/servicees/upload-cloud-folder.png" alt="" class="w-28 h-28">
-                    <h2 class="text-sm lg:text-base text-indigo-700 font-bold">
-                        بروز رسانی و انتشار فایل ها و مستندات و گزارشات</h2>
+                    <h2 class="text-sm lg:text-base xl:text-3xl text-indigo-700 font-bold"><CountUp :end="1200" />+</h2><h2 class="text-sm lg:text-base text-indigo-700 font-bold">روش اجرایی 
+                       </h2>
                 </div>
             </div>
             <div class="w-full flex max-w-[100rem]" id="types-of-docs">
