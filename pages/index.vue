@@ -2,7 +2,7 @@
     <div v-if="!resultSearch" id="top-of-page" class="w-full h-full flex flex-col items-center justify-center">
         <div class="bg-[#4749e3] w-full flex items-center justify-center">
             <div
-                class="lg:grid lg:grid-cols-12 h-[48rem] w-full flex flex-col max-w-[100rem] px-4 pb-8 lg:px-10 gap-4 lg:gap-8 overflow-x-hidden">
+                class="lg:grid lg:grid-cols-12 h-[40rem] xl:h-[48rem] w-full flex flex-col max-w-[100rem] px-4 pb-8 lg:px-10 gap-4 lg:gap-8 overflow-x-hidden">
 
                 <div id="search-section"
                     class="lg:col-span-5 w-full h-full flex flex-col gap-4 items-center justify-center py-4 lg:py-0 px-4 sm:px-6 space-y-2 lg:space-y-8">
@@ -464,11 +464,11 @@ const scrollToTop = () => {
 </script>
 
 <style scoped>
-.head {
+/* .head {
     background-image: url("/public/images/background.png");
     background-size: 100% 100%;
 
-}
+} */
 
 .en-font {
     font-family: 'Times New Roman', serif;
