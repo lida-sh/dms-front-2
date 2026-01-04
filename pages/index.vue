@@ -2,12 +2,12 @@
     <div v-if="!resultSearch" id="top-of-page" class="w-full h-full flex flex-col items-center justify-center">
         <div class="bg-[#4749e3] w-full flex items-center justify-center">
             <div
-                class="lg:grid lg:grid-cols-12 h-[40rem] sm:h-[46rem] lg:h-[48rem] w-full flex flex-col max-w-[100rem] px-4 pb-8 pt-8 md:pt-0 lg:px-10 gap-4 lg:gap-8 overflow-x-hidden">
+                class="lg:grid lg:grid-cols-12 h-[40rem] sm:h-[40rem] xl:h-[48rem] w-full flex flex-col max-w-[100rem] px-4 pb-8 pt-8 lg:pt-0 lg:px-10 gap-16 lg:gap-4 overflow-x-hidden">
 
                 <div id="search-section"
-                    class="lg:col-span-5 w-full h-full flex flex-col gap-4 items-center justify-center py-4 lg:py-0 px-4 sm:px-6 space-y-2 lg:space-y-8">
+                    class="lg:col-span-5 w-full h-full flex flex-col gap-1 items-center justify-center py-4 lg:py-0 px-4 sm:px-6 space-y-2 lg:space-y-8">
                     <p
-                        class="text-md sm:text-xl lg:text-[1.2rem] xl:text-[1.4rem] 2xl:text-[1.8rem] text-white font-bold">
+                        class="text-base xl:text-[1.4rem] 2xl:text-[1.8rem] text-white font-bold">
                         نگهداری
                         و دسترسی سریع به اسناد فرایندی با</p>
                     <h1 class="text-3xl lg:text-[2rem] xl:text-[3.25rem] text-white font-bold">سامانه مدیریت اسناد</h1>
@@ -15,12 +15,12 @@
                         <the-search-input name="search" class="w-full" :loading="loading"></the-search-input>
                     </Form>
                     <nuxt-link to="advanced-search"
-                        class="bg-red-600 h-14 text-white text-lg px-8 py-4 rounded-lg border border-red-800">جستجوی
+                        class="bg-red-600 flex items-center justify-center w-full h-12 lg:h-14 text-white text-sm lg:text-base px-8 py-4 rounded-lg border border-red-800 hover:bg-red-700 sm:max-w-[12rem]">جستجوی
                         دقیق</nuxt-link>
                 </div>
-                <div class="lg:col-span-7 w-full h-full flex items-center lg:justify-end justify-center">
+                <div class="lg:col-span-7 w-full h-full flex items-center  justify-center ">
 
-                    <div class="relative w-full">
+                    <div class="relative w-full sm:max-w-[35rem] lg:max-w-[45rem]">
                         <div class="head absolute w-full h-full -z-1 opacity-0.5 -inset-4"></div>
                         <img src="/images/monitor3.svg" alt="" id="monitor" class="monitor w-full h-full invisible">
                         <img src="/images/character13.svg" alt="" id="man"
@@ -45,51 +45,41 @@
 
         <section class="bg-gray-100 w-full flex flex-col items-center justify-center py-8 lg:py-0">
             <div
-                class="relative flex flex-col lg:flex-row w-full max-w-[90rem] sm:px-24 lg:px-40v   h-auto lg:h-48 items-center justify-center gap-8 px-10">
+                class="relative flex flex-col lg:flex-row w-full max-w-[90rem] sm:px-24 lg:px-40v  h-auto items-center justify-center gap-8 px-10">
                 <div
-                    class="bg-white rounded-box border border-gray-300 translate-y-0 lg:-translate-y-1/2 shadow-lg w-full min-h-[9rem] h-full p-4 flex items-center justify-center gap-6">
-                    <!-- <img src="/public/images/servicees/automation.png" alt="" class="w-16 h-16"> -->
-                    <div class="flex flex-col gap-4 items-center justify-center">
-                        <h2 class="text-sm lg:text-base xl:text-3xl text-indigo-700 font-bold">
-                            <CountUp :end="1200" />+
+                    class="bg-white  rounded-box border border-gray-300 translate-y-0 lg:-translate-y-1/2 shadow-lg w-full h-[18rem]  py-8 px-6 flex flex-col items-center justify-center gap-4">
+                    
+                    <div class="flex flex-col items-center justify-center gap-1">
+                        <h2 class="text-sm lg:text-base  font-bold">مشاهده اسناد و فایل ها
                         </h2>
-                        <h2 class="text-sm lg:text-base text-indigo-700 font-bold">سند تدوین و ابلاغ شده شامل:
+                        <h2 class="text-xs lg:text-sm  font-thin">مشاهده مشخصات اسناد و فایل های شناسنامه مربوط به هر سند
                         </h2>
                     </div>
+                    <img src="/public/images/servicees/text-files-concept-illustration_86047-554.png" alt="" class="w-48 h-full">
                 </div>
                 <div
-                    class="bg-white rounded-box border border-gray-300 translate-y-0 lg:-translate-y-1/2 shadow-lg w-full min-h-[9rem] h-full p-4 flex flex-col items-center justify-center gap-4">
-                    <img src="/public/images/servicees/automation.png" alt="" class="w-16 h-16">
-                    <div class="flex items-center justify-center gap-4">
-                        <h2 class="text-sm lg:text-base xl:text-3xl text-indigo-700 font-bold">
-                            <CountUp :end="300" />+
+                    class="bg-white rounded-box border border-gray-300 translate-y-0 lg:-translate-y-1/2 shadow-lg w-full h-[18rem]  py-8 px-6 flex flex-col items-center justify-center gap-4">
+                    
+                    <div class="flex flex-col items-center justify-center gap-1">
+                        <h2 class="text-sm lg:text-base font-bold">جستجوی سریع و آسان
                         </h2>
-                        <h2 class="text-sm lg:text-base text-indigo-700 font-bold">فرایند
+                        <h2 class="text-xs lg:text-sm font-thin">جستجو از طریق عنوان یا کد سند، اعمال فیلتر و یا جستجوری عبارات در فایل های شناسنامه
                         </h2>
                     </div>
+                    <img src="/public/images/servicees/search-people.png" alt="" class="w-48 h-full">
                 </div>
                 <div
-                    class="bg-white rounded-box border border-gray-300 translate-y-0 lg:-translate-y-1/2 shadow-lg w-full min-h-[9rem] h-full p-4 flex flex-col items-center justify-center gap-6">
-                    <img src="/public/images/servicees/workflow-optimization.png" alt="" class="w-16 h-16">
-                    <div class="flex items-center justify-center gap-4">
-                        <h2 class="text-sm lg:text-base xl:text-3xl text-indigo-700 font-bold">
-                            <CountUp :end="400" />+
+                    class="bg-white rounded-box border border-gray-300 translate-y-0 lg:-translate-y-1/2 shadow-lg w-full h-[18rem]  py-8 px-6 flex flex-col items-center justify-center gap-4">
+                    
+                    <div class="flex flex-col items-center justify-center gap-1">
+                        <h2 class="text-sm lg:text-base font-bold">بروز رسانی آخرین تغییرات در اسناد
                         </h2>
-                        <h2 class="text-sm lg:text-base text-indigo-700 font-bold">زیرفرایند
-                        </h2>
-                    </div>
-                </div>
-                <div
-                    class="bg-white rounded-box border border-gray-300 translate-y-0 lg:-translate-y-1/2 shadow-lg w-full min-h-[9rem] h-full p-4 flex flex-col items-center justify-center gap-6">
-                    <img src="/public/images/servicees/workflow.png" alt="" class="w-16 h-16">
-                    <div class="flex items-center justify-center gap-4">
-                        <h2 class="text-sm lg:text-base xl:text-3xl text-indigo-700 font-bold">
-                            <CountUp :end="700" />+
-                        </h2>
-                        <h2 class="text-sm lg:text-base text-indigo-700 font-bold">روش اجرایی
+                        <h2 class="text-xs lg:text-sm font-thin">بروز رسانی و دسترسی به آخرین تغییرات در اسناد فرایندی
                         </h2>
                     </div>
+                    <img src="/public/images/servicees/add-files-concept-illustration_86047-655.png" alt="" class="w-48 h-full">
                 </div>
+                
             </div>
             <div class="w-full flex max-w-[100rem]" id="types-of-docs">
                 <div class="p-10 overflow-hidden">
@@ -304,7 +294,7 @@ const items = [
     {
         title: "روش های اجرایی",
         to: "/procedures?docType=procedures",
-        description: "",
+        description: 840,
         image: "/images/slider/undraw_version_control_re_mg66.svg",
         action: "لیست روش های اجرایی",
         icon: "/images/slider/small-picture/workflow.svg"
@@ -312,7 +302,7 @@ const items = [
     {
         title: "فرایندها",
         to: "/processes",
-        description: "",
+        description: 260,
         image: "/images/slider/undraw_thought_process_re_om58.svg",
         action: "لیست  فرایندها",
         icon: "/images/slider/small-picture/process1.svg"
@@ -320,7 +310,7 @@ const items = [
     {
         title: "زیر فرایندها",
         to: "/sub-processes",
-        description: "",
+        description: 520,
         image: "/images/slider/undraw_detailed_analysis_re_tk6j.svg",
         action: "لیست  زیر فرایندها",
         icon: "/images/slider/small-picture/process.svg"
@@ -328,7 +318,7 @@ const items = [
     {
         title: "دستورالعمل ها",
         to: "/procedures?docType=instruction",
-        description: "",
+        description: 89,
         image: "/images/slider/undraw_our_solution_re_8yk6.svg",
         action: "لیست  دستورالعمل ها",
         icon: "/images/slider/small-picture/instruction2.svg"
@@ -336,7 +326,7 @@ const items = [
     {
         title: "فرم ها",
         to: "/procedures?docType=form",
-        description: "",
+        description: 31,
         image: "/images/slider/undraw_folder_files_re_2cbm.svg",
         action: "لیست  فرم ها",
         icon: "/images/slider/small-picture/instruction2.svg"
@@ -344,7 +334,7 @@ const items = [
     {
         title: "آئین نامه ها",
         to: "/procedures?docType=regulation",
-        description: "",
+        description: 10,
         image: "/images/slider/undraw_folder_re_apfp(1).svg",
         action: "لیست  آئین نامه ها",
         icon: "/images/slider/small-picture/instruction1.svg"
@@ -352,7 +342,7 @@ const items = [
     {
         title: "قرارداد ها",
         to: "/procedures?docType=contract",
-        description: "",
+        description: 9,
         image: "/images/slider/undraw_filing_system_re_56h6.svg",
         action: "لیست  قرارداد ها",
         icon: "/images/slider/small-picture/instruction2.svg"

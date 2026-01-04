@@ -6,7 +6,7 @@
     </label>
     <div class="relative w-full">
       <input
-        class="focus:ring-0 focus:ring-offset-0 focus:border-gray-300 border-blue-800 rounded-lg h-12 lg:h-14 relative w-full placeholder:text-sm lg:placeholder:text-lg"
+        class="focus:ring-0 focus:ring-offset-0 border focus:border-gray-300 border-blue-800 rounded-lg h-12 lg:h-14 relative w-full placeholder:text-xs lg:placeholder:text-lg"
         autocomplete="off" :type="type" placeholder="جستجو ..." v-bind="$attrs" :value="inputValue" :name="name"
         @input="handleChange" @blur="handleBlur">
       <button type="submit" @click="handleSearch"
